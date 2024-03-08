@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.wmjan.top</id>
+    <title>Wmjan学习站</title>
+    <updated>2024-03-08T06:46:14.215Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.wmjan.top"/>
+    <link rel="self" href="https://blog.wmjan.top/atom.xml"/>
+    <logo>https://blog.wmjan.top/images/avatar.png</logo>
+    <icon>https://blog.wmjan.top/favicon.ico</icon>
+    <rights>All rights reserved 2024, Wmjan学习站</rights>
+    <entry>
+        <title type="html"><![CDATA[利用Cloudflare的Workers搭建VLESS节点]]></title>
+        <id>https://blog.wmjan.top/post/Workers/</id>
+        <link href="https://blog.wmjan.top/post/Workers/">
+        </link>
+        <updated>2024-03-08T06:45:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="准备工作">准备工作</h1>
+<ol>
+<li>前往<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>自行注册账号</li>
+<li><a href="https://github.com/3Kmfi6HP/EDtunnel">3Kmfi6HP大佬的Workers项目链接</a></li>
+<li>下载windows梯子软件v2rayN最新版，打开<a href="https://github.com/2dust/v2rayN">v2rayN官网</a>，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行</li>
+<li>UUID(userID)获取方法：运行v2rayN &gt; 点左上角“服务器” &gt; 添加VLESS服务器 &gt; 用户ID(id)项点 生成即可得到，保存待用</li>
+</ol>
+<h1 id="搭建及使用">搭建及使用</h1>
+<ol>
+<li>打开<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>左侧栏 &gt; Workers 和 Pages &gt; 概述里点 创建应用程序 &gt; 创建 Worker &gt; 名称随便取 &gt; 点右下角部署 &gt; 编辑代码 &gt; <a href="https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js">复制3Kmfi6HP大佬的worker.js代码替换上去</a> &gt; 把准备工作中得到的userID替换代码中let userID的值 &gt; 点右上角 保存并部署</li>
+<li>回到Workers 和 Pages &gt; 点刚创建的应用程序名 &gt; 触发器 &gt; 复制路由地址<code>*.*.workers.dev</code>并加上<code>/UUID地址</code>，如我的是：<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code></li>
+<li>复制<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code>在浏览器打开即可看到生成 VLESS 协议的配置信息</li>
+<li>点开<code>VLESS 节点订阅连接</code>，<code>Clash for Windows 节点订阅连接</code>，<code>优选IP自动节点订阅</code>，<code>v2rayNG优选IP自动</code>等你需要的对应链接，会得到整个页面全是字符</li>
+<li>全选复制后，打开梯子软件v2rayN &gt; 点左上角服务器 &gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点</li>
+<li>Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常</li>
+<li>选择其中一条延时较低的节点回车即可启用节点</li>
+<li>使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了</li>
+</ol>
+<blockquote>
+<p>分流测试地址<a href="https://ip.skk.moe/">ip.skk.moe</a><br>
+查看当前IP地址<a href="https://ip.gs/">ip.gs</a></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows下mklink的巧用]]></title>
+        <id>https://blog.wmjan.top/post/mklink/</id>
+        <link href="https://blog.wmjan.top/post/mklink/">
+        </link>
+        <updated>2024-03-03T02:55:46.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>文中提及的“用户名”需要改为你实际Windows登陆名</p>
+</blockquote>
+<h1 id="前言">前言</h1>
+<p>Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在<br>
+<code>C:\Users\用户名\Documents\WeChat Files</code>目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。</p>
+<h1 id="利用mklink命令转移目录">利用mklink命令转移目录</h1>
+<ol>
+<li>退出微信登陆</li>
+<li>找到<code>C:\Users\用户名\Documents</code>目录把WeChat Files整个目录移动到E盘下</li>
+<li>再在E:\WeChat Files目录下新建mklink.bat文件，内容为</li>
+</ol>
+<pre><code>mklink /D &quot;C:\Users\用户名\Documents\WeChat Files&quot; &quot;E:\WeChat Files&quot;
+</code></pre>
+<ol start="4">
+<li>右键以管理员权限运行mklink.bat后，C:\Users\用户名\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\WeChat Files目录软链接到C:\Users\用户名\Documents\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。</li>
+</ol>
+<h1 id="重装系统后恢复聊天记录">重装系统后，恢复聊天记录</h1>
+<blockquote>
+<p>确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径</p>
+</blockquote>
+<ol>
+<li>先右键以管理员权限运行E:\WeChat Files\mklink.bat文件</li>
+<li>再重新安装微信，运行登陆</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[同时访问内外网｜实现远程访问专网OA]]></title>
+        <id>https://blog.wmjan.top/post/oa/</id>
+        <link href="https://blog.wmjan.top/post/oa/">
+        </link>
+        <updated>2024-01-21T02:01:15.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA</p>
+<h1 id="网络环境描述">网络环境描述</h1>
+<ol>
+<li>专网情况</li>
+</ol>
+<ul>
+<li>IP地址：15.76.7.59</li>
+<li>网关地址：15.76.7.1</li>
+<li>专网无线路由IP：192.168.3.1<br>
+以上信息已设定在专网无线路由WAN口，已可通过无线路由访问专网OA</li>
+</ul>
+<ol start="2">
+<li>Internet网情况</li>
+</ol>
+<ul>
+<li>IP地址：192.168.20.80</li>
+<li>网关地址：192.168.20.1</li>
+</ul>
+<h1 id="实现内外网同时访问">实现内外网同时访问</h1>
+<blockquote>
+<p>办公电脑</p>
+<ul>
+<li>无线网卡接入专网无线并配置IP地址：192.168.3.3；网关地址：192.168.3.1</li>
+<li>有线网卡接Internet路由并配置IP地址192.168.20.80；网关地址：192.168.20.1</li>
+</ul>
+</blockquote>
+<ol>
+<li>查看路由表</li>
+</ol>
+<ul>
+<li>管理员身份运行cmd(C:/windows/system32/cmd.exe右键)输入</li>
+</ul>
+<pre><code>route print
+</code></pre>
+<ul>
+<li>看到IPv4路由表前两行信息如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">IPv4路由表：</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">网络目标</td>
+<td>网络掩码</td>
+<td>网关</td>
+<td>接口</td>
+<td>跃点数</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0.0.0</td>
+<td>0.0.0.0</td>
+<td>192.168.20.1</td>
+<td>192.168.20.80</td>
+<td>291</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0.0.0</td>
+<td>0.0.0.0</td>
+<td>192.168.3.1</td>
+<td>192.168.3.3</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>删除所有0.0.0.0的路由信息</li>
+</ol>
+<pre><code>route delete 0.0.0.0
+</code></pre>
+<ol start="3">
+<li>添加新路由信息</li>
+</ol>
+<pre><code>route add -p 0.0.0.0 mask 0.0.0.0 192.168.20.1
+route add -p 192.168.3.0 mask 255.255.255.0 192.168.3.1
+route add -p 15.0.0.0 mask 255.0.0.0 192.168.3.1
+</code></pre>
+<blockquote>
+<p>注：这3条路由的意思是15.x.x.x开头的IP和192.168.3.x开头的IP都走192.168.3.1网关(专网的路由器)，除此之外的所有地址都走192.168.20.1网关(Internet路由器)</p>
+</blockquote>
+<ol start="4">
+<li>到此为止电脑正常已经能同时访问内外网了，我们再route print查看下路由表，发现永久路由部分已经多了以下3条路由信息</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">永久路由：</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">网络地址</td>
+<td>网络掩码</td>
+<td>网关地址</td>
+<td>跃点数</td>
+</tr>
+<tr>
+<td style="text-align:left">0.0.0.0</td>
+<td>0.0.0.0</td>
+<td>192.168.20.1</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:left">192.168.3.0</td>
+<td>255.255.255.0</td>
+<td>192.168.3.1</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:left">15.0.0.0</td>
+<td>255.0.0.0</td>
+<td>192.168.3.1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="远程访问专网oa">远程访问专网OA</h1>
+<ol>
+<li>最为安全、便捷的方式就是使用frp内网穿透， 配置相关信息，办公电脑通过Internet网连接frp服务器，再代理访问专网OA<br>
+下载<a href="https://github.com/fatedier/frp">frp项目</a>中的<a href="https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip">windows版本</a>，解压后得到frp对应文件夹，在里面新建一个frpc.ini文件，并填入以下配置文件，详见<a href="https://blog.wmjan.top/post/frp/">frp内网穿透配置说明</a></li>
+</ol>
+<pre><code>[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[OA] #自定义备注名称
+type = http #访问方式http
+local_port = 80 #内网OA访问端口
+local_ip = 15.76.7.x #内网OA对应IP
+subdomain = oa #自定义访问子域名
+</code></pre>
+<ol start="2">
+<li>启动服务<br>
+在frp对应文件夹中新建一个Run.bat文件，内容为</li>
+</ol>
+<pre><code>.\frpc.exe
+</code></pre>
+<p>保存后，双击Run.bat即可启动服务，启动后确保</p>
+<ul>
+<li>保持cmd窗口不关闭，这是连接frp服务器主程序</li>
+<li>保持电脑不要休眠</li>
+</ul>
+<ol start="3">
+<li>接下来就可以使用任何设备访问专网OA了，包括移动终端，方法只需要在浏览器端输入以下网址<br>
+http://oa.abc.com:9090</li>
+</ol>
+<h1 id="end">END</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[群晖数据备份：Hyper Backup 和 Cloud Sync]]></title>
+        <id>https://blog.wmjan.top/post/Backup/</id>
+        <link href="https://blog.wmjan.top/post/Backup/">
+        </link>
+        <updated>2024-01-16T03:30:03.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>上期我们已经讲过了，<a href="https://blog.wmjan.top/post/OneDrive">如何获取微软OneDrive 5TB免费网盘</a>，这期就讲讲群晖如何利用备份软件把资料<strong>加密</strong>备份到OneDrive</p>
+</blockquote>
+<h1 id="前言">前言</h1>
+<p>群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。</p>
+<h1 id="hyper-backup套件中心安装">Hyper Backup(套件中心安装)</h1>
+<p><strong>这个套件对我最有用的就是定期备份各种套件数据到本地盘，如Synology Contacts、Synology Calendar、Note Station等等</strong></p>
+<ul>
+<li>可批量选择备份共享文件夹</li>
+<li>可批量选择备份应用程序<br>
+需要注意的是SynologyPhotos套件，如果选择了备份这个套件会把对应的相册数据一并备份了，和备份共享文件夹不要重复了</li>
+<li>群晖设置信息也会一并备份</li>
+<li><strong>多版本循环备份</strong></li>
+<li>无法直接备份到OneDrive</li>
+<li>无法加密备份</li>
+</ul>
+<h1 id="cloud-sync套件中心安装">Cloud Sync(套件中心安装)</h1>
+<ul>
+<li>可同步数据到WebDAV、OneDrive等各种云服务中心</li>
+<li>可双向同步，也可单向备份</li>
+<li>可自定义选择目录</li>
+<li><strong>可数据加密</strong><br>
+加密后数据直接从网盘下载是无法正常查看的，必须通过Cloud Sync解密下载才可以查看</li>
+</ul>
+<h1 id="同步数据">同步数据</h1>
+<p><strong>Cloud Sync配合Hyper Backup备份套件数据再加密同步/备份到开发者OneDrive 5TB网盘</strong></p>
+<ol>
+<li>运行Cloud Sync套件 &gt; 点左上角+ &gt; 选择Microsoft OneDrive for Business &gt; 登陆开发者微软开发者账号 &gt; Agree 同意授权</li>
+<li>右侧任务列表 &gt; 新增 跳转 任务设置</li>
+<li>本地路径选择 共享文件夹 &gt; 远程路径 新建一个对应的文件夹名称 &gt; 同步方向按自己需求选择 &gt; <strong>数据加密 安全起见建议勾选</strong> &gt; 输入加密密钥(<strong>务必牢记</strong>) &gt; 高级设置 &gt; 勾选共享文件夹中实际需要同步的目录 &gt; 确定完成</li>
+<li>如果主要用来单向备份为主(非双向同步)的话，建议计划设置里固定开启某个时间段来备份即可</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5TB容量OneDrive网盘申请与续订]]></title>
+        <id>https://blog.wmjan.top/post/OneDrive/</id>
+        <link href="https://blog.wmjan.top/post/OneDrive/">
+        </link>
+        <updated>2024-01-15T00:29:41.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p><strong>以下操作均以windows浏览器页面显示为准</strong></p>
+</blockquote>
+<h1 id="微软onedrive开发者账号的用处">微软OneDrive开发者账号的用处</h1>
+<ul>
+<li>免费提供5TB容量OneDrive</li>
+<li>Microsoft Office 365免费用</li>
+</ul>
+<h1 id="开发者账号申请">开发者账号申请</h1>
+<ol>
+<li>进入<a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">Microsoft 365 开发人员中心</a></li>
+<li>登陆微软账号后，点Join now(现在加入)进入下一步</li>
+<li>Country/Region(国家/地区)、Company(公司) 可任何填写，语言选中文，并勾选底下两个复选框</li>
+<li>What is your primary focus as a developer?作为开发人员，您主要关注的是什么？（只选一项）</li>
+</ol>
+<ul>
+<li>Applications for internal use at my company 我公司内部使用的应用程序</li>
+</ul>
+<ol start="5">
+<li>What areas of Microsoft 365 development are you interested in?您对 Microsoft 365 开发的哪些领域感兴趣？</li>
+</ol>
+<ul>
+<li>Office Add-ins(也可以多选)</li>
+</ul>
+<ol start="6">
+<li>选Configurable sandbox可配置的沙盒，再点右下角Next</li>
+<li><strong>此步非常重要，所有信息都需要保存记录好</strong></li>
+</ol>
+<ul>
+<li>Create username创建用户名，如 wmjan</li>
+<li>Create domain创建域，如 zjtz<br>
+那么你得到的开发者账号为 wmjan@zjtz.onmicrosoft.com</li>
+<li>密码必须在15-20个字符之间，并且必须包含大写字母和小写字母、数字以及以下符号中的一个或多个</li>
+</ul>
+<ol start="8">
+<li>添加中国手机号，获取验证码并验证</li>
+<li>验证成功所即完成了开发者账号的申请</li>
+</ol>
+<h1 id="如何设置5tb网盘">如何设置5TB网盘</h1>
+<ul>
+<li>进入<a href="https://admin.microsoft.com/">Microsoft 365 admin center</a> &gt; 登陆开发者账号 &gt; 点左侧users(用户) &gt; Active users(活跃用户) &gt; 点自己名称 &gt; 点右侧栏中的OneDrive &gt; 点下方 管理默认存储 &gt; 点 OneDrive存储限制 &gt; 默认存储限制设置为5120GB &gt; 保存即可</li>
+<li><strong>若设置过程提示：未为此用户设置OneDrive，<a href="https://portal.office.com/onedrive">请跳转此页面激活OneDrive后继续</a></strong></li>
+</ul>
+<h1 id="使用-github-的action功能实现账号自动续订">使用 github 的Action功能实现账号自动续订</h1>
+<blockquote>
+<p>为什么要续订？<br>
+开发者账号默认只有90天有效期，微软会根据 API 调用情况，符合调用情况的，会在距离到期30天时自动续订，不符合就不给续订了。续订的方法很多，目前较为有效、安全的方法就是通过github的Action来实现自动续订</p>
+</blockquote>
+<h3 id="生成密钥切记要记录好token">生成密钥，切记要记录好token</h3>
+<ol>
+<li>打开<a href="https://github.com/">github</a>网站并登陆账号，没有账号的请自行注册</li>
+<li>登陆后点击右上角头像 &gt; 点击 Settings &gt; 找到左侧最下面的Developer Settings进入 &gt; 点开左侧 Personal access tokens &gt; Tokens(classic) &gt; 点开右上角Generate new token &gt; Generate new token(classic) &gt; 输入密码进入下一步</li>
+<li>New personal access token (classic)信息填写</li>
+</ol>
+<ul>
+<li>Note：为token备注名，如：AliveE5</li>
+<li>Expiration：选No expiration(无到期时间)</li>
+<li>Select scopes：勾选workflow，repo项也会被默认选上</li>
+<li>点Generate token生成令牌</li>
+</ul>
+<ol start="4">
+<li><strong>保存记录好你的token，关闭后无法二次显示了</strong></li>
+</ol>
+<h3 id="导入-keepalivee5-代码到自己的储存库">导入 KeepAliveE5 代码到自己的储存库</h3>
+<ol>
+<li>打开<a href="https://github.com/">github</a>网站并登陆账号后 &gt; 点右上角+号 &gt; 点击Import repository</li>
+<li>Import your project to GitHub信息填写</li>
+</ol>
+<ul>
+<li>Your old repository's clone URL 填入以下仓库地址：https://github.com/sywdebug/KeepAliveE5-Public.git</li>
+<li>Your new repository details &gt; Repository name<br>
+：AliveE5</li>
+<li>选 Private 私有库</li>
+<li>点 Begin import 后等待完成导入</li>
+</ul>
+<h3 id="开启-action-功能">开启 Action 功能</h3>
+<ol>
+<li>点<a href="https://github.com/">github</a>主页左上角黑猫头 &gt; 点 AliveE5 项 &gt; 点顶部 Settings &gt; 点左侧Actions &gt; 点General &gt; 选Allow all actions and reusable workflows &gt; 保存</li>
+<li>点左下角Secrets and variables &gt; 点Actions &gt; 点New repository secret，分别新建以下3项</li>
+</ol>
+<blockquote>
+<ul>
+<li>Name *填入：PAT</li>
+<li>Secret *填入：上面得到的token</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Name *填入：USER</li>
+<li>Secret *填入：开发者账号</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Name *填入：PASSWD</li>
+<li>Secret *填入：开发者账号密码</li>
+</ul>
+</blockquote>
+<h3 id="禁用安全默认值">禁用安全默认值</h3>
+<ul>
+<li>进入<a href="https://portal.azure.com/#home">Microsoft Azure</a>，登陆开发者账号 &gt; 点中间 管理 Microsoft Entra ID 查看 &gt; 点左侧 属性 &gt; 点主页最底部 管理安全默认值 &gt; 将安全默认值设为已禁用 &gt; 保存</li>
+</ul>
+<h3 id="启动-action-的注册-app-工作流">启动 Action 的注册 APP 工作流</h3>
+<ul>
+<li>点<a href="https://github.com/">github</a>主页左上角黑猫头 &gt; 点 AliveE5 项 &gt; 点顶部 Action &gt; 点击左侧 Register APP &gt; 点击右侧 Run workflow &gt; 分支就是 master &gt; 点击 Run workflow &gt; 等待4-5分钟运行完成</li>
+</ul>
+<h3 id="启动-action-的调用-api-工作流">启动 Action 的调用 API 工作流</h3>
+<ul>
+<li>点击左侧 Invoke API &gt; 点击右侧 Run workflow &gt; 分支就是 master &gt; 点击 Run workflow &gt; 等待完成即可</li>
+</ul>
+<h1 id="写在最后">写在最后</h1>
+<ul>
+<li>至此，Action会每隔4小时自动调用API完成一份工作流，正常微软会在距离到期30天时自动续订开发者账号有效期</li>
+<li>验证：两个月后进<a href="https://developer.microsoft.com/en-us/microsoft-365/profile">Microsoft 365 developer subscriptions</a>页面查看账号有效期</li>
+</ul>
+<h1 id="end">END</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[frp内网穿透配置说明]]></title>
+        <id>https://blog.wmjan.top/post/frp/</id>
+        <link href="https://blog.wmjan.top/post/frp/">
+        </link>
+        <updated>2024-01-13T02:05:16.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="应用场景">应用场景</h1>
+<p>没有公网IP设备需要远程访问，如何路由器、光猫等</p>
+<h1 id="frps服务器配置条件">frps服务器配置条件</h1>
+<ul>
+<li>服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可</li>
+<li>github项目地址：<a href="https://github.com/fatedier/frp">frp程序及官方说明</a></li>
+<li>以下涉及的abc.com域名为示例说明，请替换自己的实际域名/IP；各端口及用户名密码也一样，可以根据自己的实际需求进行更换；以下frpc客户端配置采用自定义子域名方式，需要提前在域名管理中心开启泛域名</li>
+</ul>
+<h1 id="frps服务器端配置文件">frps服务器端配置文件</h1>
+<ul>
+<li>从v0.52.0版本开始，frp已经不支持.ini配置文件了，请使用toml、yaml及josn格式文件</li>
+<li>电脑上新建frps.toml文本文档，再使用记事本打开并填入以下内容</li>
+</ul>
+<pre><code>[common]
+subdomain_host = abc.com #服务器端域名/IP
+bind_port = 7000 #监听端口
+vhost_http_port = 9090 #http访问端口
+vhost_https_port = 9091 #https访问端口
+dashboard_addr = 0.0.0.0
+dashboard_port = 7500 #控制面板访问端口
+dashboard_user = admin #控制面板用户名
+dashboard_pwd = password #控制面板密码
+token = password #客户端连接密码
+max_pool_count = 10
+log_max_days = 3
+</code></pre>
+<h1 id="群晖docker安装frps服务器">群晖Docker安装frps服务器</h1>
+<ol>
+<li>Docker注册表搜frps，双击安装snowdreamtech-frps。如果无法访问注册表，可SSH登陆群晖后使用<a href="https://blog.wmjan.top/post/dockercmd/">Docker常用命令</a>来安装</li>
+<li>群晖docker目录里添加一个frp文件夹，复制电脑上配置好的frps.toml文件到群晖frp文件夹里</li>
+<li>启动映像时存储空间 &gt; <strong>添加文件</strong> &gt; 选择docker/frp/frps.toml &gt; 挂载目录到/etc/frp/frps.toml</li>
+<li>网络选择host</li>
+<li>其他均默认后启动即可</li>
+</ol>
+<h1 id="frpc客户端配置">frpc客户端配置</h1>
+<pre><code>[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[router] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.1 #本地设备IP地址
+subdomain = router #自定义访问子域名
+</code></pre>
+<h1 id="访问方式">访问方式</h1>
+<ul>
+<li>服务器端还需要把对应的端口打开</li>
+<li>成功连接后访问客户端方法如下<br>
+http://router.abc.com:9090</li>
+<li>访问控制面板方法如下，用户名密码为服务器端dashboard项<br>
+http://abc.com:7500</li>
+</ul>
+<h3 id="同一网络下多个设备需要访问">同一网络下多个设备需要访问</h3>
+<ul>
+<li>只需要在frpc客户端配置中增加配置即可，如增加一台光猫和群晖NAS</li>
+</ul>
+<pre><code>[modem] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.254 #本地设备IP地址
+subdomain = modem #自定义访问子域名
+
+[nas] #自定义备注名称
+type = https #访问方式http或https
+local_port = 5001 #本地访问端口
+local_ip = 192.168.2.253 #本地设备IP地址
+subdomain = nas #自定义访问子域名
+</code></pre>
+<ul>
+<li>访问方法分别为<br>
+光猫：http://modem.abc.com:9090<br>
+NAS：https://nas.abc.com:9091</li>
+</ul>
+<h3 id="远程登陆ssh">远程登陆SSH</h3>
+<ul>
+<li>只需要在frpc客户端增加以下配置</li>
+</ul>
+<pre><code>[SSH]
+type = &quot;tcp&quot; #访问方式要选tcp
+local_ip = &quot;192.168.2.1&quot; #本地设备IP地址
+local_port = 22 #本地访问端口
+remote_port = 6000 #远程访问端口
+</code></pre>
+<ul>
+<li>访问方法为<br>
+ssh -oPort=6000 root@abc.com</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker常用命令]]></title>
+        <id>https://blog.wmjan.top/post/dockercmd/</id>
+        <link href="https://blog.wmjan.top/post/dockercmd/">
+        </link>
+        <updated>2024-01-12T05:25:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="docker常用命令">Docker常用命令</h1>
+<ol>
+<li>搜索镜像</li>
+</ol>
+<pre><code>sudo docker search 镜像名
+</code></pre>
+<ol start="2">
+<li>拉取镜像</li>
+</ol>
+<pre><code>sudo docker pull 镜像名
+</code></pre>
+<ol start="3">
+<li>启动docker服务</li>
+</ol>
+<pre><code>sudo service docker start
+</code></pre>
+<ol start="4">
+<li>停止docker服务</li>
+</ol>
+<pre><code>sudo service docker stop
+</code></pre>
+<ol start="5">
+<li>检查docker 守护进程是否在运行</li>
+</ol>
+<pre><code>sudo docker stats
+</code></pre>
+<ol start="6">
+<li>查看docker相关信息</li>
+</ol>
+<pre><code>sudo docker info
+</code></pre>
+<ol start="7">
+<li>列出所有容器</li>
+</ol>
+<pre><code>sudo docker ps -a
+</code></pre>
+<ol start="8">
+<li>最后一次运行的容器</li>
+</ol>
+<pre><code>sudo docker ps -l
+</code></pre>
+<ol start="9">
+<li>重新启动已停止的容器</li>
+</ol>
+<pre><code>sudo docker start 容器名(也可以使用容器ID)
+</code></pre>
+<ol start="10">
+<li>获取容器的日志</li>
+</ol>
+<pre><code>sudo docker logs 容器名
+</code></pre>
+<ol start="11">
+<li>获取最后几条日志</li>
+</ol>
+<pre><code>sudo docker -f 容器名
+</code></pre>
+<ol start="12">
+<li>列出镜像</li>
+</ol>
+<pre><code>sudo docker images
+</code></pre>
+<ol start="13">
+<li>删除所有容器</li>
+</ol>
+<pre><code>sudo docker rm $(docker ps -a -q)
+</code></pre>
+<ol start="14">
+<li>删除单个容器</li>
+</ol>
+<pre><code>sudo docker rm 容器名
+</code></pre>
+<ol start="15">
+<li>删除所有镜像</li>
+</ol>
+<pre><code>sudo docker rmi $(docker images | grep none | awk '{print $3}' | sort -r)
+
+</code></pre>
+<ol start="16">
+<li>保存镜像</li>
+</ol>
+<pre><code>sudo docker save 镜像名 &gt; /home/新镜像名.tar
+</code></pre>
+<ol start="17">
+<li>加载自定义镜像</li>
+</ol>
+<pre><code>sudo docker load &lt; /home/自定义镜像
+</code></pre>
+<ol start="18">
+<li>获取容器更多信息</li>
+</ol>
+<pre><code>sudo docker inspect 容器名
+</code></pre>
+<ol start="19">
+<li>删除为none的镜像</li>
+</ol>
+<pre><code>docker images --no-trunc| grep none | awk '{print $3}' | xargs -r docker rmi
+</code></pre>
+<h3 id="常用参数">常用参数：</h3>
+<blockquote>
+<p>-i：以交互模式运行容器，通常与 -t 同时使用<br>
+-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用<br>
+-p : 端口映射 格式为[主机端口：容器端口]<br>
+-d : 后台模式运行<br>
+-name : 给容器一个新的名称<br>
+-v：挂载主机的目录<br>
+-e： username=&quot;ritchie&quot;: 设置环境变量<br>
+-m：设置容器使用内存最大值<br>
+--env-file=[]：从指定文件读入环境变量</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[跨平台联系人同步群晖Synology Contacts]]></title>
+        <id>https://blog.wmjan.top/post/Contacts/</id>
+        <link href="https://blog.wmjan.top/post/Contacts/">
+        </link>
+        <updated>2024-01-11T07:08:34.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="痛点分析">痛点分析</h1>
+<h3 id="个人业务">个人业务</h3>
+<ul>
+<li>多平台联系人同步<br>
+比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事</li>
+<li>想要分开管理联系人<br>
+办公手机和私人手机联系人不想合拼一起，但又希望两台手机都能访问两者联系人</li>
+<li>怕隐私泄露、不想用手机自带的云服务<br>
+曾经，一知名手机厂商一年内让我多次丢失联系人，有时候丢失部分联系人可能自己都没发觉</li>
+</ul>
+<h3 id="公司业务">公司业务</h3>
+<ul>
+<li>公司多部门联系人管理<br>
+业务部、财务部各部门联系人管理备份，以免员工离职联系人丢失</li>
+</ul>
+<h1 id="安装及避坑">安装及避坑</h1>
+<h3 id="安装环境要求">安装环境要求</h3>
+<ul>
+<li>DSM6.2.4以上版本才支持<br>
+曾经在DSM6.2.3上试了几天没成功</li>
+</ul>
+<h3 id="安装及导入">安装及导入</h3>
+<ul>
+<li>安装非常简单，打开群晖套件中心搜索<strong>Synology Contacts</strong>安装即可</li>
+<li>首次使用必须先把联系人分组导入到服务器里</li>
+<li>导入手机联系人时，必须去对应品牌云服务网页端导出联系人文件，再进行导入。很多手机端导出的文件会进行UTF-8编码（quoted-printable），导入到服务器后无法正常显示联系人名称</li>
+</ul>
+<h3 id="如何同步">如何同步</h3>
+<p>打开Synology Contacts，我的联系人&gt;点后面3点&gt;CardDAV&gt;选择对应平台的配置信息</p>
+<h3 id="手机端同步设置">手机端同步设置</h3>
+<ul>
+<li>iPhone和小米手机，因为系统本身就支持CardDav服务
+<blockquote>
+<p>iPhone手机打开设置&gt;通讯录&gt;帐户&gt;添加帐户&gt;其他&gt;添加CardDAV帐户<br>
+小米手机打开设置&gt;账户与同步&gt;账户与同步&gt;添加账户&gt;CardDAV同步账户</p>
+</blockquote>
+</li>
+<li>其他安卓手机<br>
+需要下载CardDAV同步客户端 <a href="https://f-droid.org/packages/at.bitfire.davdroid/">DAVx⁵</a>，打开DAVx⁵按向导提示设置电池优化等项目，以便它能正常后台运行同步信息</li>
+<li>添加CardDAV时服务器(根地址)为上述提到的CardDAV对应平台配置信息，用户名及密码为群晖对应账户登录的用户名密码
+<blockquote>
+<p>普通安卓用户使用DAVx⁵添加时一定要选‘<strong>使用URL和用户名登录</strong>’，如下图<br>
+<img src="https://blog.wmjan.top/post-images/contacts.png" alt="" loading="lazy"></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[海外VPS申请及X-UI部署]]></title>
+        <id>https://blog.wmjan.top/post/xui/</id>
+        <link href="https://blog.wmjan.top/post/xui/">
+        </link>
+        <updated>2024-01-09T01:07:55.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>VPS即虚拟专用服务器，这里需要是海外VPS，常用的有<a href="https://aws.amazon.com/cn/campaigns/aws-cloudserver/">AWS亚马逊云</a>、<a href="https://linuxone.cloud.marist.edu/">LinuxOne</a>、<a href="https://hax.co.id/">Hax VPS</a>、<a href="https://www.oracle.com/jp/cloud/free/">Oracle Cloud 甲骨文云</a>、<a href="https://cloud.google.com/">Google Cloud谷歌云</a>，下面以AWS亚马逊云为例</p>
+<h1 id="aws亚马逊云服务器申请">AWS亚马逊云服务器申请</h1>
+<blockquote>
+<p>所需材料：VISA信用卡，我使用的是招商VISA卡</p>
+</blockquote>
+<ol>
+<li>选<a href="https://portal.aws.amazon.com/billing/signup#/start/email">AWS 海外区域</a>按提示注册，详细图文教程请参考<a href="https://juejin.cn/post/7251914510436466725">三. 申请流程</a></li>
+<li>账单信息按实际填写自己VISA卡信息，放心不会实际 扣费，最多会有1美元的预扣款验证身份</li>
+<li>手机号码也填国内的常用号码即可</li>
+<li>创建EC2服务实例之前请务必先在右上角选择适合自己的<strong>区域</strong>，比如“香港”延时会相对比较低。没有“香港”的话可以在列表底部管理区域中添加</li>
+<li>连接实例时可以把用户名直接改成root来登陆</li>
+</ol>
+<h1 id="安装x-ui">安装X-UI</h1>
+<blockquote>
+<p>项目地址：<a href="https://github.com/FranzKafkaYu/x-ui">功能介绍及说明</a></p>
+</blockquote>
+<ol>
+<li>一键安装方法</li>
+</ol>
+<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+</code></pre>
+<ol start="2">
+<li>按提示设定</li>
+</ol>
+<blockquote>
+<p>用户名[username]: admin<br>
+密码[userpasswd]: password<br>
+监听端口[port]: 54321</p>
+</blockquote>
+<ol start="3">
+<li>在EC2实例<strong>安全组&gt;launch-wizard-1&gt;编辑入站规则</strong>把54321端口添加到规则中</li>
+<li>此时使用EC2实例的公有 IPv4 地址加端口号即可访问X-UI管理面板，如</li>
+</ol>
+<blockquote>
+<p>http://43.198.1xx.2xx:54321</p>
+</blockquote>
+<h1 id="配置x-ui">配置X-UI</h1>
+<ol>
+<li>开启vmess+ws节点：入站列表&gt;添加入站，如下图设置</li>
+</ol>
+<ul>
+<li>备注名vmess+ws</li>
+<li>协议选vmess</li>
+<li>端口可默认也可自定义</li>
+<li>添加用户选+</li>
+<li>网络选ws</li>
+<li>把用户ID前半段复制到路径 / 后面，再加上?ed=2048<br>
+<img src="https://blog.wmjan.top/post-images/x-uirz.png" alt="" loading="lazy"></li>
+</ul>
+<ol start="2">
+<li>再回到EC2实例<strong>安全组&gt;launch-wizard-1&gt;编辑入站规则</strong>把19687口添加到规则中</li>
+<li>最后X-UI控制页面中<strong>操作&gt;二维码</strong>，手机使用v2rayNG程序扫描即可实现固定IP高速科学上网了</li>
+</ol>
+<h1 id="注意注意注意">注意！注意！注意！</h1>
+<p>EC2实例中除了默认免费功能外，千万不要开启其他功能，都是额外收费的，包括<strong>弹性IP</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[WARP+分流设置]]></title>
+        <id>https://blog.wmjan.top/post/warpfenliu/</id>
+        <link href="https://blog.wmjan.top/post/warpfenliu/">
+        </link>
+        <updated>2024-01-08T08:06:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问</p>
+<h1 id="android手机端分流设置方法">Android手机端分流设置方法</h1>
+<ol>
+<li>下载最新版NekoBox安卓客户端<a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases">【NekoBoxForAndroid】</a>，感谢MatsuriDayo开源大佬</li>
+<li>运行NekoBox后点<strong>左上角&gt;工具&gt;Cloudflare Warp&gt;生成配置</strong>，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按<a href="https://blog.wmjan.top/post/warp+key/">【WARP+免费节点获取方法及进阶玩法】</a>把服务器和端口号替换成🚀优选IP和端口号即可</li>
+</ol>
+<blockquote>
+<p>暂不方便获取优选IP的可试用以下几组<br>
+162.159.195.47:942<br>
+162.159.192.131:942<br>
+162.159.192.5:3138<br>
+162.159.192.136:942<br>
+162.159.195.126:942</p>
+</blockquote>
+<ol start="3">
+<li>分流设置，打开NekoBox<strong>左上角&gt;路由</strong>，把<strong>中国域名规则</strong>和<strong>中国IP规则</strong>打开；NekoBox<strong>左上角&gt;设置&gt;路由设置</strong>里把<strong>绕开局域网地址</strong>和<strong>在核心中绕过LAN</strong> 即可实现分流</li>
+</ol>
+<h1 id="windows端分流设置方法">Windows端分流设置方法</h1>
+<blockquote>
+<p>本教程基于<a href="https://blog.wmjan.top/post/warp+key">【WARP+免费节点获取方法及进阶玩法】</a>延伸方案</p>
+</blockquote>
+<ol>
+<li>假设WireGuard安装在目录&quot;C:\Program Files\WireGuard&quot;</li>
+<li>开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：
+<ul>
+<li>以管理员身份运行cmd</li>
+<li>输入以下命令按回车<pre><code>reg add HKLM\Software\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f
+</code></pre>
+</li>
+</ul>
+</li>
+<li>下载<a href="https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master">【auto-add-routes-master.zip】</a>并解压将auto-add-routes-master目录里的所有文件复制到&quot;C:\Program Files\WireGuard\bat&quot;文件夹，没有bat文件夹自行新建</li>
+<li>修改Wireguard客户端配置文件，加入以下Script Hook调用&quot;C:\Program Files\WireGuard\bat&quot;的批处理文件</li>
+</ol>
+<pre><code>PreUp = &quot;C:\Program Files\WireGuard\bat\routes-up.bat&quot;
+PostUp = &quot;C:\Program Files\WireGuard\bat\dns-up.bat&quot;
+PreDown = &quot;C:\Program Files\WireGuard\bat\routes-down.bat&quot;
+PostDown = &quot;C:\Program Files\WireGuard\bat\dns-down.bat&quot;
+</code></pre>
+<ol start="5">
+<li>将DNS指向本机以使用Overture作为DNS服务器</li>
+</ol>
+<pre><code>DNS = 127.0.0.1
+</code></pre>
+<ol start="6">
+<li>关闭WireGuard的(kill-switch)并保存修改</li>
+</ol>
+<ul>
+<li>以上设置如下图所示：<br>
+<img src="https://blog.wmjan.top/post-images/fl.png" alt="" loading="lazy"></li>
+</ul>
+<ol start="7">
+<li>如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流</li>
+</ol>
+<h3 id="连接成功后可上ipskkmoe测试一下看是否正确分流">连接成功后可上<a href="https://ip.skk.moe/">ip.skk.moe</a>测试一下看是否正确分流</h3>
+]]></content>
+    </entry>
+</feed>

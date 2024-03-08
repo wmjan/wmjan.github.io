@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Wmjan学习站">
+<meta name="description" content="">
+<meta name="theme-color" content="#000">
+<title>WARP+分流设置 | Wmjan学习站</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1709880364041">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/media/css/gemini.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css"
+  rel="stylesheet">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  <meta name="description" content="WARP+分流设置" />
+  <meta name="keywords" content="warp" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>Wmjan学习站</span>
+            </a>  
+          
+        </div>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about/" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout gemini ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">Wmjan</p>
+    
+    <div class="site-description right-motion">
+      
+      
+      
+        <p>爱捣腾、爱学习</p>
+      
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">12</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
+      </div>
+    
+  
+  
+
+  
+
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95">Android手机端分流设置方法</a></li>
+<li><a href="#windows%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95">Windows端分流设置方法</a><br>
+*
+<ul>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F%E5%90%8E%E5%8F%AF%E4%B8%8Aipskkmoe%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E7%9C%8B%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%E5%88%86%E6%B5%81">连接成功后可上ip.skk.moe测试一下看是否正确分流</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://blog.wmjan.top/post/warpfenliu/">
+      WARP+分流设置
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2024-01-08</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show">分类于</span>
+      
+      
+      <a href="https://blog.wmjan.top/tag/6fjDOg8PX/">
+        <span>warp</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>566<span class="pc-show">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="前言">前言</h1>
+<p>分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问</p>
+<h1 id="android手机端分流设置方法">Android手机端分流设置方法</h1>
+<ol>
+<li>下载最新版NekoBox安卓客户端<a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases">【NekoBoxForAndroid】</a>，感谢MatsuriDayo开源大佬</li>
+<li>运行NekoBox后点<strong>左上角&gt;工具&gt;Cloudflare Warp&gt;生成配置</strong>，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按<a href="https://blog.wmjan.top/post/warp+key/">【WARP+免费节点获取方法及进阶玩法】</a>把服务器和端口号替换成🚀优选IP和端口号即可</li>
+</ol>
+<blockquote>
+<p>暂不方便获取优选IP的可试用以下几组<br>
+162.159.195.47:942<br>
+162.159.192.131:942<br>
+162.159.192.5:3138<br>
+162.159.192.136:942<br>
+162.159.195.126:942</p>
+</blockquote>
+<ol start="3">
+<li>分流设置，打开NekoBox<strong>左上角&gt;路由</strong>，把<strong>中国域名规则</strong>和<strong>中国IP规则</strong>打开；NekoBox<strong>左上角&gt;设置&gt;路由设置</strong>里把<strong>绕开局域网地址</strong>和<strong>在核心中绕过LAN</strong> 即可实现分流</li>
+</ol>
+<h1 id="windows端分流设置方法">Windows端分流设置方法</h1>
+<blockquote>
+<p>本教程基于<a href="https://blog.wmjan.top/post/warp+key">【WARP+免费节点获取方法及进阶玩法】</a>延伸方案</p>
+</blockquote>
+<ol>
+<li>假设WireGuard安装在目录&quot;C:\Program Files\WireGuard&quot;</li>
+<li>开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：
+<ul>
+<li>以管理员身份运行cmd</li>
+<li>输入以下命令按回车<pre><code>reg add HKLM\Software\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f
+</code></pre>
+</li>
+</ul>
+</li>
+<li>下载<a href="https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master">【auto-add-routes-master.zip】</a>并解压将auto-add-routes-master目录里的所有文件复制到&quot;C:\Program Files\WireGuard\bat&quot;文件夹，没有bat文件夹自行新建</li>
+<li>修改Wireguard客户端配置文件，加入以下Script Hook调用&quot;C:\Program Files\WireGuard\bat&quot;的批处理文件</li>
+</ol>
+<pre><code>PreUp = &quot;C:\Program Files\WireGuard\bat\routes-up.bat&quot;
+PostUp = &quot;C:\Program Files\WireGuard\bat\dns-up.bat&quot;
+PreDown = &quot;C:\Program Files\WireGuard\bat\routes-down.bat&quot;
+PostDown = &quot;C:\Program Files\WireGuard\bat\dns-down.bat&quot;
+</code></pre>
+<ol start="5">
+<li>将DNS指向本机以使用Overture作为DNS服务器</li>
+</ol>
+<pre><code>DNS = 127.0.0.1
+</code></pre>
+<ol start="6">
+<li>关闭WireGuard的(kill-switch)并保存修改</li>
+</ol>
+<ul>
+<li>以上设置如下图所示：<br>
+<img src="https://blog.wmjan.top/post-images/fl.png" alt="" loading="lazy"></li>
+</ul>
+<ol start="7">
+<li>如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流</li>
+</ol>
+<h3 id="连接成功后可上ipskkmoe测试一下看是否正确分流">连接成功后可上<a href="https://ip.skk.moe/">ip.skk.moe</a>测试一下看是否正确分流</h3>
+
+            </div>
+            <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Wmjan
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.wmjan.top/post/warpfenliu/" title="WARP+分流设置">https://blog.wmjan.top/post/warpfenliu/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://blog.wmjan.top/tag/6fjDOg8PX/"># warp</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="海外VPS申请及X-UI部署" href="https://blog.wmjan.top/post/xui/">海外VPS申请及X-UI部署</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="海外VPS申请及X-UI部署" href="https://blog.wmjan.top/post/xui/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="WARP+免费节点获取方法及进阶玩法" href="https://blog.wmjan.top/post/warp+key/">WARP+免费节点获取方法及进阶玩法</a>
+        <a class="nav-mobile-next" title="WARP+免费节点获取方法及进阶玩法" href="https://blog.wmjan.top/post/warp+key/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      
+    </div>
+  </footer>
+  
+  
+  <div class="gemini back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target","_blank");
+      }
+    })
+  }
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        console.log('复制操作频率过高');
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 500
+  });
+</script>
+
+<!-- <div class="search-mask" id="search_mask">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input type="text" placeholder="搜索">
+      </div>
+      <i class="fa fa-times-circle"></i>
+    </div>
+    <div class="result">
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Workers/"" data-c="
+          &lt;h1 id=&#34;准备工作&#34;&gt;准备工作&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;前往&lt;a href=&#34;https://www.cloudflare-cn.com/&#34;&gt;Cloudflare站点&lt;/a&gt;自行注册账号&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/3Kmfi6HP/EDtunnel&#34;&gt;3Kmfi6HP大佬的Workers项目链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载windows梯子软件v2rayN最新版，打开&lt;a href=&#34;https://github.com/2dust/v2rayN&#34;&gt;v2rayN官网&lt;/a&gt;，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行&lt;/li&gt;
+&lt;li&gt;UUID(userID)获取方法：运行v2rayN &amp;gt; 点左上角“服务器” &amp;gt; 添加VLESS服务器 &amp;gt; 用户ID(id)项点 生成即可得到，保存待用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;搭建及使用&#34;&gt;搭建及使用&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://www.cloudflare-cn.com/&#34;&gt;Cloudflare站点&lt;/a&gt;左侧栏 &amp;gt; Workers 和 Pages &amp;gt; 概述里点 创建应用程序 &amp;gt; 创建 Worker &amp;gt; 名称随便取 &amp;gt; 点右下角部署 &amp;gt; 编辑代码 &amp;gt; &lt;a href=&#34;https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js&#34;&gt;复制3Kmfi6HP大佬的worker.js代码替换上去&lt;/a&gt; &amp;gt; 把准备工作中得到的userID替换代码中let userID的值 &amp;gt; 点右上角 保存并部署&lt;/li&gt;
+&lt;li&gt;回到Workers 和 Pages &amp;gt; 点刚创建的应用程序名 &amp;gt; 触发器 &amp;gt; 复制路由地址&lt;code&gt;*.*.workers.dev&lt;/code&gt;并加上&lt;code&gt;/UUID地址&lt;/code&gt;，如我的是：&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;复制&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;在浏览器打开即可看到生成 VLESS 协议的配置信息&lt;/li&gt;
+&lt;li&gt;点开&lt;code&gt;VLESS 节点订阅连接&lt;/code&gt;，&lt;code&gt;Clash for Windows 节点订阅连接&lt;/code&gt;，&lt;code&gt;优选IP自动节点订阅&lt;/code&gt;，&lt;code&gt;v2rayNG优选IP自动&lt;/code&gt;等你需要的对应链接，会得到整个页面全是字符&lt;/li&gt;
+&lt;li&gt;全选复制后，打开梯子软件v2rayN &amp;gt; 点左上角服务器 &amp;gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点&lt;/li&gt;
+&lt;li&gt;Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常&lt;/li&gt;
+&lt;li&gt;选择其中一条延时较低的节点回车即可启用节点&lt;/li&gt;
+&lt;li&gt;使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;分流测试地址&lt;a href=&#34;https://ip.skk.moe/&#34;&gt;ip.skk.moe&lt;/a&gt;&lt;br&gt;
+查看当前IP地址&lt;a href=&#34;https://ip.gs/&#34;&gt;ip.gs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">利用Cloudflare的Workers搭建VLESS节点</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/mklink/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;文中提及的“用户名”需要改为你实际Windows登陆名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在&lt;br&gt;
+&lt;code&gt;C:\Users\用户名\Documents\WeChat Files&lt;/code&gt;目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。&lt;/p&gt;
+&lt;h1 id=&#34;利用mklink命令转移目录&#34;&gt;利用mklink命令转移目录&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;退出微信登陆&lt;/li&gt;
+&lt;li&gt;找到&lt;code&gt;C:\Users\用户名\Documents&lt;/code&gt;目录把WeChat Files整个目录移动到E盘下&lt;/li&gt;
+&lt;li&gt;再在E:\WeChat Files目录下新建mklink.bat文件，内容为&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;mklink /D &amp;quot;C:\Users\用户名\Documents\WeChat Files&amp;quot; &amp;quot;E:\WeChat Files&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;右键以管理员权限运行mklink.bat后，C:\Users\用户名\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\WeChat Files目录软链接到C:\Users\用户名\Documents\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;重装系统后恢复聊天记录&#34;&gt;重装系统后，恢复聊天记录&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;先右键以管理员权限运行E:\WeChat Files\mklink.bat文件&lt;/li&gt;
+&lt;li&gt;再重新安装微信，运行登陆&lt;/li&gt;
+&lt;/ol&gt;
+">Windows下mklink的巧用</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/oa/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA&lt;/p&gt;
+&lt;h1 id=&#34;网络环境描述&#34;&gt;网络环境描述&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;专网情况&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;IP地址：15.76.7.59&lt;/li&gt;
+&lt;li&gt;网关地址：15.76.7.1&lt;/li&gt;
+&lt;li&gt;专网无线路由IP：192.168.3.1&lt;br&gt;
+以上信息已设定在专网无线路由WAN口，已可通过无线路由访问专网OA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Internet网情况&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;IP地址：192.168.20.80&lt;/li&gt;
+&lt;li&gt;网关地址：192.168.20.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;实现内外网同时访问&#34;&gt;实现内外网同时访问&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;办公电脑&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无线网卡接入专网无线并配置IP地址：192.168.3.3；网关地址：192.168.3.1&lt;/li&gt;
+&lt;li&gt;有线网卡接Internet路由并配置IP地址192.168.20.80；网关地址：192.168.20.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;查看路由表&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;管理员身份运行cmd(C:/windows/system32/cmd.exe右键)输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;route print
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;看到IPv4路由表前两行信息如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;IPv4路由表：&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;网络目标&lt;/td&gt;
+&lt;td&gt;网络掩码&lt;/td&gt;
+&lt;td&gt;网关&lt;/td&gt;
+&lt;td&gt;接口&lt;/td&gt;
+&lt;td&gt;跃点数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.20.1&lt;/td&gt;
+&lt;td&gt;192.168.20.80&lt;/td&gt;
+&lt;td&gt;291&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;192.168.3.3&lt;/td&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;删除所有0.0.0.0的路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;route delete 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;添加新路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;route add -p 0.0.0.0 mask 0.0.0.0 192.168.20.1
+route add -p 192.168.3.0 mask 255.255.255.0 192.168.3.1
+route add -p 15.0.0.0 mask 255.0.0.0 192.168.3.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：这3条路由的意思是15.x.x.x开头的IP和192.168.3.x开头的IP都走192.168.3.1网关(专网的路由器)，除此之外的所有地址都走192.168.20.1网关(Internet路由器)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;到此为止电脑正常已经能同时访问内外网了，我们再route print查看下路由表，发现永久路由部分已经多了以下3条路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;永久路由：&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;网络地址&lt;/td&gt;
+&lt;td&gt;网络掩码&lt;/td&gt;
+&lt;td&gt;网关地址&lt;/td&gt;
+&lt;td&gt;跃点数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.20.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;192.168.3.0&lt;/td&gt;
+&lt;td&gt;255.255.255.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;15.0.0.0&lt;/td&gt;
+&lt;td&gt;255.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;远程访问专网oa&#34;&gt;远程访问专网OA&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;最为安全、便捷的方式就是使用frp内网穿透， 配置相关信息，办公电脑通过Internet网连接frp服务器，再代理访问专网OA&lt;br&gt;
+下载&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;frp项目&lt;/a&gt;中的&lt;a href=&#34;https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip&#34;&gt;windows版本&lt;/a&gt;，解压后得到frp对应文件夹，在里面新建一个frpc.ini文件，并填入以下配置文件，详见&lt;a href=&#34;https://blog.wmjan.top/post/frp/&#34;&gt;frp内网穿透配置说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[OA] #自定义备注名称
+type = http #访问方式http
+local_port = 80 #内网OA访问端口
+local_ip = 15.76.7.x #内网OA对应IP
+subdomain = oa #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;启动服务&lt;br&gt;
+在frp对应文件夹中新建一个Run.bat文件，内容为&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;.\frpc.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;保存后，双击Run.bat即可启动服务，启动后确保&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保持cmd窗口不关闭，这是连接frp服务器主程序&lt;/li&gt;
+&lt;li&gt;保持电脑不要休眠&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;接下来就可以使用任何设备访问专网OA了，包括移动终端，方法只需要在浏览器端输入以下网址&lt;br&gt;
+http://oa.abc.com:9090&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">同时访问内外网｜实现远程访问专网OA</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Backup/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;上期我们已经讲过了，&lt;a href=&#34;https://blog.wmjan.top/post/OneDrive&#34;&gt;如何获取微软OneDrive 5TB免费网盘&lt;/a&gt;，这期就讲讲群晖如何利用备份软件把资料&lt;strong&gt;加密&lt;/strong&gt;备份到OneDrive&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。&lt;/p&gt;
+&lt;h1 id=&#34;hyper-backup套件中心安装&#34;&gt;Hyper Backup(套件中心安装)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;这个套件对我最有用的就是定期备份各种套件数据到本地盘，如Synology Contacts、Synology Calendar、Note Station等等&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可批量选择备份共享文件夹&lt;/li&gt;
+&lt;li&gt;可批量选择备份应用程序&lt;br&gt;
+需要注意的是SynologyPhotos套件，如果选择了备份这个套件会把对应的相册数据一并备份了，和备份共享文件夹不要重复了&lt;/li&gt;
+&lt;li&gt;群晖设置信息也会一并备份&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多版本循环备份&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;无法直接备份到OneDrive&lt;/li&gt;
+&lt;li&gt;无法加密备份&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;cloud-sync套件中心安装&#34;&gt;Cloud Sync(套件中心安装)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;可同步数据到WebDAV、OneDrive等各种云服务中心&lt;/li&gt;
+&lt;li&gt;可双向同步，也可单向备份&lt;/li&gt;
+&lt;li&gt;可自定义选择目录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可数据加密&lt;/strong&gt;&lt;br&gt;
+加密后数据直接从网盘下载是无法正常查看的，必须通过Cloud Sync解密下载才可以查看&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;同步数据&#34;&gt;同步数据&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Cloud Sync配合Hyper Backup备份套件数据再加密同步/备份到开发者OneDrive 5TB网盘&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;运行Cloud Sync套件 &amp;gt; 点左上角+ &amp;gt; 选择Microsoft OneDrive for Business &amp;gt; 登陆开发者微软开发者账号 &amp;gt; Agree 同意授权&lt;/li&gt;
+&lt;li&gt;右侧任务列表 &amp;gt; 新增 跳转 任务设置&lt;/li&gt;
+&lt;li&gt;本地路径选择 共享文件夹 &amp;gt; 远程路径 新建一个对应的文件夹名称 &amp;gt; 同步方向按自己需求选择 &amp;gt; &lt;strong&gt;数据加密 安全起见建议勾选&lt;/strong&gt; &amp;gt; 输入加密密钥(&lt;strong&gt;务必牢记&lt;/strong&gt;) &amp;gt; 高级设置 &amp;gt; 勾选共享文件夹中实际需要同步的目录 &amp;gt; 确定完成&lt;/li&gt;
+&lt;li&gt;如果主要用来单向备份为主(非双向同步)的话，建议计划设置里固定开启某个时间段来备份即可&lt;/li&gt;
+&lt;/ol&gt;
+">群晖数据备份：Hyper Backup 和 Cloud Sync</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/OneDrive/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;以下操作均以windows浏览器页面显示为准&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;微软onedrive开发者账号的用处&#34;&gt;微软OneDrive开发者账号的用处&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;免费提供5TB容量OneDrive&lt;/li&gt;
+&lt;li&gt;Microsoft Office 365免费用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;开发者账号申请&#34;&gt;开发者账号申请&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://developer.microsoft.com/en-us/microsoft-365/dev-program&#34;&gt;Microsoft 365 开发人员中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;登陆微软账号后，点Join now(现在加入)进入下一步&lt;/li&gt;
+&lt;li&gt;Country/Region(国家/地区)、Company(公司) 可任何填写，语言选中文，并勾选底下两个复选框&lt;/li&gt;
+&lt;li&gt;What is your primary focus as a developer?作为开发人员，您主要关注的是什么？（只选一项）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Applications for internal use at my company 我公司内部使用的应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;What areas of Microsoft 365 development are you interested in?您对 Microsoft 365 开发的哪些领域感兴趣？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Office Add-ins(也可以多选)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;选Configurable sandbox可配置的沙盒，再点右下角Next&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;此步非常重要，所有信息都需要保存记录好&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Create username创建用户名，如 wmjan&lt;/li&gt;
+&lt;li&gt;Create domain创建域，如 zjtz&lt;br&gt;
+那么你得到的开发者账号为 wmjan@zjtz.onmicrosoft.com&lt;/li&gt;
+&lt;li&gt;密码必须在15-20个字符之间，并且必须包含大写字母和小写字母、数字以及以下符号中的一个或多个&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;添加中国手机号，获取验证码并验证&lt;/li&gt;
+&lt;li&gt;验证成功所即完成了开发者账号的申请&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;如何设置5tb网盘&#34;&gt;如何设置5TB网盘&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://admin.microsoft.com/&#34;&gt;Microsoft 365 admin center&lt;/a&gt; &amp;gt; 登陆开发者账号 &amp;gt; 点左侧users(用户) &amp;gt; Active users(活跃用户) &amp;gt; 点自己名称 &amp;gt; 点右侧栏中的OneDrive &amp;gt; 点下方 管理默认存储 &amp;gt; 点 OneDrive存储限制 &amp;gt; 默认存储限制设置为5120GB &amp;gt; 保存即可&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;若设置过程提示：未为此用户设置OneDrive，&lt;a href=&#34;https://portal.office.com/onedrive&#34;&gt;请跳转此页面激活OneDrive后继续&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;使用-github-的action功能实现账号自动续订&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么要续订？&lt;br&gt;
+开发者账号默认只有90天有效期，微软会根据 API 调用情况，符合调用情况的，会在距离到期30天时自动续订，不符合就不给续订了。续订的方法很多，目前较为有效、安全的方法就是通过github的Action来实现自动续订&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;生成密钥切记要记录好token&#34;&gt;生成密钥，切记要记录好token&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;网站并登陆账号，没有账号的请自行注册&lt;/li&gt;
+&lt;li&gt;登陆后点击右上角头像 &amp;gt; 点击 Settings &amp;gt; 找到左侧最下面的Developer Settings进入 &amp;gt; 点开左侧 Personal access tokens &amp;gt; Tokens(classic) &amp;gt; 点开右上角Generate new token &amp;gt; Generate new token(classic) &amp;gt; 输入密码进入下一步&lt;/li&gt;
+&lt;li&gt;New personal access token (classic)信息填写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Note：为token备注名，如：AliveE5&lt;/li&gt;
+&lt;li&gt;Expiration：选No expiration(无到期时间)&lt;/li&gt;
+&lt;li&gt;Select scopes：勾选workflow，repo项也会被默认选上&lt;/li&gt;
+&lt;li&gt;点Generate token生成令牌&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;保存记录好你的token，关闭后无法二次显示了&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;导入-keepalivee5-代码到自己的储存库&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;网站并登陆账号后 &amp;gt; 点右上角+号 &amp;gt; 点击Import repository&lt;/li&gt;
+&lt;li&gt;Import your project to GitHub信息填写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Your old repository&#39;s clone URL 填入以下仓库地址：https://github.com/sywdebug/KeepAliveE5-Public.git&lt;/li&gt;
+&lt;li&gt;Your new repository details &amp;gt; Repository name&lt;br&gt;
+：AliveE5&lt;/li&gt;
+&lt;li&gt;选 Private 私有库&lt;/li&gt;
+&lt;li&gt;点 Begin import 后等待完成导入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;开启-action-功能&#34;&gt;开启 Action 功能&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;点&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Settings &amp;gt; 点左侧Actions &amp;gt; 点General &amp;gt; 选Allow all actions and reusable workflows &amp;gt; 保存&lt;/li&gt;
+&lt;li&gt;点左下角Secrets and variables &amp;gt; 点Actions &amp;gt; 点New repository secret，分别新建以下3项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：PAT&lt;/li&gt;
+&lt;li&gt;Secret *填入：上面得到的token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：USER&lt;/li&gt;
+&lt;li&gt;Secret *填入：开发者账号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：PASSWD&lt;/li&gt;
+&lt;li&gt;Secret *填入：开发者账号密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;禁用安全默认值&#34;&gt;禁用安全默认值&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://portal.azure.com/#home&#34;&gt;Microsoft Azure&lt;/a&gt;，登陆开发者账号 &amp;gt; 点中间 管理 Microsoft Entra ID 查看 &amp;gt; 点左侧 属性 &amp;gt; 点主页最底部 管理安全默认值 &amp;gt; 将安全默认值设为已禁用 &amp;gt; 保存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;启动-action-的注册-app-工作流&#34;&gt;启动 Action 的注册 APP 工作流&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;点&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Action &amp;gt; 点击左侧 Register APP &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待4-5分钟运行完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;启动-action-的调用-api-工作流&#34;&gt;启动 Action 的调用 API 工作流&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;点击左侧 Invoke API &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待完成即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;写在最后&#34;&gt;写在最后&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;至此，Action会每隔4小时自动调用API完成一份工作流，正常微软会在距离到期30天时自动续订开发者账号有效期&lt;/li&gt;
+&lt;li&gt;验证：两个月后进&lt;a href=&#34;https://developer.microsoft.com/en-us/microsoft-365/profile&#34;&gt;Microsoft 365 developer subscriptions&lt;/a&gt;页面查看账号有效期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">5TB容量OneDrive网盘申请与续订</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/frp/"" data-c="
+          &lt;h1 id=&#34;应用场景&#34;&gt;应用场景&lt;/h1&gt;
+&lt;p&gt;没有公网IP设备需要远程访问，如何路由器、光猫等&lt;/p&gt;
+&lt;h1 id=&#34;frps服务器配置条件&#34;&gt;frps服务器配置条件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可&lt;/li&gt;
+&lt;li&gt;github项目地址：&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;frp程序及官方说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;以下涉及的abc.com域名为示例说明，请替换自己的实际域名/IP；各端口及用户名密码也一样，可以根据自己的实际需求进行更换；以下frpc客户端配置采用自定义子域名方式，需要提前在域名管理中心开启泛域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;frps服务器端配置文件&#34;&gt;frps服务器端配置文件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;从v0.52.0版本开始，frp已经不支持.ini配置文件了，请使用toml、yaml及josn格式文件&lt;/li&gt;
+&lt;li&gt;电脑上新建frps.toml文本文档，再使用记事本打开并填入以下内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+subdomain_host = abc.com #服务器端域名/IP
+bind_port = 7000 #监听端口
+vhost_http_port = 9090 #http访问端口
+vhost_https_port = 9091 #https访问端口
+dashboard_addr = 0.0.0.0
+dashboard_port = 7500 #控制面板访问端口
+dashboard_user = admin #控制面板用户名
+dashboard_pwd = password #控制面板密码
+token = password #客户端连接密码
+max_pool_count = 10
+log_max_days = 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;群晖docker安装frps服务器&#34;&gt;群晖Docker安装frps服务器&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Docker注册表搜frps，双击安装snowdreamtech-frps。如果无法访问注册表，可SSH登陆群晖后使用&lt;a href=&#34;https://blog.wmjan.top/post/dockercmd/&#34;&gt;Docker常用命令&lt;/a&gt;来安装&lt;/li&gt;
+&lt;li&gt;群晖docker目录里添加一个frp文件夹，复制电脑上配置好的frps.toml文件到群晖frp文件夹里&lt;/li&gt;
+&lt;li&gt;启动映像时存储空间 &amp;gt; &lt;strong&gt;添加文件&lt;/strong&gt; &amp;gt; 选择docker/frp/frps.toml &amp;gt; 挂载目录到/etc/frp/frps.toml&lt;/li&gt;
+&lt;li&gt;网络选择host&lt;/li&gt;
+&lt;li&gt;其他均默认后启动即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;frpc客户端配置&#34;&gt;frpc客户端配置&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[router] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.1 #本地设备IP地址
+subdomain = router #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;访问方式&#34;&gt;访问方式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器端还需要把对应的端口打开&lt;/li&gt;
+&lt;li&gt;成功连接后访问客户端方法如下&lt;br&gt;
+http://router.abc.com:9090&lt;/li&gt;
+&lt;li&gt;访问控制面板方法如下，用户名密码为服务器端dashboard项&lt;br&gt;
+http://abc.com:7500&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;同一网络下多个设备需要访问&#34;&gt;同一网络下多个设备需要访问&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;只需要在frpc客户端配置中增加配置即可，如增加一台光猫和群晖NAS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[modem] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.254 #本地设备IP地址
+subdomain = modem #自定义访问子域名
+
+[nas] #自定义备注名称
+type = https #访问方式http或https
+local_port = 5001 #本地访问端口
+local_ip = 192.168.2.253 #本地设备IP地址
+subdomain = nas #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;访问方法分别为&lt;br&gt;
+光猫：http://modem.abc.com:9090&lt;br&gt;
+NAS：https://nas.abc.com:9091&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;远程登陆ssh&#34;&gt;远程登陆SSH&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;只需要在frpc客户端增加以下配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[SSH]
+type = &amp;quot;tcp&amp;quot; #访问方式要选tcp
+local_ip = &amp;quot;192.168.2.1&amp;quot; #本地设备IP地址
+local_port = 22 #本地访问端口
+remote_port = 6000 #远程访问端口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;访问方法为&lt;br&gt;
+ssh -oPort=6000 root@abc.com&lt;/li&gt;
+&lt;/ul&gt;
+">frp内网穿透配置说明</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/dockercmd/"" data-c="
+          &lt;h1 id=&#34;docker常用命令&#34;&gt;Docker常用命令&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;搜索镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker search 镜像名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker pull 镜像名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;启动docker服务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo service docker start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;停止docker服务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo service docker stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;检查docker 守护进程是否在运行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker stats
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;查看docker相关信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;列出所有容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;最后一次运行的容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker ps -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;重新启动已停止的容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker start 容器名(也可以使用容器ID)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;获取容器的日志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker logs 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;获取最后几条日志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker -f 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;12&#34;&gt;
+&lt;li&gt;列出镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker images
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;13&#34;&gt;
+&lt;li&gt;删除所有容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rm $(docker ps -a -q)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;14&#34;&gt;
+&lt;li&gt;删除单个容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rm 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;15&#34;&gt;
+&lt;li&gt;删除所有镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rmi $(docker images | grep none | awk &#39;{print $3}&#39; | sort -r)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;16&#34;&gt;
+&lt;li&gt;保存镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker save 镜像名 &amp;gt; /home/新镜像名.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;17&#34;&gt;
+&lt;li&gt;加载自定义镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; /home/自定义镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;18&#34;&gt;
+&lt;li&gt;获取容器更多信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker inspect 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;19&#34;&gt;
+&lt;li&gt;删除为none的镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;docker images --no-trunc| grep none | awk &#39;{print $3}&#39; | xargs -r docker rmi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;常用参数&#34;&gt;常用参数：&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-i：以交互模式运行容器，通常与 -t 同时使用&lt;br&gt;
+-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用&lt;br&gt;
+-p : 端口映射 格式为[主机端口：容器端口]&lt;br&gt;
+-d : 后台模式运行&lt;br&gt;
+-name : 给容器一个新的名称&lt;br&gt;
+-v：挂载主机的目录&lt;br&gt;
+-e： username=&amp;quot;ritchie&amp;quot;: 设置环境变量&lt;br&gt;
+-m：设置容器使用内存最大值&lt;br&gt;
+--env-file=[]：从指定文件读入环境变量&lt;/p&gt;
+&lt;/blockquote&gt;
+">Docker常用命令</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Contacts/"" data-c="
+          &lt;h1 id=&#34;痛点分析&#34;&gt;痛点分析&lt;/h1&gt;
+&lt;h3 id=&#34;个人业务&#34;&gt;个人业务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;多平台联系人同步&lt;br&gt;
+比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事&lt;/li&gt;
+&lt;li&gt;想要分开管理联系人&lt;br&gt;
+办公手机和私人手机联系人不想合拼一起，但又希望两台手机都能访问两者联系人&lt;/li&gt;
+&lt;li&gt;怕隐私泄露、不想用手机自带的云服务&lt;br&gt;
+曾经，一知名手机厂商一年内让我多次丢失联系人，有时候丢失部分联系人可能自己都没发觉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;公司业务&#34;&gt;公司业务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;公司多部门联系人管理&lt;br&gt;
+业务部、财务部各部门联系人管理备份，以免员工离职联系人丢失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;安装及避坑&#34;&gt;安装及避坑&lt;/h1&gt;
+&lt;h3 id=&#34;安装环境要求&#34;&gt;安装环境要求&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;DSM6.2.4以上版本才支持&lt;br&gt;
+曾经在DSM6.2.3上试了几天没成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装及导入&#34;&gt;安装及导入&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;安装非常简单，打开群晖套件中心搜索&lt;strong&gt;Synology Contacts&lt;/strong&gt;安装即可&lt;/li&gt;
+&lt;li&gt;首次使用必须先把联系人分组导入到服务器里&lt;/li&gt;
+&lt;li&gt;导入手机联系人时，必须去对应品牌云服务网页端导出联系人文件，再进行导入。很多手机端导出的文件会进行UTF-8编码（quoted-printable），导入到服务器后无法正常显示联系人名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何同步&#34;&gt;如何同步&lt;/h3&gt;
+&lt;p&gt;打开Synology Contacts，我的联系人&amp;gt;点后面3点&amp;gt;CardDAV&amp;gt;选择对应平台的配置信息&lt;/p&gt;
+&lt;h3 id=&#34;手机端同步设置&#34;&gt;手机端同步设置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;iPhone和小米手机，因为系统本身就支持CardDav服务
+&lt;blockquote&gt;
+&lt;p&gt;iPhone手机打开设置&amp;gt;通讯录&amp;gt;帐户&amp;gt;添加帐户&amp;gt;其他&amp;gt;添加CardDAV帐户&lt;br&gt;
+小米手机打开设置&amp;gt;账户与同步&amp;gt;账户与同步&amp;gt;添加账户&amp;gt;CardDAV同步账户&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;其他安卓手机&lt;br&gt;
+需要下载CardDAV同步客户端 &lt;a href=&#34;https://f-droid.org/packages/at.bitfire.davdroid/&#34;&gt;DAVx⁵&lt;/a&gt;，打开DAVx⁵按向导提示设置电池优化等项目，以便它能正常后台运行同步信息&lt;/li&gt;
+&lt;li&gt;添加CardDAV时服务器(根地址)为上述提到的CardDAV对应平台配置信息，用户名及密码为群晖对应账户登录的用户名密码
+&lt;blockquote&gt;
+&lt;p&gt;普通安卓用户使用DAVx⁵添加时一定要选‘&lt;strong&gt;使用URL和用户名登录&lt;/strong&gt;’，如下图&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/contacts.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+">跨平台联系人同步群晖Synology Contacts</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/xui/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;VPS即虚拟专用服务器，这里需要是海外VPS，常用的有&lt;a href=&#34;https://aws.amazon.com/cn/campaigns/aws-cloudserver/&#34;&gt;AWS亚马逊云&lt;/a&gt;、&lt;a href=&#34;https://linuxone.cloud.marist.edu/&#34;&gt;LinuxOne&lt;/a&gt;、&lt;a href=&#34;https://hax.co.id/&#34;&gt;Hax VPS&lt;/a&gt;、&lt;a href=&#34;https://www.oracle.com/jp/cloud/free/&#34;&gt;Oracle Cloud 甲骨文云&lt;/a&gt;、&lt;a href=&#34;https://cloud.google.com/&#34;&gt;Google Cloud谷歌云&lt;/a&gt;，下面以AWS亚马逊云为例&lt;/p&gt;
+&lt;h1 id=&#34;aws亚马逊云服务器申请&#34;&gt;AWS亚马逊云服务器申请&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所需材料：VISA信用卡，我使用的是招商VISA卡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;选&lt;a href=&#34;https://portal.aws.amazon.com/billing/signup#/start/email&#34;&gt;AWS 海外区域&lt;/a&gt;按提示注册，详细图文教程请参考&lt;a href=&#34;https://juejin.cn/post/7251914510436466725&#34;&gt;三. 申请流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;账单信息按实际填写自己VISA卡信息，放心不会实际 扣费，最多会有1美元的预扣款验证身份&lt;/li&gt;
+&lt;li&gt;手机号码也填国内的常用号码即可&lt;/li&gt;
+&lt;li&gt;创建EC2服务实例之前请务必先在右上角选择适合自己的&lt;strong&gt;区域&lt;/strong&gt;，比如“香港”延时会相对比较低。没有“香港”的话可以在列表底部管理区域中添加&lt;/li&gt;
+&lt;li&gt;连接实例时可以把用户名直接改成root来登陆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;安装x-ui&#34;&gt;安装X-UI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;项目地址：&lt;a href=&#34;https://github.com/FranzKafkaYu/x-ui&#34;&gt;功能介绍及说明&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;一键安装方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;按提示设定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用户名[username]: admin&lt;br&gt;
+密码[userpasswd]: password&lt;br&gt;
+监听端口[port]: 54321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把54321端口添加到规则中&lt;/li&gt;
+&lt;li&gt;此时使用EC2实例的公有 IPv4 地址加端口号即可访问X-UI管理面板，如&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;http://43.198.1xx.2xx:54321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;配置x-ui&#34;&gt;配置X-UI&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;开启vmess+ws节点：入站列表&amp;gt;添加入站，如下图设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;备注名vmess+ws&lt;/li&gt;
+&lt;li&gt;协议选vmess&lt;/li&gt;
+&lt;li&gt;端口可默认也可自定义&lt;/li&gt;
+&lt;li&gt;添加用户选+&lt;/li&gt;
+&lt;li&gt;网络选ws&lt;/li&gt;
+&lt;li&gt;把用户ID前半段复制到路径 / 后面，再加上?ed=2048&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/x-uirz.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;再回到EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把19687口添加到规则中&lt;/li&gt;
+&lt;li&gt;最后X-UI控制页面中&lt;strong&gt;操作&amp;gt;二维码&lt;/strong&gt;，手机使用v2rayNG程序扫描即可实现固定IP高速科学上网了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;注意注意注意&#34;&gt;注意！注意！注意！&lt;/h1&gt;
+&lt;p&gt;EC2实例中除了默认免费功能外，千万不要开启其他功能，都是额外收费的，包括&lt;strong&gt;弹性IP&lt;/strong&gt;&lt;/p&gt;
+">海外VPS申请及X-UI部署</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/warpfenliu/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问&lt;/p&gt;
+&lt;h1 id=&#34;android手机端分流设置方法&#34;&gt;Android手机端分流设置方法&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;下载最新版NekoBox安卓客户端&lt;a href=&#34;https://github.com/MatsuriDayo/NekoBoxForAndroid/releases&#34;&gt;【NekoBoxForAndroid】&lt;/a&gt;，感谢MatsuriDayo开源大佬&lt;/li&gt;
+&lt;li&gt;运行NekoBox后点&lt;strong&gt;左上角&amp;gt;工具&amp;gt;Cloudflare Warp&amp;gt;生成配置&lt;/strong&gt;，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按&lt;a href=&#34;https://blog.wmjan.top/post/warp+key/&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;把服务器和端口号替换成🚀优选IP和端口号即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暂不方便获取优选IP的可试用以下几组&lt;br&gt;
+162.159.195.47:942&lt;br&gt;
+162.159.192.131:942&lt;br&gt;
+162.159.192.5:3138&lt;br&gt;
+162.159.192.136:942&lt;br&gt;
+162.159.195.126:942&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;分流设置，打开NekoBox&lt;strong&gt;左上角&amp;gt;路由&lt;/strong&gt;，把&lt;strong&gt;中国域名规则&lt;/strong&gt;和&lt;strong&gt;中国IP规则&lt;/strong&gt;打开；NekoBox&lt;strong&gt;左上角&amp;gt;设置&amp;gt;路由设置&lt;/strong&gt;里把&lt;strong&gt;绕开局域网地址&lt;/strong&gt;和&lt;strong&gt;在核心中绕过LAN&lt;/strong&gt; 即可实现分流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;windows端分流设置方法&#34;&gt;Windows端分流设置方法&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本教程基于&lt;a href=&#34;https://blog.wmjan.top/post/warp+key&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;延伸方案&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;假设WireGuard安装在目录&amp;quot;C:\Program Files\WireGuard&amp;quot;&lt;/li&gt;
+&lt;li&gt;开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：
+&lt;ul&gt;
+&lt;li&gt;以管理员身份运行cmd&lt;/li&gt;
+&lt;li&gt;输入以下命令按回车&lt;pre&gt;&lt;code&gt;reg add HKLM\Software\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;下载&lt;a href=&#34;https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master&#34;&gt;【auto-add-routes-master.zip】&lt;/a&gt;并解压将auto-add-routes-master目录里的所有文件复制到&amp;quot;C:\Program Files\WireGuard\bat&amp;quot;文件夹，没有bat文件夹自行新建&lt;/li&gt;
+&lt;li&gt;修改Wireguard客户端配置文件，加入以下Script Hook调用&amp;quot;C:\Program Files\WireGuard\bat&amp;quot;的批处理文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;PreUp = &amp;quot;C:\Program Files\WireGuard\bat\routes-up.bat&amp;quot;
+PostUp = &amp;quot;C:\Program Files\WireGuard\bat\dns-up.bat&amp;quot;
+PreDown = &amp;quot;C:\Program Files\WireGuard\bat\routes-down.bat&amp;quot;
+PostDown = &amp;quot;C:\Program Files\WireGuard\bat\dns-down.bat&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;将DNS指向本机以使用Overture作为DNS服务器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;DNS = 127.0.0.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;关闭WireGuard的(kill-switch)并保存修改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;以上设置如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/fl.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;连接成功后可上ipskkmoe测试一下看是否正确分流&#34;&gt;连接成功后可上&lt;a href=&#34;https://ip.skk.moe/&#34;&gt;ip.skk.moe&lt;/a&gt;测试一下看是否正确分流&lt;/h3&gt;
+">WARP+分流设置</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/warp+key/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;Cloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跳过一切过程与方法：&lt;a href=&#34;https://blog.wmjan.top/post/warpfenliu/#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95&#34;&gt;安卓手机请坐直升机&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;节点获取方法&#34;&gt;节点获取方法&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://1.1.1.1&#34;&gt;【Cloudflare Warp官网】&lt;/a&gt;，下载对应的Cloudflare WARP程序，默认只有1GB流量&lt;/li&gt;
+&lt;li&gt;获取🔑无限流量密钥（Key）
+&lt;ul&gt;
+&lt;li&gt;方法一：Telegram 搜索添加 Warp+Bot，输入/generater按提示获取Key；&lt;/li&gt;
+&lt;li&gt;方法二：&lt;a href=&#34;https://replit.com/@wmjan1980/WarpKey&#34;&gt;【进Replit项目】&lt;/a&gt; 点Run等待几秒即可自动获取Warp+的Key。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;打开 Cloudflare WARP 程序，设置里替换🔑无限流量密钥（Key），即可实现Cloudflare官方无限流量科学上网。&lt;/li&gt;
+&lt;li&gt;到此为止，你已经获得了安全可靠的无限流量科学上网方法，如果依旧还是无法上外网请继续看以下扩展内容，正常了没特殊需要可忽略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;进阶ip优选加速方案&#34;&gt;进阶IP优选加速方案&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;IP优选工具下载：&lt;a href=&#34;https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/warp-yxip/warp-yxip-win.7z?inline=false&#34;&gt;【下载链接】&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载解压后启动warp-yxip.bat，选择对应优选模式（默认为IPv4）&lt;/li&gt;
+&lt;li&gt;优选完成后，找到result.csv文件打开。可以看到🚀优选IP和端口号&lt;/li&gt;
+&lt;li&gt;生成配置文件：打开&lt;a href=&#34;https://replit.com/@wmjan1980/wgcf-profile-generator&#34;&gt;【Replit项目】&lt;/a&gt; 点Run，再选择2（Warp+）回车，输入对应的🔑无限流量密钥（Key），即可获得📋配置文件。&lt;/li&gt;
+&lt;li&gt;WireGuard工具下载：打开&lt;a href=&#34;https://www.wireguard.com/install&#34;&gt;【官网下载链接】&lt;/a&gt;，以Windows为例，安装运行后点左下角新建隧道-新建空隧道，清空默认配置文件，粘贴📋配置文件，并且将Endpoint项里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;
+&lt;li&gt;手机端WireGuard设置
+&lt;ul&gt;
+&lt;li&gt;方法一：直接在电脑端WireGuard导出已经配置好的隧道zip文件，发送到手机导入即可。&lt;/li&gt;
+&lt;li&gt;方法二：可以直接扫描第4步中生成的📋配置文件 二维码导入，再点编辑将“对端”里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">WARP+免费节点获取方法及进阶玩法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/about/"" data-c="
+          &lt;ul&gt;
+&lt;li&gt;本站为个人爱好学习记录，以自我理解、避坑为主&lt;/li&gt;
+&lt;li&gt;大部分内容来自网络，如果有涉及版权等相关问题请联系删除&lt;/li&gt;
+&lt;li&gt;联系方式：wmjan1980@gmail.com&lt;/li&gt;
+&lt;/ul&gt;
+">关于</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+  // var escape = "[{&#34;content&#34;:&#34;&lt;h1 id=\&#34;准备工作\&#34;&gt;准备工作&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;前往&lt;a href=\&#34;https://www.cloudflare-cn.com/\&#34;&gt;Cloudflare站点&lt;/a&gt;自行注册账号&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;https://github.com/3Kmfi6HP/EDtunnel\&#34;&gt;3Kmfi6HP大佬的Workers项目链接&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;下载windows梯子软件v2rayN最新版，打开&lt;a href=\&#34;https://github.com/2dust/v2rayN\&#34;&gt;v2rayN官网&lt;/a&gt;，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行&lt;/li&gt;\n&lt;li&gt;UUID(userID)获取方法：运行v2rayN &amp;gt; 点左上角“服务器” &amp;gt; 添加VLESS服务器 &amp;gt; 用户ID(id)项点 生成即可得到，保存待用&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;搭建及使用\&#34;&gt;搭建及使用&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://www.cloudflare-cn.com/\&#34;&gt;Cloudflare站点&lt;/a&gt;左侧栏 &amp;gt; Workers 和 Pages &amp;gt; 概述里点 创建应用程序 &amp;gt; 创建 Worker &amp;gt; 名称随便取 &amp;gt; 点右下角部署 &amp;gt; 编辑代码 &amp;gt; &lt;a href=\&#34;https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js\&#34;&gt;复制3Kmfi6HP大佬的worker.js代码替换上去&lt;/a&gt; &amp;gt; 把准备工作中得到的userID替换代码中let userID的值 &amp;gt; 点右上角 保存并部署&lt;/li&gt;\n&lt;li&gt;回到Workers 和 Pages &amp;gt; 点刚创建的应用程序名 &amp;gt; 触发器 &amp;gt; 复制路由地址&lt;code&gt;*.*.workers.dev&lt;/code&gt;并加上&lt;code&gt;/UUID地址&lt;/code&gt;，如我的是：&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;复制&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;在浏览器打开即可看到生成 VLESS 协议的配置信息&lt;/li&gt;\n&lt;li&gt;点开&lt;code&gt;VLESS 节点订阅连接&lt;/code&gt;，&lt;code&gt;Clash for Windows 节点订阅连接&lt;/code&gt;，&lt;code&gt;优选IP自动节点订阅&lt;/code&gt;，&lt;code&gt;v2rayNG优选IP自动&lt;/code&gt;等你需要的对应链接，会得到整个页面全是字符&lt;/li&gt;\n&lt;li&gt;全选复制后，打开梯子软件v2rayN &amp;gt; 点左上角服务器 &amp;gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点&lt;/li&gt;\n&lt;li&gt;Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常&lt;/li&gt;\n&lt;li&gt;选择其中一条延时较低的节点回车即可启用节点&lt;/li&gt;\n&lt;li&gt;使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;分流测试地址&lt;a href=\&#34;https://ip.skk.moe/\&#34;&gt;ip.skk.moe&lt;/a&gt;&lt;br&gt;\n查看当前IP地址&lt;a href=\&#34;https://ip.gs/\&#34;&gt;ip.gs&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&#34;,&#34;fileName&#34;:&#34;Workers&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;利用Cloudflare的Workers搭建VLESS节点&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-03-08 14:45:49&#34;,&#34;dateFormat&#34;:&#34;2024-03-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Workers/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:111000,&#34;words&#34;:485,&#34;minutes&#34;:2},&#34;description&#34;:&#34;准备工作\n\n前往Cloudflare站点自行注册账号\n3Kmfi6HP大佬的Workers项目链接\n下载windows梯子软件v2rayN最新版，打开v2rayN官网，右侧找到Releases，点开Latest链接后下载zz_v2rayN-...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C\&#34;&gt;准备工作&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8\&#34;&gt;搭建及使用&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;文中提及的“用户名”需要改为你实际Windows登陆名&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在&lt;br&gt;\n&lt;code&gt;C:\\Users\\用户名\\Documents\\WeChat Files&lt;/code&gt;目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。&lt;/p&gt;\n&lt;h1 id=\&#34;利用mklink命令转移目录\&#34;&gt;利用mklink命令转移目录&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;退出微信登陆&lt;/li&gt;\n&lt;li&gt;找到&lt;code&gt;C:\\Users\\用户名\\Documents&lt;/code&gt;目录把WeChat Files整个目录移动到E盘下&lt;/li&gt;\n&lt;li&gt;再在E:\\WeChat Files目录下新建mklink.bat文件，内容为&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;mklink /D &amp;quot;C:\\Users\\用户名\\Documents\\WeChat Files&amp;quot; &amp;quot;E:\\WeChat Files&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;右键以管理员权限运行mklink.bat后，C:\\Users\\用户名\\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\\WeChat Files目录软链接到C:\\Users\\用户名\\Documents\\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;重装系统后恢复聊天记录\&#34;&gt;重装系统后，恢复聊天记录&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;先右键以管理员权限运行E:\\WeChat Files\\mklink.bat文件&lt;/li&gt;\n&lt;li&gt;再重新安装微信，运行登陆&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;mklink&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Windows下mklink的巧用&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-03-03 10:55:46&#34;,&#34;dateFormat&#34;:&#34;2024-03-03&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/mklink/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:85000,&#34;words&#34;:380,&#34;minutes&#34;:2},&#34;description&#34;:&#34;\n文中提及的“用户名”需要改为你实际Windows登陆名\n\n前言\nWindows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在\nC:\\Users\\用户名\\...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%88%A9%E7%94%A8mklink%E5%91%BD%E4%BB%A4%E8%BD%AC%E7%A7%BB%E7%9B%AE%E5%BD%95\&#34;&gt;利用mklink命令转移目录&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E6%81%A2%E5%A4%8D%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95\&#34;&gt;重装系统后，恢复聊天记录&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA&lt;/p&gt;\n&lt;h1 id=\&#34;网络环境描述\&#34;&gt;网络环境描述&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;专网情况&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;IP地址：15.76.7.59&lt;/li&gt;\n&lt;li&gt;网关地址：15.76.7.1&lt;/li&gt;\n&lt;li&gt;专网无线路由IP：192.168.3.1&lt;br&gt;\n以上信息已设定在专网无线路由WAN口，已可通过无线路由访问专网OA&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;Internet网情况&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;IP地址：192.168.20.80&lt;/li&gt;\n&lt;li&gt;网关地址：192.168.20.1&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;实现内外网同时访问\&#34;&gt;实现内外网同时访问&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;办公电脑&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;无线网卡接入专网无线并配置IP地址：192.168.3.3；网关地址：192.168.3.1&lt;/li&gt;\n&lt;li&gt;有线网卡接Internet路由并配置IP地址192.168.20.80；网关地址：192.168.20.1&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;查看路由表&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;管理员身份运行cmd(C:/windows/system32/cmd.exe右键)输入&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;route print\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;看到IPv4路由表前两行信息如下：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;table&gt;\n&lt;thead&gt;\n&lt;tr&gt;\n&lt;th style=\&#34;text-align:left\&#34;&gt;IPv4路由表：&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/thead&gt;\n&lt;tbody&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;网络目标&lt;/td&gt;\n&lt;td&gt;网络掩码&lt;/td&gt;\n&lt;td&gt;网关&lt;/td&gt;\n&lt;td&gt;接口&lt;/td&gt;\n&lt;td&gt;跃点数&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.20.1&lt;/td&gt;\n&lt;td&gt;192.168.20.80&lt;/td&gt;\n&lt;td&gt;291&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;192.168.3.3&lt;/td&gt;\n&lt;td&gt;35&lt;/td&gt;\n&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;删除所有0.0.0.0的路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;route delete 0.0.0.0\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;添加新路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;route add -p 0.0.0.0 mask 0.0.0.0 192.168.20.1\nroute add -p 192.168.3.0 mask 255.255.255.0 192.168.3.1\nroute add -p 15.0.0.0 mask 255.0.0.0 192.168.3.1\n&lt;/code&gt;&lt;/pre&gt;\n&lt;blockquote&gt;\n&lt;p&gt;注：这3条路由的意思是15.x.x.x开头的IP和192.168.3.x开头的IP都走192.168.3.1网关(专网的路由器)，除此之外的所有地址都走192.168.20.1网关(Internet路由器)&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;到此为止电脑正常已经能同时访问内外网了，我们再route print查看下路由表，发现永久路由部分已经多了以下3条路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;table&gt;\n&lt;thead&gt;\n&lt;tr&gt;\n&lt;th style=\&#34;text-align:left\&#34;&gt;永久路由：&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/thead&gt;\n&lt;tbody&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;网络地址&lt;/td&gt;\n&lt;td&gt;网络掩码&lt;/td&gt;\n&lt;td&gt;网关地址&lt;/td&gt;\n&lt;td&gt;跃点数&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.20.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;192.168.3.0&lt;/td&gt;\n&lt;td&gt;255.255.255.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;15.0.0.0&lt;/td&gt;\n&lt;td&gt;255.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;h1 id=\&#34;远程访问专网oa\&#34;&gt;远程访问专网OA&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;最为安全、便捷的方式就是使用frp内网穿透， 配置相关信息，办公电脑通过Internet网连接frp服务器，再代理访问专网OA&lt;br&gt;\n下载&lt;a href=\&#34;https://github.com/fatedier/frp\&#34;&gt;frp项目&lt;/a&gt;中的&lt;a href=\&#34;https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip\&#34;&gt;windows版本&lt;/a&gt;，解压后得到frp对应文件夹，在里面新建一个frpc.ini文件，并填入以下配置文件，详见&lt;a href=\&#34;https://blog.wmjan.top/post/frp/\&#34;&gt;frp内网穿透配置说明&lt;/a&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nserver_addr = abc.com #服务器端域名/IP\nserver_port = 7000 #对应服务器端监听端口\ntoken = password #对应客户端连接密码\n\n[OA] #自定义备注名称\ntype = http #访问方式http\nlocal_port = 80 #内网OA访问端口\nlocal_ip = 15.76.7.x #内网OA对应IP\nsubdomain = oa #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;启动服务&lt;br&gt;\n在frp对应文件夹中新建一个Run.bat文件，内容为&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;.\\frpc.exe\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;保存后，双击Run.bat即可启动服务，启动后确保&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;保持cmd窗口不关闭，这是连接frp服务器主程序&lt;/li&gt;\n&lt;li&gt;保持电脑不要休眠&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;接下来就可以使用任何设备访问专网OA了，包括移动终端，方法只需要在浏览器端输入以下网址&lt;br&gt;\nhttp://oa.abc.com:9090&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;oa&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;同时访问内外网｜实现远程访问专网OA&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-21 10:01:15&#34;,&#34;dateFormat&#34;:&#34;2024-01-21&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/oa/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:205000,&#34;words&#34;:805,&#34;minutes&#34;:4},&#34;description&#34;:&#34;前言\n办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA\n网络环境描述\n\n专网情况\n\n\nIP地址：15.76.7.59\n网关地址：15.76.7.1\n专网无线路由IP：192.168.3.1\n以上信息已设定在专网无...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E6%8F%8F%E8%BF%B0\&#34;&gt;网络环境描述&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%9E%E7%8E%B0%E5%86%85%E5%A4%96%E7%BD%91%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE\&#34;&gt;实现内外网同时访问&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%B8%93%E7%BD%91oa\&#34;&gt;远程访问专网OA&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;上期我们已经讲过了，&lt;a href=\&#34;https://blog.wmjan.top/post/OneDrive\&#34;&gt;如何获取微软OneDrive 5TB免费网盘&lt;/a&gt;，这期就讲讲群晖如何利用备份软件把资料&lt;strong&gt;加密&lt;/strong&gt;备份到OneDrive&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。&lt;/p&gt;\n&lt;h1 id=\&#34;hyper-backup套件中心安装\&#34;&gt;Hyper Backup(套件中心安装)&lt;/h1&gt;\n&lt;p&gt;&lt;strong&gt;这个套件对我最有用的就是定期备份各种套件数据到本地盘，如Synology Contacts、Synology Calendar、Note Station等等&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;可批量选择备份共享文件夹&lt;/li&gt;\n&lt;li&gt;可批量选择备份应用程序&lt;br&gt;\n需要注意的是SynologyPhotos套件，如果选择了备份这个套件会把对应的相册数据一并备份了，和备份共享文件夹不要重复了&lt;/li&gt;\n&lt;li&gt;群晖设置信息也会一并备份&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;多版本循环备份&lt;/strong&gt;&lt;/li&gt;\n&lt;li&gt;无法直接备份到OneDrive&lt;/li&gt;\n&lt;li&gt;无法加密备份&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;cloud-sync套件中心安装\&#34;&gt;Cloud Sync(套件中心安装)&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;可同步数据到WebDAV、OneDrive等各种云服务中心&lt;/li&gt;\n&lt;li&gt;可双向同步，也可单向备份&lt;/li&gt;\n&lt;li&gt;可自定义选择目录&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;可数据加密&lt;/strong&gt;&lt;br&gt;\n加密后数据直接从网盘下载是无法正常查看的，必须通过Cloud Sync解密下载才可以查看&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;同步数据\&#34;&gt;同步数据&lt;/h1&gt;\n&lt;p&gt;&lt;strong&gt;Cloud Sync配合Hyper Backup备份套件数据再加密同步/备份到开发者OneDrive 5TB网盘&lt;/strong&gt;&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;运行Cloud Sync套件 &amp;gt; 点左上角+ &amp;gt; 选择Microsoft OneDrive for Business &amp;gt; 登陆开发者微软开发者账号 &amp;gt; Agree 同意授权&lt;/li&gt;\n&lt;li&gt;右侧任务列表 &amp;gt; 新增 跳转 任务设置&lt;/li&gt;\n&lt;li&gt;本地路径选择 共享文件夹 &amp;gt; 远程路径 新建一个对应的文件夹名称 &amp;gt; 同步方向按自己需求选择 &amp;gt; &lt;strong&gt;数据加密 安全起见建议勾选&lt;/strong&gt; &amp;gt; 输入加密密钥(&lt;strong&gt;务必牢记&lt;/strong&gt;) &amp;gt; 高级设置 &amp;gt; 勾选共享文件夹中实际需要同步的目录 &amp;gt; 确定完成&lt;/li&gt;\n&lt;li&gt;如果主要用来单向备份为主(非双向同步)的话，建议计划设置里固定开启某个时间段来备份即可&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;Backup&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;群晖数据备份：Hyper Backup 和 Cloud Sync&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-16 11:30:03&#34;,&#34;dateFormat&#34;:&#34;2024-01-16&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Backup/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:113000,&#34;words&#34;:531,&#34;minutes&#34;:2},&#34;description&#34;:&#34;\n上期我们已经讲过了，如何获取微软OneDrive 5TB免费网盘，这期就讲讲群晖如何利用备份软件把资料加密备份到OneDrive\n\n前言\n群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。\nHy...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#hyper-backup%E5%A5%97%E4%BB%B6%E4%B8%AD%E5%BF%83%E5%AE%89%E8%A3%85\&#34;&gt;Hyper Backup(套件中心安装)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#cloud-sync%E5%A5%97%E4%BB%B6%E4%B8%AD%E5%BF%83%E5%AE%89%E8%A3%85\&#34;&gt;Cloud Sync(套件中心安装)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE\&#34;&gt;同步数据&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;&lt;strong&gt;以下操作均以windows浏览器页面显示为准&lt;/strong&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;微软onedrive开发者账号的用处\&#34;&gt;微软OneDrive开发者账号的用处&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;免费提供5TB容量OneDrive&lt;/li&gt;\n&lt;li&gt;Microsoft Office 365免费用&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;开发者账号申请\&#34;&gt;开发者账号申请&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://developer.microsoft.com/en-us/microsoft-365/dev-program\&#34;&gt;Microsoft 365 开发人员中心&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;登陆微软账号后，点Join now(现在加入)进入下一步&lt;/li&gt;\n&lt;li&gt;Country/Region(国家/地区)、Company(公司) 可任何填写，语言选中文，并勾选底下两个复选框&lt;/li&gt;\n&lt;li&gt;What is your primary focus as a developer?作为开发人员，您主要关注的是什么？（只选一项）&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Applications for internal use at my company 我公司内部使用的应用程序&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;What areas of Microsoft 365 development are you interested in?您对 Microsoft 365 开发的哪些领域感兴趣？&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Office Add-ins(也可以多选)&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;选Configurable sandbox可配置的沙盒，再点右下角Next&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;此步非常重要，所有信息都需要保存记录好&lt;/strong&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Create username创建用户名，如 wmjan&lt;/li&gt;\n&lt;li&gt;Create domain创建域，如 zjtz&lt;br&gt;\n那么你得到的开发者账号为 wmjan@zjtz.onmicrosoft.com&lt;/li&gt;\n&lt;li&gt;密码必须在15-20个字符之间，并且必须包含大写字母和小写字母、数字以及以下符号中的一个或多个&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;添加中国手机号，获取验证码并验证&lt;/li&gt;\n&lt;li&gt;验证成功所即完成了开发者账号的申请&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;如何设置5tb网盘\&#34;&gt;如何设置5TB网盘&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://admin.microsoft.com/\&#34;&gt;Microsoft 365 admin center&lt;/a&gt; &amp;gt; 登陆开发者账号 &amp;gt; 点左侧users(用户) &amp;gt; Active users(活跃用户) &amp;gt; 点自己名称 &amp;gt; 点右侧栏中的OneDrive &amp;gt; 点下方 管理默认存储 &amp;gt; 点 OneDrive存储限制 &amp;gt; 默认存储限制设置为5120GB &amp;gt; 保存即可&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;若设置过程提示：未为此用户设置OneDrive，&lt;a href=\&#34;https://portal.office.com/onedrive\&#34;&gt;请跳转此页面激活OneDrive后继续&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;使用-github-的action功能实现账号自动续订\&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;为什么要续订？&lt;br&gt;\n开发者账号默认只有90天有效期，微软会根据 API 调用情况，符合调用情况的，会在距离到期30天时自动续订，不符合就不给续订了。续订的方法很多，目前较为有效、安全的方法就是通过github的Action来实现自动续订&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;生成密钥切记要记录好token\&#34;&gt;生成密钥，切记要记录好token&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;网站并登陆账号，没有账号的请自行注册&lt;/li&gt;\n&lt;li&gt;登陆后点击右上角头像 &amp;gt; 点击 Settings &amp;gt; 找到左侧最下面的Developer Settings进入 &amp;gt; 点开左侧 Personal access tokens &amp;gt; Tokens(classic) &amp;gt; 点开右上角Generate new token &amp;gt; Generate new token(classic) &amp;gt; 输入密码进入下一步&lt;/li&gt;\n&lt;li&gt;New personal access token (classic)信息填写&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Note：为token备注名，如：AliveE5&lt;/li&gt;\n&lt;li&gt;Expiration：选No expiration(无到期时间)&lt;/li&gt;\n&lt;li&gt;Select scopes：勾选workflow，repo项也会被默认选上&lt;/li&gt;\n&lt;li&gt;点Generate token生成令牌&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;&lt;strong&gt;保存记录好你的token，关闭后无法二次显示了&lt;/strong&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;导入-keepalivee5-代码到自己的储存库\&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;网站并登陆账号后 &amp;gt; 点右上角+号 &amp;gt; 点击Import repository&lt;/li&gt;\n&lt;li&gt;Import your project to GitHub信息填写&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Your old repository&#39;s clone URL 填入以下仓库地址：https://github.com/sywdebug/KeepAliveE5-Public.git&lt;/li&gt;\n&lt;li&gt;Your new repository details &amp;gt; Repository name&lt;br&gt;\n：AliveE5&lt;/li&gt;\n&lt;li&gt;选 Private 私有库&lt;/li&gt;\n&lt;li&gt;点 Begin import 后等待完成导入&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;开启-action-功能\&#34;&gt;开启 Action 功能&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;点&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Settings &amp;gt; 点左侧Actions &amp;gt; 点General &amp;gt; 选Allow all actions and reusable workflows &amp;gt; 保存&lt;/li&gt;\n&lt;li&gt;点左下角Secrets and variables &amp;gt; 点Actions &amp;gt; 点New repository secret，分别新建以下3项&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：PAT&lt;/li&gt;\n&lt;li&gt;Secret *填入：上面得到的token&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：USER&lt;/li&gt;\n&lt;li&gt;Secret *填入：开发者账号&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：PASSWD&lt;/li&gt;\n&lt;li&gt;Secret *填入：开发者账号密码&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;禁用安全默认值\&#34;&gt;禁用安全默认值&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://portal.azure.com/#home\&#34;&gt;Microsoft Azure&lt;/a&gt;，登陆开发者账号 &amp;gt; 点中间 管理 Microsoft Entra ID 查看 &amp;gt; 点左侧 属性 &amp;gt; 点主页最底部 管理安全默认值 &amp;gt; 将安全默认值设为已禁用 &amp;gt; 保存&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;启动-action-的注册-app-工作流\&#34;&gt;启动 Action 的注册 APP 工作流&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;点&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Action &amp;gt; 点击左侧 Register APP &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待4-5分钟运行完成&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;启动-action-的调用-api-工作流\&#34;&gt;启动 Action 的调用 API 工作流&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;点击左侧 Invoke API &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待完成即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;写在最后\&#34;&gt;写在最后&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;至此，Action会每隔4小时自动调用API完成一份工作流，正常微软会在距离到期30天时自动续订开发者账号有效期&lt;/li&gt;\n&lt;li&gt;验证：两个月后进&lt;a href=\&#34;https://developer.microsoft.com/en-us/microsoft-365/profile\&#34;&gt;Microsoft 365 developer subscriptions&lt;/a&gt;页面查看账号有效期&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;OneDrive&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;5TB容量OneDrive网盘申请与续订&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-15 08:29:41&#34;,&#34;dateFormat&#34;:&#34;2024-01-15&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/OneDrive/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;5 min read&#34;,&#34;time&#34;:269000,&#34;words&#34;:1125,&#34;minutes&#34;:5},&#34;description&#34;:&#34;\n以下操作均以windows浏览器页面显示为准\n\n微软OneDrive开发者账号的用处\n\n免费提供5TB容量OneDrive\nMicrosoft Office 365免费用\n\n开发者账号申请\n\n进入Microsoft 365 开发人员中心\n...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BE%AE%E8%BD%AFonedrive%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E5%A4%84\&#34;&gt;微软OneDrive开发者账号的用处&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7\&#34;&gt;开发者账号申请&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE5tb%E7%BD%91%E7%9B%98\&#34;&gt;如何设置5TB网盘&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BD%BF%E7%94%A8-github-%E7%9A%84action%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%B4%A6%E5%8F%B7%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%AE%A2\&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%88%87%E8%AE%B0%E8%A6%81%E8%AE%B0%E5%BD%95%E5%A5%BDtoken\&#34;&gt;生成密钥，切记要记录好token&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AF%BC%E5%85%A5-keepalivee5-%E4%BB%A3%E7%A0%81%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%82%A8%E5%AD%98%E5%BA%93\&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%90%AF-action-%E5%8A%9F%E8%83%BD\&#34;&gt;开启 Action 功能&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%A6%81%E7%94%A8%E5%AE%89%E5%85%A8%E9%BB%98%E8%AE%A4%E5%80%BC\&#34;&gt;禁用安全默认值&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%AF%E5%8A%A8-action-%E7%9A%84%E6%B3%A8%E5%86%8C-app-%E5%B7%A5%E4%BD%9C%E6%B5%81\&#34;&gt;启动 Action 的注册 APP 工作流&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%AF%E5%8A%A8-action-%E7%9A%84%E8%B0%83%E7%94%A8-api-%E5%B7%A5%E4%BD%9C%E6%B5%81\&#34;&gt;启动 Action 的调用 API 工作流&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E\&#34;&gt;写在最后&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;应用场景\&#34;&gt;应用场景&lt;/h1&gt;\n&lt;p&gt;没有公网IP设备需要远程访问，如何路由器、光猫等&lt;/p&gt;\n&lt;h1 id=\&#34;frps服务器配置条件\&#34;&gt;frps服务器配置条件&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可&lt;/li&gt;\n&lt;li&gt;github项目地址：&lt;a href=\&#34;https://github.com/fatedier/frp\&#34;&gt;frp程序及官方说明&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;以下涉及的abc.com域名为示例说明，请替换自己的实际域名/IP；各端口及用户名密码也一样，可以根据自己的实际需求进行更换；以下frpc客户端配置采用自定义子域名方式，需要提前在域名管理中心开启泛域名&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;frps服务器端配置文件\&#34;&gt;frps服务器端配置文件&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;从v0.52.0版本开始，frp已经不支持.ini配置文件了，请使用toml、yaml及josn格式文件&lt;/li&gt;\n&lt;li&gt;电脑上新建frps.toml文本文档，再使用记事本打开并填入以下内容&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nsubdomain_host = abc.com #服务器端域名/IP\nbind_port = 7000 #监听端口\nvhost_http_port = 9090 #http访问端口\nvhost_https_port = 9091 #https访问端口\ndashboard_addr = 0.0.0.0\ndashboard_port = 7500 #控制面板访问端口\ndashboard_user = admin #控制面板用户名\ndashboard_pwd = password #控制面板密码\ntoken = password #客户端连接密码\nmax_pool_count = 10\nlog_max_days = 3\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;群晖docker安装frps服务器\&#34;&gt;群晖Docker安装frps服务器&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;Docker注册表搜frps，双击安装snowdreamtech-frps。如果无法访问注册表，可SSH登陆群晖后使用&lt;a href=\&#34;https://blog.wmjan.top/post/dockercmd/\&#34;&gt;Docker常用命令&lt;/a&gt;来安装&lt;/li&gt;\n&lt;li&gt;群晖docker目录里添加一个frp文件夹，复制电脑上配置好的frps.toml文件到群晖frp文件夹里&lt;/li&gt;\n&lt;li&gt;启动映像时存储空间 &amp;gt; &lt;strong&gt;添加文件&lt;/strong&gt; &amp;gt; 选择docker/frp/frps.toml &amp;gt; 挂载目录到/etc/frp/frps.toml&lt;/li&gt;\n&lt;li&gt;网络选择host&lt;/li&gt;\n&lt;li&gt;其他均默认后启动即可&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;frpc客户端配置\&#34;&gt;frpc客户端配置&lt;/h1&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nserver_addr = abc.com #服务器端域名/IP\nserver_port = 7000 #对应服务器端监听端口\ntoken = password #对应客户端连接密码\n\n[router] #自定义备注名称\ntype = http #访问方式http或https\nlocal_port = 80 #本地访问端口\nlocal_ip = 192.168.2.1 #本地设备IP地址\nsubdomain = router #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;访问方式\&#34;&gt;访问方式&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;服务器端还需要把对应的端口打开&lt;/li&gt;\n&lt;li&gt;成功连接后访问客户端方法如下&lt;br&gt;\nhttp://router.abc.com:9090&lt;/li&gt;\n&lt;li&gt;访问控制面板方法如下，用户名密码为服务器端dashboard项&lt;br&gt;\nhttp://abc.com:7500&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;同一网络下多个设备需要访问\&#34;&gt;同一网络下多个设备需要访问&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;只需要在frpc客户端配置中增加配置即可，如增加一台光猫和群晖NAS&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[modem] #自定义备注名称\ntype = http #访问方式http或https\nlocal_port = 80 #本地访问端口\nlocal_ip = 192.168.2.254 #本地设备IP地址\nsubdomain = modem #自定义访问子域名\n\n[nas] #自定义备注名称\ntype = https #访问方式http或https\nlocal_port = 5001 #本地访问端口\nlocal_ip = 192.168.2.253 #本地设备IP地址\nsubdomain = nas #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;访问方法分别为&lt;br&gt;\n光猫：http://modem.abc.com:9090&lt;br&gt;\nNAS：https://nas.abc.com:9091&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;远程登陆ssh\&#34;&gt;远程登陆SSH&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;只需要在frpc客户端增加以下配置&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[SSH]\ntype = &amp;quot;tcp&amp;quot; #访问方式要选tcp\nlocal_ip = &amp;quot;192.168.2.1&amp;quot; #本地设备IP地址\nlocal_port = 22 #本地访问端口\nremote_port = 6000 #远程访问端口\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;访问方法为&lt;br&gt;\nssh -oPort=6000 root@abc.com&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;frp&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;frp内网穿透配置说明&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-13 10:05:16&#34;,&#34;dateFormat&#34;:&#34;2024-01-13&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/frp/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:190000,&#34;words&#34;:803,&#34;minutes&#34;:4},&#34;description&#34;:&#34;应用场景\n没有公网IP设备需要远程访问，如何路由器、光猫等\nfrps服务器配置条件\n\n服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可\ngithub项目地址：frp程序及官方说明\n以下涉及的abc.c...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF\&#34;&gt;应用场景&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frps%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6\&#34;&gt;frps服务器配置条件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frps%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6\&#34;&gt;frps服务器端配置文件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BE%A4%E6%99%96docker%E5%AE%89%E8%A3%85frps%E6%9C%8D%E5%8A%A1%E5%99%A8\&#34;&gt;群晖Docker安装frps服务器&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE\&#34;&gt;frpc客户端配置&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F\&#34;&gt;访问方式&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%8C%E4%B8%80%E7%BD%91%E7%BB%9C%E4%B8%8B%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE\&#34;&gt;同一网络下多个设备需要访问&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86ssh\&#34;&gt;远程登陆SSH&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;docker常用命令\&#34;&gt;Docker常用命令&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;搜索镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker search 镜像名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;拉取镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker pull 镜像名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;启动docker服务&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo service docker start\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;停止docker服务&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo service docker stop\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;检查docker 守护进程是否在运行&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker stats\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;查看docker相关信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker info\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;列出所有容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker ps -a\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;最后一次运行的容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker ps -l\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;9\&#34;&gt;\n&lt;li&gt;重新启动已停止的容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker start 容器名(也可以使用容器ID)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;10\&#34;&gt;\n&lt;li&gt;获取容器的日志&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker logs 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;11\&#34;&gt;\n&lt;li&gt;获取最后几条日志&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker -f 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;12\&#34;&gt;\n&lt;li&gt;列出镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker images\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;13\&#34;&gt;\n&lt;li&gt;删除所有容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rm $(docker ps -a -q)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;14\&#34;&gt;\n&lt;li&gt;删除单个容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rm 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;15\&#34;&gt;\n&lt;li&gt;删除所有镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rmi $(docker images | grep none | awk &#39;{print $3}&#39; | sort -r)\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;16\&#34;&gt;\n&lt;li&gt;保存镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker save 镜像名 &amp;gt; /home/新镜像名.tar\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;17\&#34;&gt;\n&lt;li&gt;加载自定义镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; /home/自定义镜像\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;18\&#34;&gt;\n&lt;li&gt;获取容器更多信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker inspect 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;19\&#34;&gt;\n&lt;li&gt;删除为none的镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;docker images --no-trunc| grep none | awk &#39;{print $3}&#39; | xargs -r docker rmi\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;常用参数\&#34;&gt;常用参数：&lt;/h3&gt;\n&lt;blockquote&gt;\n&lt;p&gt;-i：以交互模式运行容器，通常与 -t 同时使用&lt;br&gt;\n-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用&lt;br&gt;\n-p : 端口映射 格式为[主机端口：容器端口]&lt;br&gt;\n-d : 后台模式运行&lt;br&gt;\n-name : 给容器一个新的名称&lt;br&gt;\n-v：挂载主机的目录&lt;br&gt;\n-e： username=&amp;quot;ritchie&amp;quot;: 设置环境变量&lt;br&gt;\n-m：设置容器使用内存最大值&lt;br&gt;\n--env-file=[]：从指定文件读入环境变量&lt;/p&gt;\n&lt;/blockquote&gt;\n&#34;,&#34;fileName&#34;:&#34;dockercmd&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Docker常用命令&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-12 13:25:48&#34;,&#34;dateFormat&#34;:&#34;2024-01-12&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/dockercmd/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:96000,&#34;words&#34;:382,&#34;minutes&#34;:2},&#34;description&#34;:&#34;Docker常用命令\n\n搜索镜像\n\nsudo docker search 镜像名\n\n\n拉取镜像\n\nsudo docker pull 镜像名\n\n\n启动docker服务\n\nsudo service docker start\n\n\n停止docker...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\&#34;&gt;Docker常用命令&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0\&#34;&gt;常用参数：&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;痛点分析\&#34;&gt;痛点分析&lt;/h1&gt;\n&lt;h3 id=\&#34;个人业务\&#34;&gt;个人业务&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;多平台联系人同步&lt;br&gt;\n比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事&lt;/li&gt;\n&lt;li&gt;想要分开管理联系人&lt;br&gt;\n办公手机和私人手机联系人不想合拼一起，但又希望两台手机都能访问两者联系人&lt;/li&gt;\n&lt;li&gt;怕隐私泄露、不想用手机自带的云服务&lt;br&gt;\n曾经，一知名手机厂商一年内让我多次丢失联系人，有时候丢失部分联系人可能自己都没发觉&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;公司业务\&#34;&gt;公司业务&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;公司多部门联系人管理&lt;br&gt;\n业务部、财务部各部门联系人管理备份，以免员工离职联系人丢失&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;安装及避坑\&#34;&gt;安装及避坑&lt;/h1&gt;\n&lt;h3 id=\&#34;安装环境要求\&#34;&gt;安装环境要求&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;DSM6.2.4以上版本才支持&lt;br&gt;\n曾经在DSM6.2.3上试了几天没成功&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;安装及导入\&#34;&gt;安装及导入&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;安装非常简单，打开群晖套件中心搜索&lt;strong&gt;Synology Contacts&lt;/strong&gt;安装即可&lt;/li&gt;\n&lt;li&gt;首次使用必须先把联系人分组导入到服务器里&lt;/li&gt;\n&lt;li&gt;导入手机联系人时，必须去对应品牌云服务网页端导出联系人文件，再进行导入。很多手机端导出的文件会进行UTF-8编码（quoted-printable），导入到服务器后无法正常显示联系人名称&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;如何同步\&#34;&gt;如何同步&lt;/h3&gt;\n&lt;p&gt;打开Synology Contacts，我的联系人&amp;gt;点后面3点&amp;gt;CardDAV&amp;gt;选择对应平台的配置信息&lt;/p&gt;\n&lt;h3 id=\&#34;手机端同步设置\&#34;&gt;手机端同步设置&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;iPhone和小米手机，因为系统本身就支持CardDav服务\n&lt;blockquote&gt;\n&lt;p&gt;iPhone手机打开设置&amp;gt;通讯录&amp;gt;帐户&amp;gt;添加帐户&amp;gt;其他&amp;gt;添加CardDAV帐户&lt;br&gt;\n小米手机打开设置&amp;gt;账户与同步&amp;gt;账户与同步&amp;gt;添加账户&amp;gt;CardDAV同步账户&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/li&gt;\n&lt;li&gt;其他安卓手机&lt;br&gt;\n需要下载CardDAV同步客户端 &lt;a href=\&#34;https://f-droid.org/packages/at.bitfire.davdroid/\&#34;&gt;DAVx⁵&lt;/a&gt;，打开DAVx⁵按向导提示设置电池优化等项目，以便它能正常后台运行同步信息&lt;/li&gt;\n&lt;li&gt;添加CardDAV时服务器(根地址)为上述提到的CardDAV对应平台配置信息，用户名及密码为群晖对应账户登录的用户名密码\n&lt;blockquote&gt;\n&lt;p&gt;普通安卓用户使用DAVx⁵添加时一定要选‘&lt;strong&gt;使用URL和用户名登录&lt;/strong&gt;’，如下图&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/contacts.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;Contacts&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;跨平台联系人同步群晖Synology Contacts&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-11 15:08:34&#34;,&#34;dateFormat&#34;:&#34;2024-01-11&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Contacts/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:125000,&#34;words&#34;:586,&#34;minutes&#34;:3},&#34;description&#34;:&#34;痛点分析\n个人业务\n\n多平台联系人同步\n比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事\n想要分开管理联系人\n办公手机和私人手机联系人不想合拼一起，但...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%97%9B%E7%82%B9%E5%88%86%E6%9E%90\&#34;&gt;痛点分析&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%AA%E4%BA%BA%E4%B8%9A%E5%8A%A1\&#34;&gt;个人业务&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%85%AC%E5%8F%B8%E4%B8%9A%E5%8A%A1\&#34;&gt;公司业务&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8F%8A%E9%81%BF%E5%9D%91\&#34;&gt;安装及避坑&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82\&#34;&gt;安装环境要求&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%AF%BC%E5%85%A5\&#34;&gt;安装及导入&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5\&#34;&gt;如何同步&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%90%8C%E6%AD%A5%E8%AE%BE%E7%BD%AE\&#34;&gt;手机端同步设置&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;VPS即虚拟专用服务器，这里需要是海外VPS，常用的有&lt;a href=\&#34;https://aws.amazon.com/cn/campaigns/aws-cloudserver/\&#34;&gt;AWS亚马逊云&lt;/a&gt;、&lt;a href=\&#34;https://linuxone.cloud.marist.edu/\&#34;&gt;LinuxOne&lt;/a&gt;、&lt;a href=\&#34;https://hax.co.id/\&#34;&gt;Hax VPS&lt;/a&gt;、&lt;a href=\&#34;https://www.oracle.com/jp/cloud/free/\&#34;&gt;Oracle Cloud 甲骨文云&lt;/a&gt;、&lt;a href=\&#34;https://cloud.google.com/\&#34;&gt;Google Cloud谷歌云&lt;/a&gt;，下面以AWS亚马逊云为例&lt;/p&gt;\n&lt;h1 id=\&#34;aws亚马逊云服务器申请\&#34;&gt;AWS亚马逊云服务器申请&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;所需材料：VISA信用卡，我使用的是招商VISA卡&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;选&lt;a href=\&#34;https://portal.aws.amazon.com/billing/signup#/start/email\&#34;&gt;AWS 海外区域&lt;/a&gt;按提示注册，详细图文教程请参考&lt;a href=\&#34;https://juejin.cn/post/7251914510436466725\&#34;&gt;三. 申请流程&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;账单信息按实际填写自己VISA卡信息，放心不会实际 扣费，最多会有1美元的预扣款验证身份&lt;/li&gt;\n&lt;li&gt;手机号码也填国内的常用号码即可&lt;/li&gt;\n&lt;li&gt;创建EC2服务实例之前请务必先在右上角选择适合自己的&lt;strong&gt;区域&lt;/strong&gt;，比如“香港”延时会相对比较低。没有“香港”的话可以在列表底部管理区域中添加&lt;/li&gt;\n&lt;li&gt;连接实例时可以把用户名直接改成root来登陆&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;安装x-ui\&#34;&gt;安装X-UI&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;项目地址：&lt;a href=\&#34;https://github.com/FranzKafkaYu/x-ui\&#34;&gt;功能介绍及说明&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;一键安装方法&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;按提示设定&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;用户名[username]: admin&lt;br&gt;\n密码[userpasswd]: password&lt;br&gt;\n监听端口[port]: 54321&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;在EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把54321端口添加到规则中&lt;/li&gt;\n&lt;li&gt;此时使用EC2实例的公有 IPv4 地址加端口号即可访问X-UI管理面板，如&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;http://43.198.1xx.2xx:54321&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;配置x-ui\&#34;&gt;配置X-UI&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;开启vmess+ws节点：入站列表&amp;gt;添加入站，如下图设置&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;备注名vmess+ws&lt;/li&gt;\n&lt;li&gt;协议选vmess&lt;/li&gt;\n&lt;li&gt;端口可默认也可自定义&lt;/li&gt;\n&lt;li&gt;添加用户选+&lt;/li&gt;\n&lt;li&gt;网络选ws&lt;/li&gt;\n&lt;li&gt;把用户ID前半段复制到路径 / 后面，再加上?ed=2048&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/x-uirz.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;再回到EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把19687口添加到规则中&lt;/li&gt;\n&lt;li&gt;最后X-UI控制页面中&lt;strong&gt;操作&amp;gt;二维码&lt;/strong&gt;，手机使用v2rayNG程序扫描即可实现固定IP高速科学上网了&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;注意注意注意\&#34;&gt;注意！注意！注意！&lt;/h1&gt;\n&lt;p&gt;EC2实例中除了默认免费功能外，千万不要开启其他功能，都是额外收费的，包括&lt;strong&gt;弹性IP&lt;/strong&gt;&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;xui&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;海外VPS申请及X-UI部署&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;vps&#34;,&#34;slug&#34;:&#34;cV2E1OCKN&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/cV2E1OCKN/&#34;}],&#34;date&#34;:&#34;2024-01-09 09:07:55&#34;,&#34;dateFormat&#34;:&#34;2024-01-09&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/xui/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:120000,&#34;words&#34;:529,&#34;minutes&#34;:3},&#34;description&#34;:&#34;前言\nVPS即虚拟专用服务器，这里需要是海外VPS，常用的有AWS亚马逊云、LinuxOne、Hax VPS、Oracle Cloud 甲骨文云、Google Cloud谷歌云，下面以AWS亚马逊云为例\nAWS亚马逊云服务器申请\n\n所需材料...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#aws%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%B3%E8%AF%B7\&#34;&gt;AWS亚马逊云服务器申请&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85x-ui\&#34;&gt;安装X-UI&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%85%8D%E7%BD%AEx-ui\&#34;&gt;配置X-UI&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%B3%A8%E6%84%8F%E6%B3%A8%E6%84%8F%E6%B3%A8%E6%84%8F\&#34;&gt;注意！注意！注意！&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问&lt;/p&gt;\n&lt;h1 id=\&#34;android手机端分流设置方法\&#34;&gt;Android手机端分流设置方法&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;下载最新版NekoBox安卓客户端&lt;a href=\&#34;https://github.com/MatsuriDayo/NekoBoxForAndroid/releases\&#34;&gt;【NekoBoxForAndroid】&lt;/a&gt;，感谢MatsuriDayo开源大佬&lt;/li&gt;\n&lt;li&gt;运行NekoBox后点&lt;strong&gt;左上角&amp;gt;工具&amp;gt;Cloudflare Warp&amp;gt;生成配置&lt;/strong&gt;，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按&lt;a href=\&#34;https://blog.wmjan.top/post/warp+key/\&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;把服务器和端口号替换成🚀优选IP和端口号即可&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;暂不方便获取优选IP的可试用以下几组&lt;br&gt;\n162.159.195.47:942&lt;br&gt;\n162.159.192.131:942&lt;br&gt;\n162.159.192.5:3138&lt;br&gt;\n162.159.192.136:942&lt;br&gt;\n162.159.195.126:942&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;分流设置，打开NekoBox&lt;strong&gt;左上角&amp;gt;路由&lt;/strong&gt;，把&lt;strong&gt;中国域名规则&lt;/strong&gt;和&lt;strong&gt;中国IP规则&lt;/strong&gt;打开；NekoBox&lt;strong&gt;左上角&amp;gt;设置&amp;gt;路由设置&lt;/strong&gt;里把&lt;strong&gt;绕开局域网地址&lt;/strong&gt;和&lt;strong&gt;在核心中绕过LAN&lt;/strong&gt; 即可实现分流&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;windows端分流设置方法\&#34;&gt;Windows端分流设置方法&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;本教程基于&lt;a href=\&#34;https://blog.wmjan.top/post/warp+key\&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;延伸方案&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;假设WireGuard安装在目录&amp;quot;C:\\Program Files\\WireGuard&amp;quot;&lt;/li&gt;\n&lt;li&gt;开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：\n&lt;ul&gt;\n&lt;li&gt;以管理员身份运行cmd&lt;/li&gt;\n&lt;li&gt;输入以下命令按回车&lt;pre&gt;&lt;code&gt;reg add HKLM\\Software\\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;下载&lt;a href=\&#34;https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master\&#34;&gt;【auto-add-routes-master.zip】&lt;/a&gt;并解压将auto-add-routes-master目录里的所有文件复制到&amp;quot;C:\\Program Files\\WireGuard\\bat&amp;quot;文件夹，没有bat文件夹自行新建&lt;/li&gt;\n&lt;li&gt;修改Wireguard客户端配置文件，加入以下Script Hook调用&amp;quot;C:\\Program Files\\WireGuard\\bat&amp;quot;的批处理文件&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;PreUp = &amp;quot;C:\\Program Files\\WireGuard\\bat\\routes-up.bat&amp;quot;\nPostUp = &amp;quot;C:\\Program Files\\WireGuard\\bat\\dns-up.bat&amp;quot;\nPreDown = &amp;quot;C:\\Program Files\\WireGuard\\bat\\routes-down.bat&amp;quot;\nPostDown = &amp;quot;C:\\Program Files\\WireGuard\\bat\\dns-down.bat&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;将DNS指向本机以使用Overture作为DNS服务器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;DNS = 127.0.0.1\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;关闭WireGuard的(kill-switch)并保存修改&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;以上设置如下图所示：&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/fl.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;连接成功后可上ipskkmoe测试一下看是否正确分流\&#34;&gt;连接成功后可上&lt;a href=\&#34;https://ip.skk.moe/\&#34;&gt;ip.skk.moe&lt;/a&gt;测试一下看是否正确分流&lt;/h3&gt;\n&#34;,&#34;fileName&#34;:&#34;warpfenliu&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;WARP+分流设置&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;warp&#34;,&#34;slug&#34;:&#34;6fjDOg8PX&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/6fjDOg8PX/&#34;}],&#34;date&#34;:&#34;2024-01-08 16:06:26&#34;,&#34;dateFormat&#34;:&#34;2024-01-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/warpfenliu/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:140000,&#34;words&#34;:566,&#34;minutes&#34;:3},&#34;description&#34;:&#34;前言\n分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问\nAndroid手机端分流设置方法\n\n下载最新版NekoBox安卓客户端【NekoBoxForAndroid】，感谢MatsuriDayo开源大佬\n运行Nek...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;Android手机端分流设置方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#windows%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;Windows端分流设置方法&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F%E5%90%8E%E5%8F%AF%E4%B8%8Aipskkmoe%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E7%9C%8B%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%E5%88%86%E6%B5%81\&#34;&gt;连接成功后可上ip.skk.moe测试一下看是否正确分流&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;Cloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;p&gt;跳过一切过程与方法：&lt;a href=\&#34;https://blog.wmjan.top/post/warpfenliu/#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;安卓手机请坐直升机&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;节点获取方法\&#34;&gt;节点获取方法&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://1.1.1.1\&#34;&gt;【Cloudflare Warp官网】&lt;/a&gt;，下载对应的Cloudflare WARP程序，默认只有1GB流量&lt;/li&gt;\n&lt;li&gt;获取🔑无限流量密钥（Key）\n&lt;ul&gt;\n&lt;li&gt;方法一：Telegram 搜索添加 Warp+Bot，输入/generater按提示获取Key；&lt;/li&gt;\n&lt;li&gt;方法二：&lt;a href=\&#34;https://replit.com/@wmjan1980/WarpKey\&#34;&gt;【进Replit项目】&lt;/a&gt; 点Run等待几秒即可自动获取Warp+的Key。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;打开 Cloudflare WARP 程序，设置里替换🔑无限流量密钥（Key），即可实现Cloudflare官方无限流量科学上网。&lt;/li&gt;\n&lt;li&gt;到此为止，你已经获得了安全可靠的无限流量科学上网方法，如果依旧还是无法上外网请继续看以下扩展内容，正常了没特殊需要可忽略&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;进阶ip优选加速方案\&#34;&gt;进阶IP优选加速方案&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;IP优选工具下载：&lt;a href=\&#34;https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/warp-yxip/warp-yxip-win.7z?inline=false\&#34;&gt;【下载链接】&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;下载解压后启动warp-yxip.bat，选择对应优选模式（默认为IPv4）&lt;/li&gt;\n&lt;li&gt;优选完成后，找到result.csv文件打开。可以看到🚀优选IP和端口号&lt;/li&gt;\n&lt;li&gt;生成配置文件：打开&lt;a href=\&#34;https://replit.com/@wmjan1980/wgcf-profile-generator\&#34;&gt;【Replit项目】&lt;/a&gt; 点Run，再选择2（Warp+）回车，输入对应的🔑无限流量密钥（Key），即可获得📋配置文件。&lt;/li&gt;\n&lt;li&gt;WireGuard工具下载：打开&lt;a href=\&#34;https://www.wireguard.com/install\&#34;&gt;【官网下载链接】&lt;/a&gt;，以Windows为例，安装运行后点左下角新建隧道-新建空隧道，清空默认配置文件，粘贴📋配置文件，并且将Endpoint项里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;\n&lt;li&gt;手机端WireGuard设置\n&lt;ul&gt;\n&lt;li&gt;方法一：直接在电脑端WireGuard导出已经配置好的隧道zip文件，发送到手机导入即可。&lt;/li&gt;\n&lt;li&gt;方法二：可以直接扫描第4步中生成的📋配置文件 二维码导入，再点编辑将“对端”里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;warp+key&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;WARP+免费节点获取方法及进阶玩法&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;warp&#34;,&#34;slug&#34;:&#34;6fjDOg8PX&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/6fjDOg8PX/&#34;}],&#34;date&#34;:&#34;2024-01-08 15:14:02&#34;,&#34;dateFormat&#34;:&#34;2024-01-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/warp+key/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:106000,&#34;words&#34;:495,&#34;minutes&#34;:2},&#34;description&#34;:&#34;前言\nCloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用\n\n跳过一切过程与方法：安卓手机请坐直升机\n\n节点获取方法\n\n打开【Cloudflare Warp官网】，下载对应的Cloud...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%8A%82%E7%82%B9%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95\&#34;&gt;节点获取方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9B%E9%98%B6ip%E4%BC%98%E9%80%89%E5%8A%A0%E9%80%9F%E6%96%B9%E6%A1%88\&#34;&gt;进阶IP优选加速方案&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;ul&gt;\n&lt;li&gt;本站为个人爱好学习记录，以自我理解、避坑为主&lt;/li&gt;\n&lt;li&gt;大部分内容来自网络，如果有涉及版权等相关问题请联系删除&lt;/li&gt;\n&lt;li&gt;联系方式：wmjan1980@gmail.com&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;about&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;关于&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-06 14:31:58&#34;,&#34;dateFormat&#34;:&#34;2024-01-06&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/about/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:11000,&#34;words&#34;:53,&#34;minutes&#34;:1},&#34;description&#34;:&#34;\n本站为个人爱好学习记录，以自我理解、避坑为主\n大部分内容来自网络，如果有涉及版权等相关问题请联系删除\n联系方式：wmjan1980@gmail.com\n\n&#34;,&#34;toc&#34;:&#34;&#34;}]";
+  // var json = escape.substr(1, escape.length - 2);
+  // var datas = json.split(',');
+  // for (let i=0; i < datas.length; i++) {
+  //   let item = datas[i];
+  //   let attrs = item.split('34;:&#34')
+  //   debugger
+  //   console.log(datas[i])
+  // }
+  let escapeMap = new Map();
+  escapeMap.set('&#34;', '"');
+  escapeMap.set('&gt;', '>');
+  escapeMap.set('&#39;', "'");
+  escapeMap.set('&lt;', '<');
+  escapeMap.set('&quot;', '"');
+  escapeMap.set('&amp;', '&');
+</script> -->
+
+
+</html>
