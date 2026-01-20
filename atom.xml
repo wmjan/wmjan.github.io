@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.wmjan.top</id>
+    <title>Wmjan学习站</title>
+    <updated>2026-01-20T05:02:54.549Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.wmjan.top"/>
+    <link rel="self" href="https://blog.wmjan.top/atom.xml"/>
+    <logo>https://blog.wmjan.top/images/avatar.png</logo>
+    <icon>https://blog.wmjan.top/favicon.ico</icon>
+    <rights>All rights reserved 2026, Wmjan学习站</rights>
+    <entry>
+        <title type="html"><![CDATA[解决Win11 24H2/25H2无法访问局域网共享]]></title>
+        <id>https://blog.wmjan.top/post/Win11NetworkSharing/</id>
+        <link href="https://blog.wmjan.top/post/Win11NetworkSharing/">
+        </link>
+        <updated>2026-01-20T05:02:40.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>在 Windows 11 24H2 中，我们进行了两项重大安全更改，这些更改可能会影响将驱动器映射到第三方消费类 NAS 或带有 USB 存储的路由器：</p>
+<ul>
+<li>默认情况下，所有连接都需要 SMB 签名。这通过防止网络篡改来提高安全性，并阻止将您的凭证发送到恶意服务器的中继攻击。</li>
+<li>来宾回退在 Windows 11 专业版上处于禁用状态。这可以提高您在连接到不可信设备时的安全性。Guest 允许您连接到没有用户名或密码的 SMB 服务器。虽然对您的 NAS 制造商来说很方便，但这意味着您的设备可能会被诱骗连接到恶意服务器，而无需提示输入凭据，然后获得勒索软件或窃取您的数据。</li>
+</ul>
+<h2 id="出现的问题如下">出现的问题如下</h2>
+<ul>
+<li>如果第三方设备不支持签名，可能会收到以下错误提示：</li>
+</ul>
+<blockquote>
+<p>0xc000a000<br>
+-1073700864<br>
+STATUS_INVALID_SIGNATURE<br>
+加密签名无效</p>
+</blockquote>
+<ul>
+<li>如果第三方需要Guest Access，可能会收到以下错误提示：</li>
+</ul>
+<blockquote>
+<p>您无法访问此共享文件夹，因为您组织的安全策略会阻止未经身份验证的 Guest 访问。这些策略有助于保护你的电脑免受网络上不安全或恶意设备的攻击<br>
+0x80070035<br>
+0x800704f8<br>
+找不到网络路径<br>
+发生系统错误 3227320323</p>
+</blockquote>
+<h2 id="解决方法">解决方法</h2>
+<p><strong>1. Windows 11 专业版</strong></p>
+<ul>
+<li>打开运行(Win+R)，输入 gpedit.msc 进入组策略</li>
+<li>依次打开 计算机配置 &gt; Windows 设置 &gt; 安全设置 &gt; 本地策略 &gt; 安全选项 &gt; 双击 Microsoft 网络客户端:对通信进行数字签名(始终) 设置为 &gt; 已禁用 &gt; 确定即可</li>
+</ul>
+<p><strong>2. Windows 11 家庭版</strong></p>
+<ul>
+<li>右键 开始菜单 &gt; 终端管理员</li>
+<li>禁用 SMB 签名要求，输入以下代码并回车，然后按 Y 接受</li>
+</ul>
+<pre><code>Set-SmbClientConfiguration -RequireSecuritySignature $false
+</code></pre>
+<ul>
+<li>禁用 guest fallback，输入以下代码并回车，然后按 Y 接受</li>
+</ul>
+<pre><code>Set-SmbClientConfiguration -EnableInsecureGuestLogons $true
+</code></pre>
+<h2 id="end">END</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[群晖docker部署acme.sh自动续签DNSPOD证书]]></title>
+        <id>https://blog.wmjan.top/post/cert/</id>
+        <link href="https://blog.wmjan.top/post/cert/">
+        </link>
+        <updated>2025-02-12T08:15:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>目前腾讯云免费证书有效期只有短短90天，本记录以腾讯云DNSPOD为例，使用群晖docker部署 acme.sh 的方式免费申请泛域名证书以及配置自动续签，保证证书不会到期中断。</p>
+<h2 id="一-腾讯云dns-token申请">一、腾讯云DNS Token申请</h2>
+<ol>
+<li>
+<p>打开DNSPod 控制台<br>
+腾讯云DNSPod： <a href="https://console.dnspod.cn/">DNSPod</a></p>
+</li>
+<li>
+<p>获取 DNSPod Token<br>
+点击右上角头像 &gt; 点击API密钥 &gt; 选择DNSPod Token &gt; 创建密钥</p>
+</li>
+<li>
+<p>记录并保存Token，忘记需重新创建密钥</p>
+</li>
+</ol>
+<h2 id="二-群晖创建acmesh容器并配置环境">二、群晖创建acme.sh容器并配置环境</h2>
+<p>无法正常访问Docker注册表的请参考使用：<a href="https://cloud.tencent.com/developer/article/2485043">Docker/DockerHub 国内镜像源/加速列表</a></p>
+<ol>
+<li>在共享文件夹docker里建一个acme.sh的文件夹</li>
+<li>拉取acme.sh docker镜像</li>
+</ol>
+<ul>
+<li>打开群晖docker，在注册表里搜索acme.sh，找到并下载neilpang/acme.sh</li>
+</ul>
+<ol start="3">
+<li>创建容器</li>
+</ol>
+<ul>
+<li>容器名为：acme-sh</li>
+<li>高级设置 &gt; 存储空间：添加文件夹docker/acme.sh，装载路径到 /acme.sh</li>
+<li>网络为host</li>
+<li>添加环境变量（如果开启了两步验证，需要繁琐一些，也可以为acme.sh专门新建一个账号）</li>
+</ul>
+<blockquote>
+<p>DP_Id ： 填入第一步获取的 DNSPod ID<br>
+DP_Key ：填入第一步获取的 DNSPod Token<br>
+SYNO_Username ：登录群晖的用户名<br>
+SYNO_Password ： 登录群晖的密码<br>
+SYNO_Certificate ：空字符串（&quot;&quot;）为替换默认证书<br>
+SYNO_Create：填域名<br>
+SYNO_Port ： 填入群晖内网的端口号（我用的默认端口5000未修改）</p>
+</blockquote>
+<ul>
+<li>命令处添加：daemon</li>
+</ul>
+<ol start="4">
+<li>点击下一步，运行容器。<br>
+此时容器搭建完毕，但证书还没有获取，也没有部署，必须要一个脚本文件来启动它。</li>
+</ol>
+<h2 id="三-创建脚本文件">三、创建脚本文件</h2>
+<ol>
+<li>在群晖用文本编辑器，创建一个新文本，粘贴如下代码，修改 '你的域名' ，然后保存，修改文件名为cert.sh</li>
+</ol>
+<pre><code>#!/bin/bash
+ 
+# 域名
+ 
+DOMAIN='你的域名'
+ 
+# DNS类型，dns_ali dns_dp dns_gd dns_aws dns_linode根据域名服务商而定，CloudFlare就是dns_cf
+ 
+DNS=dns_dp
+ 
+# DNS API 生效等待时间 值(单位：秒)，一般120即可
+ 
+# 某些域名服务商的API生效时间较大，需要将这个值加大(比如900)
+ 
+DNS_SLEEP=120
+ 
+# 证书服务商，letsencrypt
+ 
+CERT_SERVER=letsencrypt
+ 
+generateCrtCommand=&quot;acme.sh --force --log --issue --server ${CERT_SERVER} --dns ${DNS} --dnssleep ${DNS_SLEEP} -d &quot;${DOMAIN}&quot; -d &quot;*.${DOMAIN}&quot;&quot;
+ 
+installCrtCommand=&quot;acme.sh --deploy -d &quot;${DOMAIN}&quot; -d &quot;*.${DOMAIN}&quot; --deploy-hook synology_dsm&quot;
+ 
+docker exec acme-sh $generateCrtCommand
+ 
+docker exec acme-sh $installCrtCommand
+</code></pre>
+<ol start="2">
+<li>将此脚本文件放到 /volume1/docker/acme.sh 文件夹下，然后右键属性，复制好路径位置，一会要用</li>
+</ol>
+<h2 id="四-获取证书">四、获取证书</h2>
+<ol>
+<li>首先确认群晖的ssh端口是打开的，然后运行终端，连接群晖。并使用sudo -i 提升账号权限为root权限</li>
+<li>然后执行脚本运行命令，路径就用刚才复制的脚本文件路径</li>
+</ol>
+<pre><code>bash /volume1/docker/acme.sh/cert.sh
+</code></pre>
+<ol start="3">
+<li>看到最后的Success，就是成功了。<br>
+然后我们可以在 /volume1/docker/acme.sh/ 文件夹下看到有个以我们域名命名的文件夹，里面就是新保存的证书了</li>
+<li>然后控制面板  &gt; 安全性 &gt; 证书 检查下证书是否已更新</li>
+<li>以上步骤成功之后，我们就可以去部署自动更新的脚本了</li>
+</ol>
+<h2 id="五-自动获取更新证书脚本">五、自动获取更新证书脚本</h2>
+<ol>
+<li>打开群晖控制面板 &gt; 任务计划 &gt; 新增，用户账号选root</li>
+<li>计划：可设置为每3个月运行一次</li>
+<li>然后任务设置 &gt; 运行命令(用户定义的脚本)，粘贴如下代码，目录名称以实际为准：</li>
+</ol>
+<pre><code>bash  /volume1/docker/acme.sh/cert.sh &gt;&gt; /volume1/docker/acme.sh/log.txt 2&gt;&amp;1
+</code></pre>
+<h2 id="end">END</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PVE网卡直通及qm命令]]></title>
+        <id>https://blog.wmjan.top/post/PVE+iommu/</id>
+        <link href="https://blog.wmjan.top/post/PVE+iommu/">
+        </link>
+        <updated>2024-05-27T03:16:31.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="网卡直通">网卡直通</h1>
+<h2 id="修改gurb">修改gurb</h2>
+<ol>
+<li>PVE shell里面输入命令</li>
+</ol>
+<pre><code>nano /etc/default/grub
+</code></pre>
+<ol start="2">
+<li>找到以下选项</li>
+</ol>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet&quot;
+</code></pre>
+<ol start="3">
+<li>修改grub值</li>
+</ol>
+<ul>
+<li>Intel CPU修改为</li>
+</ul>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet intel_iommu=on&quot;
+</code></pre>
+<ul>
+<li>AMD CPU修改为</li>
+</ul>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet amd_iommu=on&quot;
+</code></pre>
+<ol start="4">
+<li>保存退出</li>
+</ol>
+<ul>
+<li>按<code>Crtl + X</code>退出，再按 <code>Y</code> 保存并退出</li>
+</ul>
+<ol start="5">
+<li>更新grub配置</li>
+</ol>
+<pre><code>update-grub
+</code></pre>
+<h2 id="增加模块">增加模块</h2>
+<ol>
+<li>PVE shell里输入命令</li>
+</ol>
+<pre><code>nano /etc/modules
+</code></pre>
+<ol start="2">
+<li>加入以下内容</li>
+</ol>
+<pre><code>vfio
+ vfio_iommu_type1
+ vfio_pci
+ vfio_virqfd
+</code></pre>
+<ol start="3">
+<li>保存退出</li>
+</ol>
+<ul>
+<li>按<code>Crtl + X</code>退出，再按 <code>Y</code> 保存并退出</li>
+</ul>
+<ol start="4">
+<li>查看网卡ID</li>
+</ol>
+<pre><code>lspci |grep net
+</code></pre>
+<h2 id="openwrt添加直通网卡">OpenWrt添加直通网卡</h2>
+<ol>
+<li>找到对应OpenWrt虚拟机编号(如：100)</li>
+<li>找到 硬件 &gt; 添加 &gt; PCI设备 &gt; 原始设备 &gt; 设备列表中找到对应的网口 &gt; 勾选所有功能 &gt; 添加即可</li>
+</ol>
+<h1 id="qm命令">qm命令</h1>
+<ol>
+<li>命令语法</li>
+</ol>
+<pre><code>qm &lt;COMMAND&gt; [ARGS] [OPTIONS]
+</code></pre>
+<ol start="2">
+<li>查看虚拟机列表(数字为VMID编号)</li>
+</ol>
+<pre><code>qm list
+</code></pre>
+<ol start="3">
+<li>启动虚拟机(数字为VMID编号)</li>
+</ol>
+<pre><code>qm start 100
+</code></pre>
+<ol start="4">
+<li>停止虚拟机</li>
+</ol>
+<pre><code>qm stop 100
+</code></pre>
+<ol start="5">
+<li>查看虚拟机状态</li>
+</ol>
+<pre><code>qm status 100
+</code></pre>
+<ol start="6">
+<li>删除虚拟机(删除前需要停止虚拟机)</li>
+</ol>
+<pre><code>qm destroy 100
+</code></pre>
+<ol start="7">
+<li>解锁虚拟机</li>
+</ol>
+<blockquote>
+<p>如果虚拟机在备份、克隆、迁移、快照等国产中可能出现错误，导致虚拟机锁定，这个时候会出现界面上无法关机、重启等，需要先解锁虚拟机，通过如下命令进行解锁。如果执行此命令还无法解锁，需要先删除lock-100.conf配置文件。</p>
+</blockquote>
+<pre><code>qm unlock 100
+</code></pre>
+<ul>
+<li>删除虚拟机100的配置文件</li>
+</ul>
+<pre><code>rm -rf /var/lock/qemu-server/lock-100.conf
+</code></pre>
+<ol start="8">
+<li>暂停虚拟机</li>
+</ol>
+<pre><code>qm suspend 100
+</code></pre>
+<ol start="9">
+<li>恢复虚拟机</li>
+</ol>
+<pre><code>qm resume 100
+</code></pre>
+<ol start="10">
+<li>重置虚拟机</li>
+</ol>
+<pre><code>qm reset 100
+</code></pre>
+<ol start="11">
+<li>查看虚拟机配置信息</li>
+</ol>
+<pre><code>qm config 100
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[+86手机号接收注册谷歌账号验证码]]></title>
+        <id>https://blog.wmjan.top/post/google/</id>
+        <link href="https://blog.wmjan.top/post/google/">
+        </link>
+        <updated>2024-05-13T07:47:07.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="无法获取验证码">无法获取验证码</h1>
+<ul>
+<li>现在注册谷歌账号需要提供手机号码获取验证码，证明您不是自动程序，但使用+86手机号码时往往会收到提示：此电话号码无法用于进行验证</li>
+</ul>
+<h1 id="解决方法亲测有效">解决方法，亲测有效</h1>
+<ol>
+<li>下载最新版chrome浏览器，手机/电脑版本均可以</li>
+<li>语言添加英语，删除其他多余语言</li>
+<li>结束进程/关闭退出</li>
+<li>重新打开chrome浏览器，按流程重新注册即可使用+86手机号码来获取验证码了</li>
+<li>需要注意的是谷歌账号如果长期不登陆使用的话是会被锁定的</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[OpenWrt配置OpenVPN多用户连接]]></title>
+        <id>https://blog.wmjan.top/post/OpenVPN/</id>
+        <link href="https://blog.wmjan.top/post/OpenVPN/">
+        </link>
+        <updated>2024-05-04T06:00:50.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="openvpn简述">OpenVPN简述</h1>
+<ul>
+<li>OpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备</li>
+<li>最大的好处就是安全、高效、跨平台</li>
+<li>可解决一些远程端口访问也无法实现的一些功能，如访问打印机等等</li>
+</ul>
+<h1 id="安装及配置">安装及配置</h1>
+<ol>
+<li>安装以下插件，详见<a href="https://blog.wmjan.top/post/openwrt/">旁路由简述及OpenWrt相关设置</a>中的软件安装部分</li>
+</ol>
+<blockquote>
+<p>luci-i18n-openvpn-zh-cn<br>
+luci-app-openvpn-server<br>
+luci-app-openvpn<br>
+openvpn-openssl<br>
+openvpn-easy-rsa</p>
+</blockquote>
+<ol start="2">
+<li>部署及配置</li>
+</ol>
+<ul>
+<li>侧边栏 VPN &gt; OpenVPN服务器</li>
+</ul>
+<blockquote>
+<p>启用：勾选<br>
+协议：按实际需求选择，只有公网IPv6的建议选<code>UDP Server IPv6</code><br>
+端口：默认1194，也可自定义，切记需要在网络 &gt; 防火墙 &gt; 端口转发中打开<br>
+WAN口的 DDNS域名 或者 IP：自己已注册的域名，如wmjan.cn<br>
+客户端网段：默认<br>
+客户端推送配置：根据路由的实际LAN IP 修改 <code>route 192.168.0.0 255.255.255.0</code> 和 <code>dhcp-option DNS 192.168.0.1</code> 这两行，如你的内网IP段为192.168.10.x，那么可修改为 <code>route 192.168.10.0 255.255.255.0</code> 和 <code>dhcp-option DNS 223.5.5.5</code><br>
+保存&amp;应用<br>
+一键下载.ovpn文件 备用</p>
+</blockquote>
+<h1 id="添加多客户端共用同一证书">添加多客户端共用同一证书</h1>
+<ul>
+<li>SSH登陆OpenWrt输入</li>
+</ul>
+<pre><code>vi /etc/confing/openvpn
+</code></pre>
+<ul>
+<li>按 <code>i</code> 进入编辑状态，在底部加入以下代码，修改完按ESC 然后输入 <code>:wq</code> 即可保存退出</li>
+</ul>
+<pre><code>option duplicate_cn &quot;1&quot;
+</code></pre>
+<ul>
+<li>重启OpenVPN</li>
+</ul>
+<pre><code>/etc/init.d/openvpn restart
+</code></pre>
+<h1 id="添加自定义防火墙规则">添加自定义防火墙规则</h1>
+<ul>
+<li>侧边栏 网络 &gt; 防火墙 &gt; 自定义规则加入以下代码</li>
+</ul>
+<pre><code>iptables -t nat -A POSTROUTING -o br-lan -j MASQUERADE
+</code></pre>
+<h1 id="使用以安卓客户端为例">使用，以安卓客户端为例</h1>
+<ul>
+<li>下载 <a href="https://www.123pan.com/s/TozYjv-phF5H.html">OpenVPN Connect</a>，提取码：open</li>
+<li>安装打开 &gt; 右下角+ &gt; Upload Files &gt; 底部BROWSE &gt; 找到下载备用的my.ovpn文件 &gt; OK &gt; CONNECT</li>
+</ul>
+<blockquote>
+<p>注：只能使用本局域网以外的网络方可连接</p>
+</blockquote>
+<ul>
+<li>连接成功后就相当于内网主机了，你的对外IP也是对应你宽带的IP，如果OpenWrt上配置了梯子软件也直接可以使用</li>
+</ul>
+<h1 id="end">END</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[旁路由简述及OpenWrt相关设置]]></title>
+        <id>https://blog.wmjan.top/post/openwrt/</id>
+        <link href="https://blog.wmjan.top/post/openwrt/">
+        </link>
+        <updated>2024-05-02T03:00:17.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="什么是旁路由">什么是旁路由</h1>
+<ul>
+<li>旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能</li>
+</ul>
+<h1 id="旁路由的几种工作方式">旁路由的几种工作方式</h1>
+<h3 id="1-主路由开dhcp-网关未指向旁路由旁路由关dhcp">1. 主路由开DHCP、网关未指向旁路由，旁路由关DHCP</h3>
+<ul>
+<li>客户端需设置静态IP，网关为旁路由IP地址</li>
+<li>好处是旁路由随时可撤，不影响主网络</li>
+<li>旁路由撤离后，需要手动修改网关IP或改为自动获取</li>
+<li>如果只需要部分设备使用旁路由功能，就选这方案</li>
+</ul>
+<h3 id="2-主路由开dhcp网关未指向旁路由旁路由强制开dhcp">2. 主路由开DHCP，网关未指向旁路由，旁路由(强制)开DHCP</h3>
+<ul>
+<li>客户端可通过强制DHCP自动获取旁路由网关</li>
+<li>好处是旁路由随时可撤，不影响主网络</li>
+<li>旁路由撤离后，需要重新自动获取IP</li>
+<li>如果需要所有设备使用旁路由功能，就选这方案</li>
+</ul>
+<h3 id="3-主路由开dhcp网关指向旁路由旁路由关dhcp">3. 主路由开DHCP，网关指向旁路由，旁路由关DHCP</h3>
+<ul>
+<li>客户端可自动获取IP等信息即可</li>
+<li>旁路由撤离/死机后，会直接影响整体网络</li>
+</ul>
+<h3 id="4-主路由关dhcp旁路由开dhcp">4. 主路由关DHCP，旁路由开DHCP</h3>
+<ul>
+<li>客户端可自动获取IP等信息即可</li>
+<li>旁路由撤离/死机后，会直接影响整体网络</li>
+</ul>
+<h3 id="综上所述需根据自己的实际情况选择对应方案一般会采用1和2方案居多">综上所述，需根据自己的实际情况选择对应方案，一般会采用1和2方案居多</h3>
+<h1 id="旁路由设置">旁路由设置</h1>
+<ul>
+<li>以单网口OpenWrt第1种工作方式以例</li>
+<li>主路由IP：192.168.2.254</li>
+</ul>
+<h3 id="配置接口">配置接口</h3>
+<ul>
+<li>侧边栏 网络 &gt; 接口 &gt; LAN &gt; 修改 &gt; 基本设置</li>
+</ul>
+<blockquote>
+<p>协议：静态址址<br>
+IPv4地址：192.168.2.253<br>
+IPv4网关：192.168.2.254<br>
+使用自定义的 DNS 服务器：192.168.2.254<br>
+其他均可保持默认</p>
+</blockquote>
+<ul>
+<li>高级设置 &gt; 保持默认</li>
+<li>物理设置 &gt; 桥接接口 &gt; 不勾选 &gt; 接口选“eth0”</li>
+<li>防火墙设置 &gt; 选lan</li>
+<li>DHCP 服务器 &gt; 忽略此接口(勾选即为关闭)</li>
+</ul>
+<blockquote>
+<p>PS：如果使用旁路由DHCP，需开启接口并在高级设置中<br>
+动态DHCP：勾选<br>
+强制：勾选</p>
+</blockquote>
+<ul>
+<li>最后不要忘了保存&amp;应用</li>
+</ul>
+<h3 id="防火墙配置">防火墙配置</h3>
+<ul>
+<li>侧边栏 网络 &gt; 防火墙 &gt; 基本设置 &gt; 区域 &gt; lan对应那条 &gt; 入站数据/出站数据/转发 均选<strong>接受</strong> &gt; IP动态伪装 勾选 &gt; 保存&amp;应用</li>
+<li>单网口设备建议自定义规则加上以下代码，详情见<a href="https://www.right.com.cn/forum/thread-2983767-1-1.html">说明</a></li>
+</ul>
+<pre><code>iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+<h3 id="验证路由器是否能正常上网">验证路由器是否能正常上网</h3>
+<ul>
+<li>侧边栏 网络 &gt; 网络诊断 &gt; IPv4 Ping &gt; 有显示xxx ms表示网络正常了</li>
+</ul>
+<h1 id="软件安装相关">软件安装相关</h1>
+<h3 id="了解openwrt软件">了解OpenWrt软件</h3>
+<ul>
+<li>OpenWrt软件分为前端与后端，前端即为可视化界面Luci开头的，后端即为只存在于系统内的软件，需要使用命令来配置运行。所以我们在安装时尽量选择带luci开头的软件包，安装时会自动把后端关联程序一并安装上。</li>
+<li>OpenWrt应用过于广泛，不同CPU架构的软件版本是不通用的。</li>
+<li>不知道设备适合什么版本，可SSH登陆路由器输入以下代码即可查看CPU架构</li>
+</ul>
+<pre><code>cat /etc/os-release |grep ARCH
+</code></pre>
+<h3 id="添加软件源">添加软件源</h3>
+<blockquote>
+<p>由于OpenWrt编译者爱好不同，加入的软件源也有所不同，可能存在自带软件源中无法搜到想要的软件，此时可添加第三方软件源来弥补</p>
+</blockquote>
+<ol>
+<li><a href="https://op.dllkids.xyz/packages/">kenzok8大佬OpenWrt常用软件源地址</a>；<a href="https://github.com/kiddin9/openwrt-packages">kiddin9大佬OpenWrt常用软件源地址</a></li>
+<li>添加软件源，以X86平台为例</li>
+</ol>
+<ul>
+<li>侧边栏 系统 &gt; 软件包 &gt; 顶部 设置 &gt; 自定义软件源 &gt; 添加行<code>src/gz wmjan https://op.dllkids.xyz/packages/x86_64</code> &gt; 提交 &gt; 回到顶部 动作 &gt; 刷新列表</li>
+</ul>
+<h3 id="passwall安装与使用">PassWall安装与使用</h3>
+<ol>
+<li>安装</li>
+</ol>
+<ul>
+<li>侧边栏 系统 &gt; 软件包 &gt; 过滤器输入passwall &gt; 查找软件包 &gt; 可用软件包 &gt; 找到luci-i18n-passwall-zh-cn安装即可，刷新页面可在侧边栏 &gt; 服务 中找到</li>
+</ul>
+<ol start="2">
+<li>使用</li>
+</ol>
+<ul>
+<li>侧边栏 服务 &gt; PassWall &gt; 节点列表 &gt; 修改现有列表或添加 &gt; 导入分享URL &gt; 粘贴VLESS/VMESS等节点信息 &gt; 保存 &gt; 回到 基本设置 &gt; 主开关 勾选 &gt; TCP节点选择刚才添加的名称 &gt; 保存&amp;应用</li>
+<li>验证是否成功 &gt; 点 谷歌连接</li>
+</ul>
+<blockquote>
+<p>有数据即正常<br>
+没数据，解决方法：确认节点是否有效？修改DNS-远程DNS更换为谷歌 &gt; 保存&amp;应用</p>
+</blockquote>
+<h3 id="frpcfrp内网穿透安装与使用">Frpc(Frp内网穿透)安装与使用</h3>
+<ol>
+<li>安装</li>
+</ol>
+<ul>
+<li>侧边栏 系统 &gt; 软件包 &gt; 过滤器输入frpc &gt; 查找软件包 &gt; 可用软件包 &gt; 找到luci-i18n-frpc-zh-cn安装即可，刷新页面可在侧边栏 &gt; 服务 中找到</li>
+</ul>
+<ol start="2">
+<li>使用</li>
+</ol>
+<ul>
+<li>详见<a href="https://blog.wmjan.top/post/frp/">frp内网穿透配置说明</a>把对应的信息填入即可</li>
+</ul>
+<h3 id="动态dns">动态DNS</h3>
+<ol>
+<li>安装</li>
+</ol>
+<ul>
+<li>侧边栏 系统 &gt; 软件包 &gt; 过滤器输入ddns &gt; 查找软件包 &gt; 可用软件包 &gt; 找到luci-i18n-ddns-zh-cn安装即可，刷新页面可在侧边栏 &gt; 服务 中找到</li>
+</ul>
+<blockquote>
+<p>切记：不能输入完整域名等有./-@之类的特殊字符，否则无法添加且不会有任何错误提示</p>
+</blockquote>
+<ol start="2">
+<li>使用，以dnspod为例</li>
+</ol>
+<ul>
+<li>侧边栏 服务 &gt; 动态DNS &gt; 输入框中输入有效名称如dnspod &gt; 添加</li>
+<li>基本设置</li>
+</ul>
+<blockquote>
+<p>启用：勾选<br>
+查询主机名：不带任何前缀的主域名，如wmjan.cn<br>
+IP 地址版本：IPv4 地址<br>
+DDNS 服务提供商 [IPv4]：dnspod.cn &gt; 更改提供者<br>
+域名：必须带www前缀或子域名，如www.wmjan.cn<br>
+用户名：腾讯云API密钥 &gt; DNSPod Token &gt; 创建密钥时的ID<br>
+密码：腾讯云API密钥 &gt; DNSPod Token &gt; 创建密钥时的Token</p>
+</blockquote>
+<ul>
+<li>高级设置</li>
+</ul>
+<blockquote>
+<p>IP 地址来源 [IPv4]：网络<br>
+网络 [IPv4]：wan，以实际拥有公网IP的接口<br>
+其他默认 &gt; 保存&amp;应用</p>
+</blockquote>
+<h1 id="end">END</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[玩客云刷OpenWrt简易教程]]></title>
+        <id>https://blog.wmjan.top/post/wky/</id>
+        <link href="https://blog.wmjan.top/post/wky/">
+        </link>
+        <updated>2024-04-22T02:59:33.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="简易教程二次刷机">简易教程/二次刷机</h1>
+<ol>
+<li>下载<a href="https://www.123pan.com/s/TozYjv-wzg5H.html">OpenWrt安装包</a>解压，提取码：open，安装运行USB_Burning_Tool（烧录软件），导入OpenWrt安装包，选择擦除所有，点击开始</li>
+<li>USB对公线接玩客云离HDMI接口近的那个USB接口</li>
+<li>取卡针长按复位键不放，插电源3-5秒，直到软件显示“连接成功”跑进度条即可放开取卡针了</li>
+<li>烧录成功之后，点击停止，拔掉电源</li>
+<li>默认IP：10.0.0.1，默认用户名/密码：root</li>
+</ol>
+<h1 id="首次刷机以上方法失败">首次刷机/以上方法失败</h1>
+<ol>
+<li>热风枪吹开面板，取出主板</li>
+<li>准备 USB公对公数据线一根(可以自制一根)、短接线或金属尖头镊子</li>
+<li>下载<a href="https://www.123pan.com/s/TozYjv-wzg5H.html">OpenWrt安装包</a>解压，提取码：open</li>
+</ol>
+<h1 id="开始烧录">开始烧录</h1>
+<ol>
+<li>安装USB_Burning_Tool（烧录软件）</li>
+<li>USB对公线接玩客云离HDMI接口近的那个USB接口</li>
+<li>打开软件，短接主板上的触电，接通电源直到软件显示“连接成功”</li>
+<li>导入OpenWrt安装包，选择擦除所有，点击开始</li>
+<li>烧录成功之后，点击停止，拔掉电源、数据线</li>
+<li>接上键盘和显示器，开机跑完代码之后，插入网线连接路由器的LAN接口<br>
+<img src="https://blog.wmjan.top/post-images/openwrt.png" alt="" loading="lazy"></li>
+</ol>
+<h1 id="修改配置">修改配置</h1>
+<ol>
+<li>修改IP命令</li>
+</ol>
+<pre><code>vi /etc/config/network
+</code></pre>
+<ul>
+<li>按 <code>i</code> 进入编辑状态，修改完按ESC 然后输入 <code>:wq</code> 即可保存退出</li>
+</ul>
+<ol start="2">
+<li>重置root账户密码</li>
+</ol>
+<ul>
+<li>赋予root权限命令</li>
+</ul>
+<pre><code>mount_root
+</code></pre>
+<ul>
+<li>修改root密码命令</li>
+</ul>
+<pre><code>passwd root
+</code></pre>
+<ul>
+<li>根据提示输入新密码</li>
+</ul>
+<blockquote>
+<p>New password #新密码<br>
+Retype password #再次输入密码</p>
+</blockquote>
+<ul>
+<li>重启完成后，电脑打开浏览器输入OpenWrt的IP地址，进行登录即可</li>
+</ul>
+<h1 id="end">END</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[OpenWrt/iStoreOS安装PassWall]]></title>
+        <id>https://blog.wmjan.top/post/PassWall/</id>
+        <link href="https://blog.wmjan.top/post/PassWall/">
+        </link>
+        <updated>2024-04-16T00:59:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="openwrt安装">OpenWrt安装</h1>
+<h3 id="资源下载">资源下载</h3>
+<ol>
+<li>开源项目地址，感谢<br>
+xiaorouji大佬：<a href="https://github.com/xiaorouji/openwrt-passwall/releases">PassWall</a></li>
+<li>查看CPU架构</li>
+</ol>
+<pre><code>cat /etc/os-release |grep ARCH
+</code></pre>
+<ol start="3">
+<li>下载软件</li>
+</ol>
+<ul>
+<li>luci-23.05_luci-app-passwall_4.76-4_all.ipk</li>
+<li>luci-23.05_luci-i18n-passwall-zh-cn_git-24.091.50413-b585fb1_all.ipk</li>
+<li>passwall_packages_ipk_aarch64_generic.zip(下载路由CPU架构对应版本)</li>
+</ul>
+<h3 id="上传文件到openwrt">上传文件到OpenWrt</h3>
+<ol>
+<li>左侧栏 系统 &gt; 文件传输 &gt; 选择文件(把3个文件逐一上传) &gt; 上传</li>
+</ol>
+<h3 id="安装">安装</h3>
+<ol>
+<li>SSH登陆OpenWrt路由器</li>
+<li>进入安装包所在目录</li>
+</ol>
+<pre><code>cd /tmp/upload
+</code></pre>
+<ol start="3">
+<li>查看目录下所有文件</li>
+</ol>
+<pre><code>ls
+</code></pre>
+<ol start="4">
+<li>确认3个文件都在，再运行解压安装包</li>
+</ol>
+<pre><code>unzip passwall_packages_ipk_aarch64_generic.zip
+</code></pre>
+<ol start="5">
+<li>安装/tmp/upload目录下所有软件包</li>
+</ol>
+<pre><code>opkg install *.ipk --force-reinstal
+</code></pre>
+<h1 id="istoreos安装">iStoreOS安装</h1>
+<h3 id="资源下载x86为例">资源下载，X86为例</h3>
+<ol>
+<li>开源项目地址，感谢AUK9527大佬：<a href="https://github.com/AUK9527/Are-u-ok/tree/main/x86">PassWall</a></li>
+<li>下载软件</li>
+</ol>
+<ul>
+<li>下载后得到类似PassWall_4.76-1_x86_64_all_sdk_22.03.6.run的文件</li>
+</ul>
+<h3 id="上传文件到openwrt-2">上传文件到OpenWrt</h3>
+<ol>
+<li>左侧栏 系统 &gt; 文件传输 &gt; 选择文件(选择PassWall_4.76-1_x86_64_all_sdk_22.03.6.run文件) &gt; 上传</li>
+</ol>
+<h3 id="安装-2">安装</h3>
+<ol>
+<li>SSH登陆OpenWrt路由器</li>
+<li>进入安装包所在目录</li>
+</ol>
+<pre><code>cd /tmp/upload
+</code></pre>
+<ol start="3">
+<li>赋予运行权限</li>
+</ol>
+<pre><code>chmod 755 PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
+</code></pre>
+<ol start="4">
+<li>安装</li>
+</ol>
+<pre><code>./PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用Cloudflare的Workers搭建VLESS节点]]></title>
+        <id>https://blog.wmjan.top/post/Workers/</id>
+        <link href="https://blog.wmjan.top/post/Workers/">
+        </link>
+        <updated>2024-03-08T06:45:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="准备工作">准备工作</h1>
+<ol>
+<li>前往<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>自行注册账号</li>
+<li><a href="https://github.com/3Kmfi6HP/EDtunnel">3Kmfi6HP大佬的Workers项目链接</a></li>
+<li>下载windows梯子软件v2rayN最新版，打开<a href="https://github.com/2dust/v2rayN">v2rayN官网</a>，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行</li>
+<li>UUID(userID)获取方法：运行v2rayN &gt; 点左上角“服务器” &gt; 添加VLESS服务器 &gt; 用户ID(id)项点 生成即可得到，保存待用</li>
+</ol>
+<h1 id="搭建及使用">搭建及使用</h1>
+<ol>
+<li>打开<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>左侧栏 &gt; Workers 和 Pages &gt; 概述里点 创建应用程序 &gt; 创建 Worker &gt; 名称随便取 &gt; 点右下角部署 &gt; 编辑代码 &gt; <a href="https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js">复制3Kmfi6HP大佬的worker.js代码替换上去</a> &gt; 把准备工作中得到的userID替换代码中let userID的值 &gt; 点右上角 保存并部署</li>
+<li>回到Workers 和 Pages &gt; 点刚创建的应用程序名 &gt; 触发器 &gt; 复制路由地址<code>*.*.workers.dev</code>并加上<code>/UUID地址</code>，如我的是：<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code></li>
+<li>复制<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code>在浏览器打开即可看到生成 VLESS 协议的配置信息</li>
+<li>点开<code>VLESS 节点订阅连接</code>，<code>Clash for Windows 节点订阅连接</code>，<code>优选IP自动节点订阅</code>，<code>v2rayNG优选IP自动</code>等你需要的对应链接，会得到整个页面全是字符</li>
+<li>全选复制后，打开梯子软件v2rayN &gt; 点左上角服务器 &gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点</li>
+<li>Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常</li>
+<li>选择其中一条延时较低的节点回车即可启用节点</li>
+<li>使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了</li>
+</ol>
+<blockquote>
+<p>分流测试地址<a href="https://ip.skk.moe/">ip.skk.moe</a><br>
+查看当前IP地址<a href="https://ip.gs/">ip.gs</a></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows下mklink的巧用及OneDrive相关应用]]></title>
+        <id>https://blog.wmjan.top/post/mklink/</id>
+        <link href="https://blog.wmjan.top/post/mklink/">
+        </link>
+        <updated>2024-03-03T02:46:24.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>文中提及的“用户名”需要改为你实际Windows登陆名</p>
+</blockquote>
+<h1 id="前言">前言</h1>
+<p>Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在<br>
+<code>C:\Users\用户名\Documents\WeChat Files</code>目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。</p>
+<h1 id="利用mklink命令转移目录">利用mklink命令转移目录</h1>
+<ol>
+<li>退出微信登陆</li>
+<li>找到<code>C:\Users\用户名\Documents</code>目录把WeChat Files整个目录移动到E盘下</li>
+<li>再在E:\WeChat Files目录下新建mklink.bat文件，内容为</li>
+</ol>
+<pre><code>mklink /D &quot;C:\Users\用户名\Documents\WeChat Files&quot; &quot;E:\WeChat Files&quot;
+</code></pre>
+<ol start="4">
+<li>右键以管理员权限运行mklink.bat后，C:\Users\用户名\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\WeChat Files目录软链接到C:\Users\用户名\Documents\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。</li>
+</ol>
+<h1 id="重装系统后恢复聊天记录">重装系统后，恢复聊天记录</h1>
+<blockquote>
+<p>确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径</p>
+</blockquote>
+<ol>
+<li>先右键以管理员权限运行E:\WeChat Files\mklink.bat文件</li>
+<li>再重新安装微信，运行登陆</li>
+</ol>
+<h1 id="同步任意本地文件夹到onedrive">同步任意本地文件夹到OneDrive</h1>
+<blockquote>
+<p>解放C盘空间<br>
+灵活同步各磁盘文件</p>
+</blockquote>
+<ol>
+<li>只需要在命令行模式输入以下代码即可完成，其中<code>E:\test</code>为需要同步的实际目录，前面的<code>test</code>为OneDrive目录中生成的软链接名称</li>
+</ol>
+<pre><code>mklink /j &quot;%UserProfile%\OneDrive\test&quot; &quot;E:\test&quot;
+</code></pre>
+<ul>
+<li>当然你也可以同步整个E盘，如：</li>
+</ul>
+<pre><code>mklink /j &quot;%UserProfile%\OneDrive\E&quot; &quot;E:\&quot;
+</code></pre>
+<ul>
+<li>如果你OneDrive目录在D盘，那么输入命令时也需要输入实际地址，如：</li>
+</ul>
+<pre><code>mklink /j &quot;D:\OneDrive\test&quot; &quot;E:\test&quot;
+</code></pre>
+<ol start="2">
+<li>解决同步问题</li>
+</ol>
+<blockquote>
+<p>出于应用设计的原因，OneDrive不能即时同步mklink创建链接的变化</p>
+</blockquote>
+<ul>
+<li>方法1：需要右键任务栏中Onedrive图标 <code>暂停同步</code> &gt; <code>继续同步</code> 才能对其完成同步处理。</li>
+<li>方法2：推荐使用<a href="https://github.com/ktheod/OneDriveBully/releases">OneDriveBully.msi</a></li>
+</ul>
+<blockquote>
+<p>下载OneDriveBully.msi后安装并运行<br>
+点Browse选择OneDrive所在根目录<br>
+Bully Every X Minutes:1 (表示1分钟刷新一次)<br>
+Load on Windows Startup勾选<br>
+再点Refresh刷新自动识别软链接目录<br>
+最后点下Save，看到Success弹窗即可</p>
+</blockquote>
+<h1 id="移动onedrive文件夹至d盘目录">移动OneDrive文件夹至D盘目录</h1>
+<ol>
+<li>首次登陆</li>
+</ol>
+<ul>
+<li>登陆帐户后到选择<code>你的OneDrive文件夹</code>时，左下角选择<code>更改位置</code>选择你需要保存的位置(可提前在D盘新建一个OneDrive文件夹)即可</li>
+</ul>
+<ol start="2">
+<li>已经默认保存在C盘</li>
+</ol>
+<ul>
+<li>任务栏中右键OneDrive图标 &gt; 选择设置 &gt; 在账户选项中，选择<code>取消链接此电脑</code></li>
+<li>移动OneDrive文件夹，通常OneDrive存储目录位于C:\Users[用户名]下，选中OneDrive目录，直接 <code>剪切</code> 并 <code>粘贴</code> 到D盘</li>
+<li>重复首次登陆步骤即可</li>
+</ul>
+]]></content>
+    </entry>
+</feed>

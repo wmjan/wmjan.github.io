@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Wmjan学习站">
+<meta name="description" content="">
+<meta name="theme-color" content="#000">
+<title>Wmjan学习站</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1768885370071">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/media/css/gemini.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css"
+  rel="stylesheet">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>Wmjan学习站</span>
+            </a>  
+          
+        </div>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about/" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout  gemini">
+      <div class="section-layout-wrapper">
+        <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">Wmjan</p>
+    
+    <div class="site-description right-motion">
+      
+      
+      
+        <p></p>
+      
+        <p></p>
+      
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">20</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
+      </div>
+    
+  
+  
+
+  
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          warp
+          <small>标签</small>
+        </h2>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <a href="https://blog.wmjan.top/post/warpfenliu/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              01-08
+              <small>WARP+分流设置</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      <a href="https://blog.wmjan.top/post/warp+key/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              01-08
+              <small>WARP+免费节点获取方法及进阶玩法</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      
+    </div>
+  </footer>
+  
+  
+  <div class="gemini back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target","_blank");
+      }
+    })
+  }
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+</script>
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        console.log('复制操作频率过高');
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 500
+  });
+</script>
+
+<!-- <div class="search-mask" id="search_mask">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input type="text" placeholder="搜索">
+      </div>
+      <i class="fa fa-times-circle"></i>
+    </div>
+    <div class="result">
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Win11NetworkSharing/"" data-c="
+          &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;在 Windows 11 24H2 中，我们进行了两项重大安全更改，这些更改可能会影响将驱动器映射到第三方消费类 NAS 或带有 USB 存储的路由器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;默认情况下，所有连接都需要 SMB 签名。这通过防止网络篡改来提高安全性，并阻止将您的凭证发送到恶意服务器的中继攻击。&lt;/li&gt;
+&lt;li&gt;来宾回退在 Windows 11 专业版上处于禁用状态。这可以提高您在连接到不可信设备时的安全性。Guest 允许您连接到没有用户名或密码的 SMB 服务器。虽然对您的 NAS 制造商来说很方便，但这意味着您的设备可能会被诱骗连接到恶意服务器，而无需提示输入凭据，然后获得勒索软件或窃取您的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;出现的问题如下&#34;&gt;出现的问题如下&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如果第三方设备不支持签名，可能会收到以下错误提示：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;0xc000a000&lt;br&gt;
+-1073700864&lt;br&gt;
+STATUS_INVALID_SIGNATURE&lt;br&gt;
+加密签名无效&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如果第三方需要Guest Access，可能会收到以下错误提示：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;您无法访问此共享文件夹，因为您组织的安全策略会阻止未经身份验证的 Guest 访问。这些策略有助于保护你的电脑免受网络上不安全或恶意设备的攻击&lt;br&gt;
+0x80070035&lt;br&gt;
+0x800704f8&lt;br&gt;
+找不到网络路径&lt;br&gt;
+发生系统错误 3227320323&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. Windows 11 专业版&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打开运行(Win+R)，输入 gpedit.msc 进入组策略&lt;/li&gt;
+&lt;li&gt;依次打开 计算机配置 &amp;gt; Windows 设置 &amp;gt; 安全设置 &amp;gt; 本地策略 &amp;gt; 安全选项 &amp;gt; 双击 Microsoft 网络客户端:对通信进行数字签名(始终) 设置为 &amp;gt; 已禁用 &amp;gt; 确定即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2. Windows 11 家庭版&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;右键 开始菜单 &amp;gt; 终端管理员&lt;/li&gt;
+&lt;li&gt;禁用 SMB 签名要求，输入以下代码并回车，然后按 Y 接受&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Set-SmbClientConfiguration -RequireSecuritySignature $false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;禁用 guest fallback，输入以下代码并回车，然后按 Y 接受&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Set-SmbClientConfiguration -EnableInsecureGuestLogons $true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;end&#34;&gt;END&lt;/h2&gt;
+">解决Win11 24H2/25H2无法访问局域网共享</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/cert/"" data-c="
+          &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;目前腾讯云免费证书有效期只有短短90天，本记录以腾讯云DNSPOD为例，使用群晖docker部署 acme.sh 的方式免费申请泛域名证书以及配置自动续签，保证证书不会到期中断。&lt;/p&gt;
+&lt;h2 id=&#34;一-腾讯云dns-token申请&#34;&gt;一、腾讯云DNS Token申请&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开DNSPod 控制台&lt;br&gt;
+腾讯云DNSPod： &lt;a href=&#34;https://console.dnspod.cn/&#34;&gt;DNSPod&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取 DNSPod Token&lt;br&gt;
+点击右上角头像 &amp;gt; 点击API密钥 &amp;gt; 选择DNSPod Token &amp;gt; 创建密钥&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;记录并保存Token，忘记需重新创建密钥&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;二-群晖创建acmesh容器并配置环境&#34;&gt;二、群晖创建acme.sh容器并配置环境&lt;/h2&gt;
+&lt;p&gt;无法正常访问Docker注册表的请参考使用：&lt;a href=&#34;https://cloud.tencent.com/developer/article/2485043&#34;&gt;Docker/DockerHub 国内镜像源/加速列表&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在共享文件夹docker里建一个acme.sh的文件夹&lt;/li&gt;
+&lt;li&gt;拉取acme.sh docker镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;打开群晖docker，在注册表里搜索acme.sh，找到并下载neilpang/acme.sh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;创建容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;容器名为：acme-sh&lt;/li&gt;
+&lt;li&gt;高级设置 &amp;gt; 存储空间：添加文件夹docker/acme.sh，装载路径到 /acme.sh&lt;/li&gt;
+&lt;li&gt;网络为host&lt;/li&gt;
+&lt;li&gt;添加环境变量（如果开启了两步验证，需要繁琐一些，也可以为acme.sh专门新建一个账号）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DP_Id ： 填入第一步获取的 DNSPod ID&lt;br&gt;
+DP_Key ：填入第一步获取的 DNSPod Token&lt;br&gt;
+SYNO_Username ：登录群晖的用户名&lt;br&gt;
+SYNO_Password ： 登录群晖的密码&lt;br&gt;
+SYNO_Certificate ：空字符串（&amp;quot;&amp;quot;）为替换默认证书&lt;br&gt;
+SYNO_Create：填域名&lt;br&gt;
+SYNO_Port ： 填入群晖内网的端口号（我用的默认端口5000未修改）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;命令处添加：daemon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;点击下一步，运行容器。&lt;br&gt;
+此时容器搭建完毕，但证书还没有获取，也没有部署，必须要一个脚本文件来启动它。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;三-创建脚本文件&#34;&gt;三、创建脚本文件&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在群晖用文本编辑器，创建一个新文本，粘贴如下代码，修改 &#39;你的域名&#39; ，然后保存，修改文件名为cert.sh&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+ 
+# 域名
+ 
+DOMAIN=&#39;你的域名&#39;
+ 
+# DNS类型，dns_ali dns_dp dns_gd dns_aws dns_linode根据域名服务商而定，CloudFlare就是dns_cf
+ 
+DNS=dns_dp
+ 
+# DNS API 生效等待时间 值(单位：秒)，一般120即可
+ 
+# 某些域名服务商的API生效时间较大，需要将这个值加大(比如900)
+ 
+DNS_SLEEP=120
+ 
+# 证书服务商，letsencrypt
+ 
+CERT_SERVER=letsencrypt
+ 
+generateCrtCommand=&amp;quot;acme.sh --force --log --issue --server ${CERT_SERVER} --dns ${DNS} --dnssleep ${DNS_SLEEP} -d &amp;quot;${DOMAIN}&amp;quot; -d &amp;quot;*.${DOMAIN}&amp;quot;&amp;quot;
+ 
+installCrtCommand=&amp;quot;acme.sh --deploy -d &amp;quot;${DOMAIN}&amp;quot; -d &amp;quot;*.${DOMAIN}&amp;quot; --deploy-hook synology_dsm&amp;quot;
+ 
+docker exec acme-sh $generateCrtCommand
+ 
+docker exec acme-sh $installCrtCommand
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;将此脚本文件放到 /volume1/docker/acme.sh 文件夹下，然后右键属性，复制好路径位置，一会要用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;四-获取证书&#34;&gt;四、获取证书&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;首先确认群晖的ssh端口是打开的，然后运行终端，连接群晖。并使用sudo -i 提升账号权限为root权限&lt;/li&gt;
+&lt;li&gt;然后执行脚本运行命令，路径就用刚才复制的脚本文件路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;bash /volume1/docker/acme.sh/cert.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;看到最后的Success，就是成功了。&lt;br&gt;
+然后我们可以在 /volume1/docker/acme.sh/ 文件夹下看到有个以我们域名命名的文件夹，里面就是新保存的证书了&lt;/li&gt;
+&lt;li&gt;然后控制面板  &amp;gt; 安全性 &amp;gt; 证书 检查下证书是否已更新&lt;/li&gt;
+&lt;li&gt;以上步骤成功之后，我们就可以去部署自动更新的脚本了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;五-自动获取更新证书脚本&#34;&gt;五、自动获取更新证书脚本&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;打开群晖控制面板 &amp;gt; 任务计划 &amp;gt; 新增，用户账号选root&lt;/li&gt;
+&lt;li&gt;计划：可设置为每3个月运行一次&lt;/li&gt;
+&lt;li&gt;然后任务设置 &amp;gt; 运行命令(用户定义的脚本)，粘贴如下代码，目录名称以实际为准：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;bash  /volume1/docker/acme.sh/cert.sh &amp;gt;&amp;gt; /volume1/docker/acme.sh/log.txt 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;end&#34;&gt;END&lt;/h2&gt;
+">群晖docker部署acme.sh自动续签DNSPOD证书</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/PVE+iommu/"" data-c="
+          &lt;h1 id=&#34;网卡直通&#34;&gt;网卡直通&lt;/h1&gt;
+&lt;h2 id=&#34;修改gurb&#34;&gt;修改gurb&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;PVE shell里面输入命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;nano /etc/default/grub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;找到以下选项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;修改grub值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel CPU修改为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;AMD CPU修改为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet amd_iommu=on&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;保存退出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;按&lt;code&gt;Crtl + X&lt;/code&gt;退出，再按 &lt;code&gt;Y&lt;/code&gt; 保存并退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;更新grub配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;update-grub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;增加模块&#34;&gt;增加模块&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;PVE shell里输入命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;nano /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;加入以下内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;vfio
+ vfio_iommu_type1
+ vfio_pci
+ vfio_virqfd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;保存退出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;按&lt;code&gt;Crtl + X&lt;/code&gt;退出，再按 &lt;code&gt;Y&lt;/code&gt; 保存并退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;查看网卡ID&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;lspci |grep net
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;openwrt添加直通网卡&#34;&gt;OpenWrt添加直通网卡&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;找到对应OpenWrt虚拟机编号(如：100)&lt;/li&gt;
+&lt;li&gt;找到 硬件 &amp;gt; 添加 &amp;gt; PCI设备 &amp;gt; 原始设备 &amp;gt; 设备列表中找到对应的网口 &amp;gt; 勾选所有功能 &amp;gt; 添加即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;qm命令&#34;&gt;qm命令&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;命令语法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm &amp;lt;COMMAND&amp;gt; [ARGS] [OPTIONS]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;查看虚拟机列表(数字为VMID编号)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;启动虚拟机(数字为VMID编号)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm start 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;停止虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm stop 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;查看虚拟机状态&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm status 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;删除虚拟机(删除前需要停止虚拟机)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm destroy 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;解锁虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果虚拟机在备份、克隆、迁移、快照等国产中可能出现错误，导致虚拟机锁定，这个时候会出现界面上无法关机、重启等，需要先解锁虚拟机，通过如下命令进行解锁。如果执行此命令还无法解锁，需要先删除lock-100.conf配置文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;qm unlock 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;删除虚拟机100的配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;rm -rf /var/lock/qemu-server/lock-100.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;暂停虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm suspend 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;恢复虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm resume 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;重置虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm reset 100
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;查看虚拟机配置信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;qm config 100
+&lt;/code&gt;&lt;/pre&gt;
+">PVE网卡直通及qm命令</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/google/"" data-c="
+          &lt;h1 id=&#34;无法获取验证码&#34;&gt;无法获取验证码&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;现在注册谷歌账号需要提供手机号码获取验证码，证明您不是自动程序，但使用+86手机号码时往往会收到提示：此电话号码无法用于进行验证&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;解决方法亲测有效&#34;&gt;解决方法，亲测有效&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;下载最新版chrome浏览器，手机/电脑版本均可以&lt;/li&gt;
+&lt;li&gt;语言添加英语，删除其他多余语言&lt;/li&gt;
+&lt;li&gt;结束进程/关闭退出&lt;/li&gt;
+&lt;li&gt;重新打开chrome浏览器，按流程重新注册即可使用+86手机号码来获取验证码了&lt;/li&gt;
+&lt;li&gt;需要注意的是谷歌账号如果长期不登陆使用的话是会被锁定的&lt;/li&gt;
+&lt;/ol&gt;
+">+86手机号接收注册谷歌账号验证码</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/OpenVPN/"" data-c="
+          &lt;h1 id=&#34;openvpn简述&#34;&gt;OpenVPN简述&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备&lt;/li&gt;
+&lt;li&gt;最大的好处就是安全、高效、跨平台&lt;/li&gt;
+&lt;li&gt;可解决一些远程端口访问也无法实现的一些功能，如访问打印机等等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;安装及配置&#34;&gt;安装及配置&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;安装以下插件，详见&lt;a href=&#34;https://blog.wmjan.top/post/openwrt/&#34;&gt;旁路由简述及OpenWrt相关设置&lt;/a&gt;中的软件安装部分&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;luci-i18n-openvpn-zh-cn&lt;br&gt;
+luci-app-openvpn-server&lt;br&gt;
+luci-app-openvpn&lt;br&gt;
+openvpn-openssl&lt;br&gt;
+openvpn-easy-rsa&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;部署及配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 VPN &amp;gt; OpenVPN服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;启用：勾选&lt;br&gt;
+协议：按实际需求选择，只有公网IPv6的建议选&lt;code&gt;UDP Server IPv6&lt;/code&gt;&lt;br&gt;
+端口：默认1194，也可自定义，切记需要在网络 &amp;gt; 防火墙 &amp;gt; 端口转发中打开&lt;br&gt;
+WAN口的 DDNS域名 或者 IP：自己已注册的域名，如wmjan.cn&lt;br&gt;
+客户端网段：默认&lt;br&gt;
+客户端推送配置：根据路由的实际LAN IP 修改 &lt;code&gt;route 192.168.0.0 255.255.255.0&lt;/code&gt; 和 &lt;code&gt;dhcp-option DNS 192.168.0.1&lt;/code&gt; 这两行，如你的内网IP段为192.168.10.x，那么可修改为 &lt;code&gt;route 192.168.10.0 255.255.255.0&lt;/code&gt; 和 &lt;code&gt;dhcp-option DNS 223.5.5.5&lt;/code&gt;&lt;br&gt;
+保存&amp;amp;应用&lt;br&gt;
+一键下载.ovpn文件 备用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;添加多客户端共用同一证书&#34;&gt;添加多客户端共用同一证书&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;SSH登陆OpenWrt输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/confing/openvpn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;按 &lt;code&gt;i&lt;/code&gt; 进入编辑状态，在底部加入以下代码，修改完按ESC 然后输入 &lt;code&gt;:wq&lt;/code&gt; 即可保存退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;option duplicate_cn &amp;quot;1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;重启OpenVPN&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;/etc/init.d/openvpn restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;添加自定义防火墙规则&#34;&gt;添加自定义防火墙规则&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 网络 &amp;gt; 防火墙 &amp;gt; 自定义规则加入以下代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;iptables -t nat -A POSTROUTING -o br-lan -j MASQUERADE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;使用以安卓客户端为例&#34;&gt;使用，以安卓客户端为例&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;下载 &lt;a href=&#34;https://www.123pan.com/s/TozYjv-phF5H.html&#34;&gt;OpenVPN Connect&lt;/a&gt;，提取码：open&lt;/li&gt;
+&lt;li&gt;安装打开 &amp;gt; 右下角+ &amp;gt; Upload Files &amp;gt; 底部BROWSE &amp;gt; 找到下载备用的my.ovpn文件 &amp;gt; OK &amp;gt; CONNECT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：只能使用本局域网以外的网络方可连接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;连接成功后就相当于内网主机了，你的对外IP也是对应你宽带的IP，如果OpenWrt上配置了梯子软件也直接可以使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">OpenWrt配置OpenVPN多用户连接</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/openwrt/"" data-c="
+          &lt;h1 id=&#34;什么是旁路由&#34;&gt;什么是旁路由&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;旁路由的几种工作方式&#34;&gt;旁路由的几种工作方式&lt;/h1&gt;
+&lt;h3 id=&#34;1-主路由开dhcp-网关未指向旁路由旁路由关dhcp&#34;&gt;1. 主路由开DHCP、网关未指向旁路由，旁路由关DHCP&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端需设置静态IP，网关为旁路由IP地址&lt;/li&gt;
+&lt;li&gt;好处是旁路由随时可撤，不影响主网络&lt;/li&gt;
+&lt;li&gt;旁路由撤离后，需要手动修改网关IP或改为自动获取&lt;/li&gt;
+&lt;li&gt;如果只需要部分设备使用旁路由功能，就选这方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-主路由开dhcp网关未指向旁路由旁路由强制开dhcp&#34;&gt;2. 主路由开DHCP，网关未指向旁路由，旁路由(强制)开DHCP&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端可通过强制DHCP自动获取旁路由网关&lt;/li&gt;
+&lt;li&gt;好处是旁路由随时可撤，不影响主网络&lt;/li&gt;
+&lt;li&gt;旁路由撤离后，需要重新自动获取IP&lt;/li&gt;
+&lt;li&gt;如果需要所有设备使用旁路由功能，就选这方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-主路由开dhcp网关指向旁路由旁路由关dhcp&#34;&gt;3. 主路由开DHCP，网关指向旁路由，旁路由关DHCP&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端可自动获取IP等信息即可&lt;/li&gt;
+&lt;li&gt;旁路由撤离/死机后，会直接影响整体网络&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-主路由关dhcp旁路由开dhcp&#34;&gt;4. 主路由关DHCP，旁路由开DHCP&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端可自动获取IP等信息即可&lt;/li&gt;
+&lt;li&gt;旁路由撤离/死机后，会直接影响整体网络&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;综上所述需根据自己的实际情况选择对应方案一般会采用1和2方案居多&#34;&gt;综上所述，需根据自己的实际情况选择对应方案，一般会采用1和2方案居多&lt;/h3&gt;
+&lt;h1 id=&#34;旁路由设置&#34;&gt;旁路由设置&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;以单网口OpenWrt第1种工作方式以例&lt;/li&gt;
+&lt;li&gt;主路由IP：192.168.2.254&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;配置接口&#34;&gt;配置接口&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 网络 &amp;gt; 接口 &amp;gt; LAN &amp;gt; 修改 &amp;gt; 基本设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;协议：静态址址&lt;br&gt;
+IPv4地址：192.168.2.253&lt;br&gt;
+IPv4网关：192.168.2.254&lt;br&gt;
+使用自定义的 DNS 服务器：192.168.2.254&lt;br&gt;
+其他均可保持默认&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;高级设置 &amp;gt; 保持默认&lt;/li&gt;
+&lt;li&gt;物理设置 &amp;gt; 桥接接口 &amp;gt; 不勾选 &amp;gt; 接口选“eth0”&lt;/li&gt;
+&lt;li&gt;防火墙设置 &amp;gt; 选lan&lt;/li&gt;
+&lt;li&gt;DHCP 服务器 &amp;gt; 忽略此接口(勾选即为关闭)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS：如果使用旁路由DHCP，需开启接口并在高级设置中&lt;br&gt;
+动态DHCP：勾选&lt;br&gt;
+强制：勾选&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;最后不要忘了保存&amp;amp;应用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;防火墙配置&#34;&gt;防火墙配置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 网络 &amp;gt; 防火墙 &amp;gt; 基本设置 &amp;gt; 区域 &amp;gt; lan对应那条 &amp;gt; 入站数据/出站数据/转发 均选&lt;strong&gt;接受&lt;/strong&gt; &amp;gt; IP动态伪装 勾选 &amp;gt; 保存&amp;amp;应用&lt;/li&gt;
+&lt;li&gt;单网口设备建议自定义规则加上以下代码，详情见&lt;a href=&#34;https://www.right.com.cn/forum/thread-2983767-1-1.html&#34;&gt;说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;验证路由器是否能正常上网&#34;&gt;验证路由器是否能正常上网&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 网络 &amp;gt; 网络诊断 &amp;gt; IPv4 Ping &amp;gt; 有显示xxx ms表示网络正常了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;软件安装相关&#34;&gt;软件安装相关&lt;/h1&gt;
+&lt;h3 id=&#34;了解openwrt软件&#34;&gt;了解OpenWrt软件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenWrt软件分为前端与后端，前端即为可视化界面Luci开头的，后端即为只存在于系统内的软件，需要使用命令来配置运行。所以我们在安装时尽量选择带luci开头的软件包，安装时会自动把后端关联程序一并安装上。&lt;/li&gt;
+&lt;li&gt;OpenWrt应用过于广泛，不同CPU架构的软件版本是不通用的。&lt;/li&gt;
+&lt;li&gt;不知道设备适合什么版本，可SSH登陆路由器输入以下代码即可查看CPU架构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/os-release |grep ARCH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;添加软件源&#34;&gt;添加软件源&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于OpenWrt编译者爱好不同，加入的软件源也有所不同，可能存在自带软件源中无法搜到想要的软件，此时可添加第三方软件源来弥补&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://op.dllkids.xyz/packages/&#34;&gt;kenzok8大佬OpenWrt常用软件源地址&lt;/a&gt;；&lt;a href=&#34;https://github.com/kiddin9/openwrt-packages&#34;&gt;kiddin9大佬OpenWrt常用软件源地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;添加软件源，以X86平台为例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 顶部 设置 &amp;gt; 自定义软件源 &amp;gt; 添加行&lt;code&gt;src/gz wmjan https://op.dllkids.xyz/packages/x86_64&lt;/code&gt; &amp;gt; 提交 &amp;gt; 回到顶部 动作 &amp;gt; 刷新列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;passwall安装与使用&#34;&gt;PassWall安装与使用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入passwall &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-passwall-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 服务 &amp;gt; PassWall &amp;gt; 节点列表 &amp;gt; 修改现有列表或添加 &amp;gt; 导入分享URL &amp;gt; 粘贴VLESS/VMESS等节点信息 &amp;gt; 保存 &amp;gt; 回到 基本设置 &amp;gt; 主开关 勾选 &amp;gt; TCP节点选择刚才添加的名称 &amp;gt; 保存&amp;amp;应用&lt;/li&gt;
+&lt;li&gt;验证是否成功 &amp;gt; 点 谷歌连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有数据即正常&lt;br&gt;
+没数据，解决方法：确认节点是否有效？修改DNS-远程DNS更换为谷歌 &amp;gt; 保存&amp;amp;应用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;frpcfrp内网穿透安装与使用&#34;&gt;Frpc(Frp内网穿透)安装与使用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入frpc &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-frpc-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;详见&lt;a href=&#34;https://blog.wmjan.top/post/frp/&#34;&gt;frp内网穿透配置说明&lt;/a&gt;把对应的信息填入即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;动态dns&#34;&gt;动态DNS&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入ddns &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-ddns-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;切记：不能输入完整域名等有./-@之类的特殊字符，否则无法添加且不会有任何错误提示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用，以dnspod为例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;侧边栏 服务 &amp;gt; 动态DNS &amp;gt; 输入框中输入有效名称如dnspod &amp;gt; 添加&lt;/li&gt;
+&lt;li&gt;基本设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;启用：勾选&lt;br&gt;
+查询主机名：不带任何前缀的主域名，如wmjan.cn&lt;br&gt;
+IP 地址版本：IPv4 地址&lt;br&gt;
+DDNS 服务提供商 [IPv4]：dnspod.cn &amp;gt; 更改提供者&lt;br&gt;
+域名：必须带www前缀或子域名，如www.wmjan.cn&lt;br&gt;
+用户名：腾讯云API密钥 &amp;gt; DNSPod Token &amp;gt; 创建密钥时的ID&lt;br&gt;
+密码：腾讯云API密钥 &amp;gt; DNSPod Token &amp;gt; 创建密钥时的Token&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;高级设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IP 地址来源 [IPv4]：网络&lt;br&gt;
+网络 [IPv4]：wan，以实际拥有公网IP的接口&lt;br&gt;
+其他默认 &amp;gt; 保存&amp;amp;应用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">旁路由简述及OpenWrt相关设置</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/wky/"" data-c="
+          &lt;h1 id=&#34;简易教程二次刷机&#34;&gt;简易教程/二次刷机&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;下载&lt;a href=&#34;https://www.123pan.com/s/TozYjv-wzg5H.html&#34;&gt;OpenWrt安装包&lt;/a&gt;解压，提取码：open，安装运行USB_Burning_Tool（烧录软件），导入OpenWrt安装包，选择擦除所有，点击开始&lt;/li&gt;
+&lt;li&gt;USB对公线接玩客云离HDMI接口近的那个USB接口&lt;/li&gt;
+&lt;li&gt;取卡针长按复位键不放，插电源3-5秒，直到软件显示“连接成功”跑进度条即可放开取卡针了&lt;/li&gt;
+&lt;li&gt;烧录成功之后，点击停止，拔掉电源&lt;/li&gt;
+&lt;li&gt;默认IP：10.0.0.1，默认用户名/密码：root&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;首次刷机以上方法失败&#34;&gt;首次刷机/以上方法失败&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;热风枪吹开面板，取出主板&lt;/li&gt;
+&lt;li&gt;准备 USB公对公数据线一根(可以自制一根)、短接线或金属尖头镊子&lt;/li&gt;
+&lt;li&gt;下载&lt;a href=&#34;https://www.123pan.com/s/TozYjv-wzg5H.html&#34;&gt;OpenWrt安装包&lt;/a&gt;解压，提取码：open&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;开始烧录&#34;&gt;开始烧录&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;安装USB_Burning_Tool（烧录软件）&lt;/li&gt;
+&lt;li&gt;USB对公线接玩客云离HDMI接口近的那个USB接口&lt;/li&gt;
+&lt;li&gt;打开软件，短接主板上的触电，接通电源直到软件显示“连接成功”&lt;/li&gt;
+&lt;li&gt;导入OpenWrt安装包，选择擦除所有，点击开始&lt;/li&gt;
+&lt;li&gt;烧录成功之后，点击停止，拔掉电源、数据线&lt;/li&gt;
+&lt;li&gt;接上键盘和显示器，开机跑完代码之后，插入网线连接路由器的LAN接口&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/openwrt.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;修改配置&#34;&gt;修改配置&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;修改IP命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/config/network
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;按 &lt;code&gt;i&lt;/code&gt; 进入编辑状态，修改完按ESC 然后输入 &lt;code&gt;:wq&lt;/code&gt; 即可保存退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;重置root账户密码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;赋予root权限命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;mount_root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;修改root密码命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;passwd root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;根据提示输入新密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;New password #新密码&lt;br&gt;
+Retype password #再次输入密码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;重启完成后，电脑打开浏览器输入OpenWrt的IP地址，进行登录即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">玩客云刷OpenWrt简易教程</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/PassWall/"" data-c="
+          &lt;h1 id=&#34;openwrt安装&#34;&gt;OpenWrt安装&lt;/h1&gt;
+&lt;h3 id=&#34;资源下载&#34;&gt;资源下载&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;开源项目地址，感谢&lt;br&gt;
+xiaorouji大佬：&lt;a href=&#34;https://github.com/xiaorouji/openwrt-passwall/releases&#34;&gt;PassWall&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;查看CPU架构&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/os-release |grep ARCH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;下载软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;luci-23.05_luci-app-passwall_4.76-4_all.ipk&lt;/li&gt;
+&lt;li&gt;luci-23.05_luci-i18n-passwall-zh-cn_git-24.091.50413-b585fb1_all.ipk&lt;/li&gt;
+&lt;li&gt;passwall_packages_ipk_aarch64_generic.zip(下载路由CPU架构对应版本)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;上传文件到openwrt&#34;&gt;上传文件到OpenWrt&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;左侧栏 系统 &amp;gt; 文件传输 &amp;gt; 选择文件(把3个文件逐一上传) &amp;gt; 上传&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;SSH登陆OpenWrt路由器&lt;/li&gt;
+&lt;li&gt;进入安装包所在目录&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd /tmp/upload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;查看目录下所有文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;确认3个文件都在，再运行解压安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;unzip passwall_packages_ipk_aarch64_generic.zip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;安装/tmp/upload目录下所有软件包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;opkg install *.ipk --force-reinstal
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;istoreos安装&#34;&gt;iStoreOS安装&lt;/h1&gt;
+&lt;h3 id=&#34;资源下载x86为例&#34;&gt;资源下载，X86为例&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;开源项目地址，感谢AUK9527大佬：&lt;a href=&#34;https://github.com/AUK9527/Are-u-ok/tree/main/x86&#34;&gt;PassWall&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;下载后得到类似PassWall_4.76-1_x86_64_all_sdk_22.03.6.run的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;上传文件到openwrt-2&#34;&gt;上传文件到OpenWrt&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;左侧栏 系统 &amp;gt; 文件传输 &amp;gt; 选择文件(选择PassWall_4.76-1_x86_64_all_sdk_22.03.6.run文件) &amp;gt; 上传&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安装-2&#34;&gt;安装&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;SSH登陆OpenWrt路由器&lt;/li&gt;
+&lt;li&gt;进入安装包所在目录&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;cd /tmp/upload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;赋予运行权限&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;chmod 755 PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;./PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
+&lt;/code&gt;&lt;/pre&gt;
+">OpenWrt/iStoreOS安装PassWall</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Workers/"" data-c="
+          &lt;h1 id=&#34;准备工作&#34;&gt;准备工作&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;前往&lt;a href=&#34;https://www.cloudflare-cn.com/&#34;&gt;Cloudflare站点&lt;/a&gt;自行注册账号&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/3Kmfi6HP/EDtunnel&#34;&gt;3Kmfi6HP大佬的Workers项目链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载windows梯子软件v2rayN最新版，打开&lt;a href=&#34;https://github.com/2dust/v2rayN&#34;&gt;v2rayN官网&lt;/a&gt;，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行&lt;/li&gt;
+&lt;li&gt;UUID(userID)获取方法：运行v2rayN &amp;gt; 点左上角“服务器” &amp;gt; 添加VLESS服务器 &amp;gt; 用户ID(id)项点 生成即可得到，保存待用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;搭建及使用&#34;&gt;搭建及使用&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://www.cloudflare-cn.com/&#34;&gt;Cloudflare站点&lt;/a&gt;左侧栏 &amp;gt; Workers 和 Pages &amp;gt; 概述里点 创建应用程序 &amp;gt; 创建 Worker &amp;gt; 名称随便取 &amp;gt; 点右下角部署 &amp;gt; 编辑代码 &amp;gt; &lt;a href=&#34;https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js&#34;&gt;复制3Kmfi6HP大佬的worker.js代码替换上去&lt;/a&gt; &amp;gt; 把准备工作中得到的userID替换代码中let userID的值 &amp;gt; 点右上角 保存并部署&lt;/li&gt;
+&lt;li&gt;回到Workers 和 Pages &amp;gt; 点刚创建的应用程序名 &amp;gt; 触发器 &amp;gt; 复制路由地址&lt;code&gt;*.*.workers.dev&lt;/code&gt;并加上&lt;code&gt;/UUID地址&lt;/code&gt;，如我的是：&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;复制&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;在浏览器打开即可看到生成 VLESS 协议的配置信息&lt;/li&gt;
+&lt;li&gt;点开&lt;code&gt;VLESS 节点订阅连接&lt;/code&gt;，&lt;code&gt;Clash for Windows 节点订阅连接&lt;/code&gt;，&lt;code&gt;优选IP自动节点订阅&lt;/code&gt;，&lt;code&gt;v2rayNG优选IP自动&lt;/code&gt;等你需要的对应链接，会得到整个页面全是字符&lt;/li&gt;
+&lt;li&gt;全选复制后，打开梯子软件v2rayN &amp;gt; 点左上角服务器 &amp;gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点&lt;/li&gt;
+&lt;li&gt;Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常&lt;/li&gt;
+&lt;li&gt;选择其中一条延时较低的节点回车即可启用节点&lt;/li&gt;
+&lt;li&gt;使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;分流测试地址&lt;a href=&#34;https://ip.skk.moe/&#34;&gt;ip.skk.moe&lt;/a&gt;&lt;br&gt;
+查看当前IP地址&lt;a href=&#34;https://ip.gs/&#34;&gt;ip.gs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">利用Cloudflare的Workers搭建VLESS节点</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/mklink/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;文中提及的“用户名”需要改为你实际Windows登陆名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在&lt;br&gt;
+&lt;code&gt;C:\Users\用户名\Documents\WeChat Files&lt;/code&gt;目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。&lt;/p&gt;
+&lt;h1 id=&#34;利用mklink命令转移目录&#34;&gt;利用mklink命令转移目录&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;退出微信登陆&lt;/li&gt;
+&lt;li&gt;找到&lt;code&gt;C:\Users\用户名\Documents&lt;/code&gt;目录把WeChat Files整个目录移动到E盘下&lt;/li&gt;
+&lt;li&gt;再在E:\WeChat Files目录下新建mklink.bat文件，内容为&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;mklink /D &amp;quot;C:\Users\用户名\Documents\WeChat Files&amp;quot; &amp;quot;E:\WeChat Files&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;右键以管理员权限运行mklink.bat后，C:\Users\用户名\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\WeChat Files目录软链接到C:\Users\用户名\Documents\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;重装系统后恢复聊天记录&#34;&gt;重装系统后，恢复聊天记录&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;先右键以管理员权限运行E:\WeChat Files\mklink.bat文件&lt;/li&gt;
+&lt;li&gt;再重新安装微信，运行登陆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;同步任意本地文件夹到onedrive&#34;&gt;同步任意本地文件夹到OneDrive&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解放C盘空间&lt;br&gt;
+灵活同步各磁盘文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;只需要在命令行模式输入以下代码即可完成，其中&lt;code&gt;E:\test&lt;/code&gt;为需要同步的实际目录，前面的&lt;code&gt;test&lt;/code&gt;为OneDrive目录中生成的软链接名称&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;%UserProfile%\OneDrive\test&amp;quot; &amp;quot;E:\test&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;当然你也可以同步整个E盘，如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;%UserProfile%\OneDrive\E&amp;quot; &amp;quot;E:\&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你OneDrive目录在D盘，那么输入命令时也需要输入实际地址，如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;D:\OneDrive\test&amp;quot; &amp;quot;E:\test&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;解决同步问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;出于应用设计的原因，OneDrive不能即时同步mklink创建链接的变化&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;方法1：需要右键任务栏中Onedrive图标 &lt;code&gt;暂停同步&lt;/code&gt; &amp;gt; &lt;code&gt;继续同步&lt;/code&gt; 才能对其完成同步处理。&lt;/li&gt;
+&lt;li&gt;方法2：推荐使用&lt;a href=&#34;https://github.com/ktheod/OneDriveBully/releases&#34;&gt;OneDriveBully.msi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下载OneDriveBully.msi后安装并运行&lt;br&gt;
+点Browse选择OneDrive所在根目录&lt;br&gt;
+Bully Every X Minutes:1 (表示1分钟刷新一次)&lt;br&gt;
+Load on Windows Startup勾选&lt;br&gt;
+再点Refresh刷新自动识别软链接目录&lt;br&gt;
+最后点下Save，看到Success弹窗即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;移动onedrive文件夹至d盘目录&#34;&gt;移动OneDrive文件夹至D盘目录&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;首次登陆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆帐户后到选择&lt;code&gt;你的OneDrive文件夹&lt;/code&gt;时，左下角选择&lt;code&gt;更改位置&lt;/code&gt;选择你需要保存的位置(可提前在D盘新建一个OneDrive文件夹)即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;已经默认保存在C盘&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;任务栏中右键OneDrive图标 &amp;gt; 选择设置 &amp;gt; 在账户选项中，选择&lt;code&gt;取消链接此电脑&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;移动OneDrive文件夹，通常OneDrive存储目录位于C:\Users[用户名]下，选中OneDrive目录，直接 &lt;code&gt;剪切&lt;/code&gt; 并 &lt;code&gt;粘贴&lt;/code&gt; 到D盘&lt;/li&gt;
+&lt;li&gt;重复首次登陆步骤即可&lt;/li&gt;
+&lt;/ul&gt;
+">Windows下mklink的巧用及OneDrive相关应用</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/oa/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA&lt;/p&gt;
+&lt;h1 id=&#34;网络环境描述&#34;&gt;网络环境描述&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;专网情况&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;IP地址：15.76.7.59&lt;/li&gt;
+&lt;li&gt;网关地址：15.76.7.1&lt;/li&gt;
+&lt;li&gt;专网无线路由IP：192.168.3.1&lt;br&gt;
+以上信息已设定在专网无线路由WAN口，已可通过无线路由访问专网OA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Internet网情况&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;IP地址：192.168.20.80&lt;/li&gt;
+&lt;li&gt;网关地址：192.168.20.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;实现内外网同时访问&#34;&gt;实现内外网同时访问&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;办公电脑&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无线网卡接入专网无线并配置IP地址：192.168.3.3；网关地址：192.168.3.1&lt;/li&gt;
+&lt;li&gt;有线网卡接Internet路由并配置IP地址192.168.20.80；网关地址：192.168.20.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;查看路由表&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;管理员身份运行cmd(C:/windows/system32/cmd.exe右键)输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;route print
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;看到IPv4路由表前两行信息如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;IPv4路由表：&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;网络目标&lt;/td&gt;
+&lt;td&gt;网络掩码&lt;/td&gt;
+&lt;td&gt;网关&lt;/td&gt;
+&lt;td&gt;接口&lt;/td&gt;
+&lt;td&gt;跃点数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.20.1&lt;/td&gt;
+&lt;td&gt;192.168.20.80&lt;/td&gt;
+&lt;td&gt;291&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;192.168.3.3&lt;/td&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;删除所有0.0.0.0的路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;route delete 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;添加新路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;route add -p 0.0.0.0 mask 0.0.0.0 192.168.20.1
+route add -p 192.168.3.0 mask 255.255.255.0 192.168.3.1
+route add -p 15.0.0.0 mask 255.0.0.0 192.168.3.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：这3条路由的意思是15.x.x.x开头的IP和192.168.3.x开头的IP都走192.168.3.1网关(专网的路由器)，除此之外的所有地址都走192.168.20.1网关(Internet路由器)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;到此为止电脑正常已经能同时访问内外网了，我们再route print查看下路由表，发现永久路由部分已经多了以下3条路由信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;永久路由：&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;网络地址&lt;/td&gt;
+&lt;td&gt;网络掩码&lt;/td&gt;
+&lt;td&gt;网关地址&lt;/td&gt;
+&lt;td&gt;跃点数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;0.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.20.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;192.168.3.0&lt;/td&gt;
+&lt;td&gt;255.255.255.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;15.0.0.0&lt;/td&gt;
+&lt;td&gt;255.0.0.0&lt;/td&gt;
+&lt;td&gt;192.168.3.1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;远程访问专网oa&#34;&gt;远程访问专网OA&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;最为安全、便捷的方式就是使用frp内网穿透， 配置相关信息，办公电脑通过Internet网连接frp服务器，再代理访问专网OA&lt;br&gt;
+下载&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;frp项目&lt;/a&gt;中的&lt;a href=&#34;https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip&#34;&gt;windows版本&lt;/a&gt;，解压后得到frp对应文件夹，在里面新建一个frpc.ini文件，并填入以下配置文件，详见&lt;a href=&#34;https://blog.wmjan.top/post/frp/&#34;&gt;frp内网穿透配置说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[OA] #自定义备注名称
+type = http #访问方式http
+local_port = 80 #内网OA访问端口
+local_ip = 15.76.7.x #内网OA对应IP
+subdomain = oa #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;启动服务&lt;br&gt;
+在frp对应文件夹中新建一个Run.bat文件，内容为&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;.\frpc.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;保存后，双击Run.bat即可启动服务，启动后确保&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保持cmd窗口不关闭，这是连接frp服务器主程序&lt;/li&gt;
+&lt;li&gt;保持电脑不要休眠&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;接下来就可以使用任何设备访问专网OA了，包括移动终端，方法只需要在浏览器端输入以下网址&lt;br&gt;
+http://oa.abc.com:9090&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">同时访问内外网｜实现远程访问专网OA</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Backup/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;上期我们已经讲过了，&lt;a href=&#34;https://blog.wmjan.top/post/OneDrive&#34;&gt;如何获取微软OneDrive 5TB免费网盘&lt;/a&gt;，这期就讲讲群晖如何利用备份软件把资料&lt;strong&gt;加密&lt;/strong&gt;备份到OneDrive&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。&lt;/p&gt;
+&lt;h1 id=&#34;hyper-backup套件中心安装&#34;&gt;Hyper Backup(套件中心安装)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;这个套件对我最有用的就是定期备份各种套件数据到本地盘，如Synology Contacts、Synology Calendar、Note Station等等&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可批量选择备份共享文件夹&lt;/li&gt;
+&lt;li&gt;可批量选择备份应用程序&lt;br&gt;
+需要注意的是SynologyPhotos套件，如果选择了备份这个套件会把对应的相册数据一并备份了，和备份共享文件夹不要重复了&lt;/li&gt;
+&lt;li&gt;群晖设置信息也会一并备份&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多版本循环备份&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;无法直接备份到OneDrive&lt;/li&gt;
+&lt;li&gt;无法加密备份&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;cloud-sync套件中心安装&#34;&gt;Cloud Sync(套件中心安装)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;可同步数据到WebDAV、OneDrive等各种云服务中心&lt;/li&gt;
+&lt;li&gt;可双向同步，也可单向备份&lt;/li&gt;
+&lt;li&gt;可自定义选择目录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可数据加密&lt;/strong&gt;&lt;br&gt;
+加密后数据直接从网盘下载是无法正常查看的，必须通过Cloud Sync解密下载才可以查看&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;同步数据&#34;&gt;同步数据&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Cloud Sync配合Hyper Backup备份套件数据再加密同步/备份到开发者OneDrive 5TB网盘&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;运行Cloud Sync套件 &amp;gt; 点左上角+ &amp;gt; 选择Microsoft OneDrive for Business &amp;gt; 登陆开发者微软开发者账号 &amp;gt; Agree 同意授权&lt;/li&gt;
+&lt;li&gt;右侧任务列表 &amp;gt; 新增 跳转 任务设置&lt;/li&gt;
+&lt;li&gt;本地路径选择 共享文件夹 &amp;gt; 远程路径 新建一个对应的文件夹名称 &amp;gt; 同步方向按自己需求选择 &amp;gt; &lt;strong&gt;数据加密 安全起见建议勾选&lt;/strong&gt; &amp;gt; 输入加密密钥(&lt;strong&gt;务必牢记&lt;/strong&gt;) &amp;gt; 高级设置 &amp;gt; 勾选共享文件夹中实际需要同步的目录 &amp;gt; 确定完成&lt;/li&gt;
+&lt;li&gt;如果主要用来单向备份为主(非双向同步)的话，建议计划设置里固定开启某个时间段来备份即可&lt;/li&gt;
+&lt;/ol&gt;
+">群晖数据备份：Hyper Backup 和 Cloud Sync</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/OneDrive/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;以下操作均以windows浏览器页面显示为准&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;微软onedrive开发者账号的用处&#34;&gt;微软OneDrive开发者账号的用处&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;免费提供5TB容量OneDrive&lt;/li&gt;
+&lt;li&gt;Microsoft Office 365免费用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;开发者账号申请&#34;&gt;开发者账号申请&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://developer.microsoft.com/en-us/microsoft-365/dev-program&#34;&gt;Microsoft 365 开发人员中心&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;登陆微软账号后，点Join now(现在加入)进入下一步&lt;/li&gt;
+&lt;li&gt;Country/Region(国家/地区)、Company(公司) 可任何填写，语言选中文，并勾选底下两个复选框&lt;/li&gt;
+&lt;li&gt;What is your primary focus as a developer?作为开发人员，您主要关注的是什么？（只选一项）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Applications for internal use at my company 我公司内部使用的应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;What areas of Microsoft 365 development are you interested in?您对 Microsoft 365 开发的哪些领域感兴趣？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Office Add-ins(也可以多选)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;选Configurable sandbox可配置的沙盒，再点右下角Next&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;此步非常重要，所有信息都需要保存记录好&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Create username创建用户名，如 wmjan&lt;/li&gt;
+&lt;li&gt;Create domain创建域，如 zjtz&lt;br&gt;
+那么你得到的开发者账号为 wmjan@zjtz.onmicrosoft.com&lt;/li&gt;
+&lt;li&gt;密码必须在15-20个字符之间，并且必须包含大写字母和小写字母、数字以及以下符号中的一个或多个&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;添加中国手机号，获取验证码并验证&lt;/li&gt;
+&lt;li&gt;验证成功所即完成了开发者账号的申请&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;如何设置5tb网盘&#34;&gt;如何设置5TB网盘&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://admin.microsoft.com/&#34;&gt;Microsoft 365 admin center&lt;/a&gt; &amp;gt; 登陆开发者账号 &amp;gt; 点左侧users(用户) &amp;gt; Active users(活跃用户) &amp;gt; 点自己名称 &amp;gt; 点右侧栏中的OneDrive &amp;gt; 点下方 管理默认存储 &amp;gt; 点 OneDrive存储限制 &amp;gt; 默认存储限制设置为5120GB &amp;gt; 保存即可&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;若设置过程提示：未为此用户设置OneDrive，&lt;a href=&#34;https://portal.office.com/onedrive&#34;&gt;请跳转此页面激活OneDrive后继续&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;使用-github-的action功能实现账号自动续订&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么要续订？&lt;br&gt;
+开发者账号默认只有90天有效期，微软会根据 API 调用情况，符合调用情况的，会在距离到期30天时自动续订，不符合就不给续订了。续订的方法很多，目前较为有效、安全的方法就是通过github的Action来实现自动续订&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;生成密钥切记要记录好token&#34;&gt;生成密钥，切记要记录好token&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;网站并登陆账号，没有账号的请自行注册&lt;/li&gt;
+&lt;li&gt;登陆后点击右上角头像 &amp;gt; 点击 Settings &amp;gt; 找到左侧最下面的Developer Settings进入 &amp;gt; 点开左侧 Personal access tokens &amp;gt; Tokens(classic) &amp;gt; 点开右上角Generate new token &amp;gt; Generate new token(classic) &amp;gt; 输入密码进入下一步&lt;/li&gt;
+&lt;li&gt;New personal access token (classic)信息填写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Note：为token备注名，如：AliveE5&lt;/li&gt;
+&lt;li&gt;Expiration：选No expiration(无到期时间)&lt;/li&gt;
+&lt;li&gt;Select scopes：勾选workflow，repo项也会被默认选上&lt;/li&gt;
+&lt;li&gt;点Generate token生成令牌&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;保存记录好你的token，关闭后无法二次显示了&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;导入-keepalivee5-代码到自己的储存库&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;网站并登陆账号后 &amp;gt; 点右上角+号 &amp;gt; 点击Import repository&lt;/li&gt;
+&lt;li&gt;Import your project to GitHub信息填写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Your old repository&#39;s clone URL 填入以下仓库地址：https://github.com/sywdebug/KeepAliveE5-Public.git&lt;/li&gt;
+&lt;li&gt;Your new repository details &amp;gt; Repository name&lt;br&gt;
+：AliveE5&lt;/li&gt;
+&lt;li&gt;选 Private 私有库&lt;/li&gt;
+&lt;li&gt;点 Begin import 后等待完成导入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;开启-action-功能&#34;&gt;开启 Action 功能&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;点&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Settings &amp;gt; 点左侧Actions &amp;gt; 点General &amp;gt; 选Allow all actions and reusable workflows &amp;gt; 保存&lt;/li&gt;
+&lt;li&gt;点左下角Secrets and variables &amp;gt; 点Actions &amp;gt; 点New repository secret，分别新建以下3项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：PAT&lt;/li&gt;
+&lt;li&gt;Secret *填入：上面得到的token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：USER&lt;/li&gt;
+&lt;li&gt;Secret *填入：开发者账号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Name *填入：PASSWD&lt;/li&gt;
+&lt;li&gt;Secret *填入：开发者账号密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;禁用安全默认值&#34;&gt;禁用安全默认值&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;进入&lt;a href=&#34;https://portal.azure.com/#home&#34;&gt;Microsoft Azure&lt;/a&gt;，登陆开发者账号 &amp;gt; 点中间 管理 Microsoft Entra ID 查看 &amp;gt; 点左侧 属性 &amp;gt; 点主页最底部 管理安全默认值 &amp;gt; 将安全默认值设为已禁用 &amp;gt; 保存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;启动-action-的注册-app-工作流&#34;&gt;启动 Action 的注册 APP 工作流&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;点&lt;a href=&#34;https://github.com/&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Action &amp;gt; 点击左侧 Register APP &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待4-5分钟运行完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;启动-action-的调用-api-工作流&#34;&gt;启动 Action 的调用 API 工作流&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;点击左侧 Invoke API &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待完成即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;写在最后&#34;&gt;写在最后&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;至此，Action会每隔4小时自动调用API完成一份工作流，正常微软会在距离到期30天时自动续订开发者账号有效期&lt;/li&gt;
+&lt;li&gt;验证：两个月后进&lt;a href=&#34;https://developer.microsoft.com/en-us/microsoft-365/profile&#34;&gt;Microsoft 365 developer subscriptions&lt;/a&gt;页面查看账号有效期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;end&#34;&gt;END&lt;/h1&gt;
+">5TB容量OneDrive网盘申请与续订</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/frp/"" data-c="
+          &lt;h1 id=&#34;应用场景&#34;&gt;应用场景&lt;/h1&gt;
+&lt;p&gt;没有公网IP设备需要远程访问，如何路由器、光猫等&lt;/p&gt;
+&lt;h1 id=&#34;frps服务器配置条件&#34;&gt;frps服务器配置条件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可&lt;/li&gt;
+&lt;li&gt;github项目地址：&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;frp程序及官方说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;以下涉及的abc.com域名为示例说明，请替换自己的实际域名/IP；各端口及用户名密码也一样，可以根据自己的实际需求进行更换；以下frpc客户端配置采用自定义子域名方式，需要提前在域名管理中心开启泛域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;frps服务器端配置文件&#34;&gt;frps服务器端配置文件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;从v0.52.0版本开始，frp已经不支持.ini配置文件了，请使用toml、yaml及josn格式文件&lt;/li&gt;
+&lt;li&gt;电脑上新建frps.toml文本文档，再使用记事本打开并填入以下内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+subdomain_host = abc.com #服务器端域名/IP
+bind_port = 7000 #监听端口
+vhost_http_port = 9090 #http访问端口
+vhost_https_port = 9091 #https访问端口
+dashboard_addr = 0.0.0.0
+dashboard_port = 7500 #控制面板访问端口
+dashboard_user = admin #控制面板用户名
+dashboard_pwd = password #控制面板密码
+token = password #客户端连接密码
+max_pool_count = 10
+log_max_days = 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;群晖docker安装frps服务器&#34;&gt;群晖Docker安装frps服务器&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Docker注册表搜frps，双击安装snowdreamtech-frps。如果无法访问注册表，可SSH登陆群晖后使用&lt;a href=&#34;https://blog.wmjan.top/post/dockercmd/&#34;&gt;Docker常用命令&lt;/a&gt;来安装&lt;/li&gt;
+&lt;li&gt;群晖docker目录里添加一个frp文件夹，复制电脑上配置好的frps.toml文件到群晖frp文件夹里&lt;/li&gt;
+&lt;li&gt;启动映像时存储空间 &amp;gt; &lt;strong&gt;添加文件&lt;/strong&gt; &amp;gt; 选择docker/frp/frps.toml &amp;gt; 挂载目录到/etc/frp/frps.toml&lt;/li&gt;
+&lt;li&gt;网络选择host&lt;/li&gt;
+&lt;li&gt;其他均默认后启动即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;frpc客户端配置&#34;&gt;frpc客户端配置&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;[common]
+server_addr = abc.com #服务器端域名/IP
+server_port = 7000 #对应服务器端监听端口
+token = password #对应客户端连接密码
+
+[router] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.1 #本地设备IP地址
+subdomain = router #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;访问方式&#34;&gt;访问方式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器端还需要把对应的端口打开&lt;/li&gt;
+&lt;li&gt;成功连接后访问客户端方法如下&lt;br&gt;
+http://router.abc.com:9090&lt;/li&gt;
+&lt;li&gt;访问控制面板方法如下，用户名密码为服务器端dashboard项&lt;br&gt;
+http://abc.com:7500&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;同一网络下多个设备需要访问&#34;&gt;同一网络下多个设备需要访问&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;只需要在frpc客户端配置中增加配置即可，如增加一台光猫和群晖NAS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[modem] #自定义备注名称
+type = http #访问方式http或https
+local_port = 80 #本地访问端口
+local_ip = 192.168.2.254 #本地设备IP地址
+subdomain = modem #自定义访问子域名
+
+[nas] #自定义备注名称
+type = https #访问方式http或https
+local_port = 5001 #本地访问端口
+local_ip = 192.168.2.253 #本地设备IP地址
+subdomain = nas #自定义访问子域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;访问方法分别为&lt;br&gt;
+光猫：http://modem.abc.com:9090&lt;br&gt;
+NAS：https://nas.abc.com:9091&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;远程登陆ssh&#34;&gt;远程登陆SSH&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;只需要在frpc客户端增加以下配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[SSH]
+type = &amp;quot;tcp&amp;quot; #访问方式要选tcp
+local_ip = &amp;quot;192.168.2.1&amp;quot; #本地设备IP地址
+local_port = 22 #本地访问端口
+remote_port = 6000 #远程访问端口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;访问方法为&lt;br&gt;
+ssh -oPort=6000 root@abc.com&lt;/li&gt;
+&lt;/ul&gt;
+">frp内网穿透配置说明</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/dockercmd/"" data-c="
+          &lt;h1 id=&#34;docker常用命令&#34;&gt;Docker常用命令&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;搜索镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker search 镜像名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;拉取镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker pull 镜像名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;启动docker服务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo service docker start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;停止docker服务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo service docker stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;检查docker 守护进程是否在运行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker stats
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;查看docker相关信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;列出所有容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;最后一次运行的容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker ps -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;重新启动已停止的容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker start 容器名(也可以使用容器ID)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;获取容器的日志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker logs 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;获取最后几条日志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker -f 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;12&#34;&gt;
+&lt;li&gt;列出镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker images
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;13&#34;&gt;
+&lt;li&gt;删除所有容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rm $(docker ps -a -q)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;14&#34;&gt;
+&lt;li&gt;删除单个容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rm 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;15&#34;&gt;
+&lt;li&gt;删除所有镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker rmi $(docker images | grep none | awk &#39;{print $3}&#39; | sort -r)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;16&#34;&gt;
+&lt;li&gt;保存镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker save 镜像名 &amp;gt; /home/新镜像名.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;17&#34;&gt;
+&lt;li&gt;加载自定义镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; /home/自定义镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;18&#34;&gt;
+&lt;li&gt;获取容器更多信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo docker inspect 容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;19&#34;&gt;
+&lt;li&gt;删除为none的镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;docker images --no-trunc| grep none | awk &#39;{print $3}&#39; | xargs -r docker rmi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;常用参数&#34;&gt;常用参数：&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-i：以交互模式运行容器，通常与 -t 同时使用&lt;br&gt;
+-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用&lt;br&gt;
+-p : 端口映射 格式为[主机端口：容器端口]&lt;br&gt;
+-d : 后台模式运行&lt;br&gt;
+-name : 给容器一个新的名称&lt;br&gt;
+-v：挂载主机的目录&lt;br&gt;
+-e： username=&amp;quot;ritchie&amp;quot;: 设置环境变量&lt;br&gt;
+-m：设置容器使用内存最大值&lt;br&gt;
+--env-file=[]：从指定文件读入环境变量&lt;/p&gt;
+&lt;/blockquote&gt;
+">Docker常用命令</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/Contacts/"" data-c="
+          &lt;h1 id=&#34;痛点分析&#34;&gt;痛点分析&lt;/h1&gt;
+&lt;h3 id=&#34;个人业务&#34;&gt;个人业务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;多平台联系人同步&lt;br&gt;
+比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事&lt;/li&gt;
+&lt;li&gt;想要分开管理联系人&lt;br&gt;
+办公手机和私人手机联系人不想合拼一起，但又希望两台手机都能访问两者联系人&lt;/li&gt;
+&lt;li&gt;怕隐私泄露、不想用手机自带的云服务&lt;br&gt;
+曾经，一知名手机厂商一年内让我多次丢失联系人，有时候丢失部分联系人可能自己都没发觉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;公司业务&#34;&gt;公司业务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;公司多部门联系人管理&lt;br&gt;
+业务部、财务部各部门联系人管理备份，以免员工离职联系人丢失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;安装及避坑&#34;&gt;安装及避坑&lt;/h1&gt;
+&lt;h3 id=&#34;安装环境要求&#34;&gt;安装环境要求&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;DSM6.2.4以上版本才支持&lt;br&gt;
+曾经在DSM6.2.3上试了几天没成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装及导入&#34;&gt;安装及导入&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;安装非常简单，打开群晖套件中心搜索&lt;strong&gt;Synology Contacts&lt;/strong&gt;安装即可&lt;/li&gt;
+&lt;li&gt;首次使用必须先把联系人分组导入到服务器里&lt;/li&gt;
+&lt;li&gt;导入手机联系人时，必须去对应品牌云服务网页端导出联系人文件，再进行导入。很多手机端导出的文件会进行UTF-8编码（quoted-printable），导入到服务器后无法正常显示联系人名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何同步&#34;&gt;如何同步&lt;/h3&gt;
+&lt;p&gt;打开Synology Contacts，我的联系人&amp;gt;点后面3点&amp;gt;CardDAV&amp;gt;选择对应平台的配置信息&lt;/p&gt;
+&lt;h3 id=&#34;手机端同步设置&#34;&gt;手机端同步设置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;iPhone和小米手机，因为系统本身就支持CardDav服务
+&lt;blockquote&gt;
+&lt;p&gt;iPhone手机打开设置&amp;gt;通讯录&amp;gt;帐户&amp;gt;添加帐户&amp;gt;其他&amp;gt;添加CardDAV帐户&lt;br&gt;
+小米手机打开设置&amp;gt;账户与同步&amp;gt;账户与同步&amp;gt;添加账户&amp;gt;CardDAV同步账户&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;其他安卓手机&lt;br&gt;
+需要下载CardDAV同步客户端 &lt;a href=&#34;https://f-droid.org/packages/at.bitfire.davdroid/&#34;&gt;DAVx⁵&lt;/a&gt;，打开DAVx⁵按向导提示设置电池优化等项目，以便它能正常后台运行同步信息&lt;/li&gt;
+&lt;li&gt;添加CardDAV时服务器(根地址)为上述提到的CardDAV对应平台配置信息，用户名及密码为群晖对应账户登录的用户名密码
+&lt;blockquote&gt;
+&lt;p&gt;普通安卓用户使用DAVx⁵添加时一定要选‘&lt;strong&gt;使用URL和用户名登录&lt;/strong&gt;’，如下图&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/contacts.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+">跨平台联系人同步群晖Synology Contacts</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/xui/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;VPS即虚拟专用服务器，这里需要是海外VPS，常用的有&lt;a href=&#34;https://aws.amazon.com/cn/campaigns/aws-cloudserver/&#34;&gt;AWS亚马逊云&lt;/a&gt;、&lt;a href=&#34;https://linuxone.cloud.marist.edu/&#34;&gt;LinuxOne&lt;/a&gt;、&lt;a href=&#34;https://hax.co.id/&#34;&gt;Hax VPS&lt;/a&gt;、&lt;a href=&#34;https://www.oracle.com/jp/cloud/free/&#34;&gt;Oracle Cloud 甲骨文云&lt;/a&gt;、&lt;a href=&#34;https://cloud.google.com/&#34;&gt;Google Cloud谷歌云&lt;/a&gt;，下面以AWS亚马逊云为例&lt;/p&gt;
+&lt;h1 id=&#34;aws亚马逊云服务器申请&#34;&gt;AWS亚马逊云服务器申请&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所需材料：VISA信用卡，我使用的是招商VISA卡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;选&lt;a href=&#34;https://portal.aws.amazon.com/billing/signup#/start/email&#34;&gt;AWS 海外区域&lt;/a&gt;按提示注册，详细图文教程请参考&lt;a href=&#34;https://juejin.cn/post/7251914510436466725&#34;&gt;三. 申请流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;账单信息按实际填写自己VISA卡信息，放心不会实际 扣费，最多会有1美元的预扣款验证身份&lt;/li&gt;
+&lt;li&gt;手机号码也填国内的常用号码即可&lt;/li&gt;
+&lt;li&gt;创建EC2服务实例之前请务必先在右上角选择适合自己的&lt;strong&gt;区域&lt;/strong&gt;，比如“香港”延时会相对比较低。没有“香港”的话可以在列表底部管理区域中添加&lt;/li&gt;
+&lt;li&gt;连接实例时可以把用户名直接改成root来登陆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;安装x-ui&#34;&gt;安装X-UI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;项目地址：&lt;a href=&#34;https://github.com/FranzKafkaYu/x-ui&#34;&gt;功能介绍及说明&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;一键安装方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;按提示设定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用户名[username]: admin&lt;br&gt;
+密码[userpasswd]: password&lt;br&gt;
+监听端口[port]: 54321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把54321端口添加到规则中&lt;/li&gt;
+&lt;li&gt;此时使用EC2实例的公有 IPv4 地址加端口号即可访问X-UI管理面板，如&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;http://43.198.1xx.2xx:54321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;配置x-ui&#34;&gt;配置X-UI&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;开启vmess+ws节点：入站列表&amp;gt;添加入站，如下图设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;备注名vmess+ws&lt;/li&gt;
+&lt;li&gt;协议选vmess&lt;/li&gt;
+&lt;li&gt;端口可默认也可自定义&lt;/li&gt;
+&lt;li&gt;添加用户选+&lt;/li&gt;
+&lt;li&gt;网络选ws&lt;/li&gt;
+&lt;li&gt;把用户ID前半段复制到路径 / 后面，再加上?ed=2048&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/x-uirz.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;再回到EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把19687口添加到规则中&lt;/li&gt;
+&lt;li&gt;最后X-UI控制页面中&lt;strong&gt;操作&amp;gt;二维码&lt;/strong&gt;，手机使用v2rayNG程序扫描即可实现固定IP高速科学上网了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;注意注意注意&#34;&gt;注意！注意！注意！&lt;/h1&gt;
+&lt;p&gt;EC2实例中除了默认免费功能外，千万不要开启其他功能，都是额外收费的，包括&lt;strong&gt;弹性IP&lt;/strong&gt;&lt;/p&gt;
+">海外VPS申请及X-UI部署</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/warpfenliu/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问&lt;/p&gt;
+&lt;h1 id=&#34;android手机端分流设置方法&#34;&gt;Android手机端分流设置方法&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;下载最新版NekoBox安卓客户端&lt;a href=&#34;https://github.com/MatsuriDayo/NekoBoxForAndroid/releases&#34;&gt;【NekoBoxForAndroid】&lt;/a&gt;，感谢MatsuriDayo开源大佬&lt;/li&gt;
+&lt;li&gt;运行NekoBox后点&lt;strong&gt;左上角&amp;gt;工具&amp;gt;Cloudflare Warp&amp;gt;生成配置&lt;/strong&gt;，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按&lt;a href=&#34;https://blog.wmjan.top/post/warp+key/&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;把服务器和端口号替换成🚀优选IP和端口号即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暂不方便获取优选IP的可试用以下几组&lt;br&gt;
+162.159.195.47:942&lt;br&gt;
+162.159.192.131:942&lt;br&gt;
+162.159.192.5:3138&lt;br&gt;
+162.159.192.136:942&lt;br&gt;
+162.159.195.126:942&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;分流设置，打开NekoBox&lt;strong&gt;左上角&amp;gt;路由&lt;/strong&gt;，把&lt;strong&gt;中国域名规则&lt;/strong&gt;和&lt;strong&gt;中国IP规则&lt;/strong&gt;打开；NekoBox&lt;strong&gt;左上角&amp;gt;设置&amp;gt;路由设置&lt;/strong&gt;里把&lt;strong&gt;绕开局域网地址&lt;/strong&gt;和&lt;strong&gt;在核心中绕过LAN&lt;/strong&gt; 即可实现分流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;windows端分流设置方法&#34;&gt;Windows端分流设置方法&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本教程基于&lt;a href=&#34;https://blog.wmjan.top/post/warp+key&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;延伸方案&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;假设WireGuard安装在目录&amp;quot;C:\Program Files\WireGuard&amp;quot;&lt;/li&gt;
+&lt;li&gt;开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：
+&lt;ul&gt;
+&lt;li&gt;以管理员身份运行cmd&lt;/li&gt;
+&lt;li&gt;输入以下命令按回车&lt;pre&gt;&lt;code&gt;reg add HKLM\Software\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;下载&lt;a href=&#34;https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master&#34;&gt;【auto-add-routes-master.zip】&lt;/a&gt;并解压将auto-add-routes-master目录里的所有文件复制到&amp;quot;C:\Program Files\WireGuard\bat&amp;quot;文件夹，没有bat文件夹自行新建&lt;/li&gt;
+&lt;li&gt;修改Wireguard客户端配置文件，加入以下Script Hook调用&amp;quot;C:\Program Files\WireGuard\bat&amp;quot;的批处理文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;PreUp = &amp;quot;C:\Program Files\WireGuard\bat\routes-up.bat&amp;quot;
+PostUp = &amp;quot;C:\Program Files\WireGuard\bat\dns-up.bat&amp;quot;
+PreDown = &amp;quot;C:\Program Files\WireGuard\bat\routes-down.bat&amp;quot;
+PostDown = &amp;quot;C:\Program Files\WireGuard\bat\dns-down.bat&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;将DNS指向本机以使用Overture作为DNS服务器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;DNS = 127.0.0.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;关闭WireGuard的(kill-switch)并保存修改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;以上设置如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://blog.wmjan.top/post-images/fl.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;连接成功后可上ipskkmoe测试一下看是否正确分流&#34;&gt;连接成功后可上&lt;a href=&#34;https://ip.skk.moe/&#34;&gt;ip.skk.moe&lt;/a&gt;测试一下看是否正确分流&lt;/h3&gt;
+">WARP+分流设置</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/warp+key/"" data-c="
+          &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;Cloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跳过一切过程与方法：&lt;a href=&#34;https://blog.wmjan.top/post/warpfenliu/#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95&#34;&gt;安卓手机请坐直升机&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;节点获取方法&#34;&gt;节点获取方法&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&#34;https://1.1.1.1&#34;&gt;【Cloudflare Warp官网】&lt;/a&gt;，下载对应的Cloudflare WARP程序，默认只有1GB流量&lt;/li&gt;
+&lt;li&gt;获取🔑无限流量密钥（Key）
+&lt;ul&gt;
+&lt;li&gt;方法一：Telegram 搜索添加 Warp+Bot，输入/generater按提示获取Key；&lt;/li&gt;
+&lt;li&gt;方法二：&lt;a href=&#34;https://replit.com/@wmjan1980/WarpKey&#34;&gt;【进Replit项目】&lt;/a&gt; 点Run等待几秒即可自动获取Warp+的Key。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;打开 Cloudflare WARP 程序，设置里替换🔑无限流量密钥（Key），即可实现Cloudflare官方无限流量科学上网。&lt;/li&gt;
+&lt;li&gt;到此为止，你已经获得了安全可靠的无限流量科学上网方法，如果依旧还是无法上外网请继续看以下扩展内容，正常了没特殊需要可忽略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;进阶ip优选加速方案&#34;&gt;进阶IP优选加速方案&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;IP优选工具下载：&lt;a href=&#34;https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/warp-yxip/warp-yxip-win.7z?inline=false&#34;&gt;【下载链接】&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载解压后启动warp-yxip.bat，选择对应优选模式（默认为IPv4）&lt;/li&gt;
+&lt;li&gt;优选完成后，找到result.csv文件打开。可以看到🚀优选IP和端口号&lt;/li&gt;
+&lt;li&gt;生成配置文件：打开&lt;a href=&#34;https://replit.com/@wmjan1980/wgcf-profile-generator&#34;&gt;【Replit项目】&lt;/a&gt; 点Run，再选择2（Warp+）回车，输入对应的🔑无限流量密钥（Key），即可获得📋配置文件。&lt;/li&gt;
+&lt;li&gt;WireGuard工具下载：打开&lt;a href=&#34;https://www.wireguard.com/install&#34;&gt;【官网下载链接】&lt;/a&gt;，以Windows为例，安装运行后点左下角新建隧道-新建空隧道，清空默认配置文件，粘贴📋配置文件，并且将Endpoint项里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;
+&lt;li&gt;手机端WireGuard设置
+&lt;ul&gt;
+&lt;li&gt;方法一：直接在电脑端WireGuard导出已经配置好的隧道zip文件，发送到手机导入即可。&lt;/li&gt;
+&lt;li&gt;方法二：可以直接扫描第4步中生成的📋配置文件 二维码导入，再点编辑将“对端”里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">WARP+免费节点获取方法及进阶玩法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://blog.wmjan.top/post/about/"" data-c="
+          &lt;ul&gt;
+&lt;li&gt;本站为个人爱好学习记录，以自我理解、避坑为主&lt;/li&gt;
+&lt;li&gt;大部分内容来自网络，如果有涉及版权等相关问题请联系删除&lt;/li&gt;
+&lt;li&gt;联系方式：wmjan1980@gmail.com&lt;/li&gt;
+&lt;/ul&gt;
+">关于</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+  // var escape = "[{&#34;content&#34;:&#34;&lt;h2 id=\&#34;前言\&#34;&gt;前言&lt;/h2&gt;\n&lt;p&gt;在 Windows 11 24H2 中，我们进行了两项重大安全更改，这些更改可能会影响将驱动器映射到第三方消费类 NAS 或带有 USB 存储的路由器：&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;默认情况下，所有连接都需要 SMB 签名。这通过防止网络篡改来提高安全性，并阻止将您的凭证发送到恶意服务器的中继攻击。&lt;/li&gt;\n&lt;li&gt;来宾回退在 Windows 11 专业版上处于禁用状态。这可以提高您在连接到不可信设备时的安全性。Guest 允许您连接到没有用户名或密码的 SMB 服务器。虽然对您的 NAS 制造商来说很方便，但这意味着您的设备可能会被诱骗连接到恶意服务器，而无需提示输入凭据，然后获得勒索软件或窃取您的数据。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2 id=\&#34;出现的问题如下\&#34;&gt;出现的问题如下&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;如果第三方设备不支持签名，可能会收到以下错误提示：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;0xc000a000&lt;br&gt;\n-1073700864&lt;br&gt;\nSTATUS_INVALID_SIGNATURE&lt;br&gt;\n加密签名无效&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;如果第三方需要Guest Access，可能会收到以下错误提示：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;您无法访问此共享文件夹，因为您组织的安全策略会阻止未经身份验证的 Guest 访问。这些策略有助于保护你的电脑免受网络上不安全或恶意设备的攻击&lt;br&gt;\n0x80070035&lt;br&gt;\n0x800704f8&lt;br&gt;\n找不到网络路径&lt;br&gt;\n发生系统错误 3227320323&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h2 id=\&#34;解决方法\&#34;&gt;解决方法&lt;/h2&gt;\n&lt;p&gt;&lt;strong&gt;1. Windows 11 专业版&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;打开运行(Win+R)，输入 gpedit.msc 进入组策略&lt;/li&gt;\n&lt;li&gt;依次打开 计算机配置 &amp;gt; Windows 设置 &amp;gt; 安全设置 &amp;gt; 本地策略 &amp;gt; 安全选项 &amp;gt; 双击 Microsoft 网络客户端:对通信进行数字签名(始终) 设置为 &amp;gt; 已禁用 &amp;gt; 确定即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;2. Windows 11 家庭版&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;右键 开始菜单 &amp;gt; 终端管理员&lt;/li&gt;\n&lt;li&gt;禁用 SMB 签名要求，输入以下代码并回车，然后按 Y 接受&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;Set-SmbClientConfiguration -RequireSecuritySignature $false\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;禁用 guest fallback，输入以下代码并回车，然后按 Y 接受&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;Set-SmbClientConfiguration -EnableInsecureGuestLogons $true\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;end\&#34;&gt;END&lt;/h2&gt;\n&#34;,&#34;fileName&#34;:&#34;Win11NetworkSharing&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;解决Win11 24H2/25H2无法访问局域网共享&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2026-01-20 13:02:40&#34;,&#34;dateFormat&#34;:&#34;2026-01-20&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Win11NetworkSharing/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:112000,&#34;words&#34;:513,&#34;minutes&#34;:2},&#34;description&#34;:&#34;前言\n在 Windows 11 24H2 中，我们进行了两项重大安全更改，这些更改可能会影响将驱动器映射到第三方消费类 NAS 或带有 USB 存储的路由器：\n\n默认情况下，所有连接都需要 SMB 签名。这通过防止网络篡改来提高安全性，并阻...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%A6%82%E4%B8%8B\&#34;&gt;出现的问题如下&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95\&#34;&gt;解决方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h2 id=\&#34;前言\&#34;&gt;前言&lt;/h2&gt;\n&lt;p&gt;目前腾讯云免费证书有效期只有短短90天，本记录以腾讯云DNSPOD为例，使用群晖docker部署 acme.sh 的方式免费申请泛域名证书以及配置自动续签，保证证书不会到期中断。&lt;/p&gt;\n&lt;h2 id=\&#34;一-腾讯云dns-token申请\&#34;&gt;一、腾讯云DNS Token申请&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;\n&lt;p&gt;打开DNSPod 控制台&lt;br&gt;\n腾讯云DNSPod： &lt;a href=\&#34;https://console.dnspod.cn/\&#34;&gt;DNSPod&lt;/a&gt;&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;获取 DNSPod Token&lt;br&gt;\n点击右上角头像 &amp;gt; 点击API密钥 &amp;gt; 选择DNSPod Token &amp;gt; 创建密钥&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;记录并保存Token，忘记需重新创建密钥&lt;/p&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2 id=\&#34;二-群晖创建acmesh容器并配置环境\&#34;&gt;二、群晖创建acme.sh容器并配置环境&lt;/h2&gt;\n&lt;p&gt;无法正常访问Docker注册表的请参考使用：&lt;a href=\&#34;https://cloud.tencent.com/developer/article/2485043\&#34;&gt;Docker/DockerHub 国内镜像源/加速列表&lt;/a&gt;&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;在共享文件夹docker里建一个acme.sh的文件夹&lt;/li&gt;\n&lt;li&gt;拉取acme.sh docker镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;打开群晖docker，在注册表里搜索acme.sh，找到并下载neilpang/acme.sh&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;创建容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;容器名为：acme-sh&lt;/li&gt;\n&lt;li&gt;高级设置 &amp;gt; 存储空间：添加文件夹docker/acme.sh，装载路径到 /acme.sh&lt;/li&gt;\n&lt;li&gt;网络为host&lt;/li&gt;\n&lt;li&gt;添加环境变量（如果开启了两步验证，需要繁琐一些，也可以为acme.sh专门新建一个账号）&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;DP_Id ： 填入第一步获取的 DNSPod ID&lt;br&gt;\nDP_Key ：填入第一步获取的 DNSPod Token&lt;br&gt;\nSYNO_Username ：登录群晖的用户名&lt;br&gt;\nSYNO_Password ： 登录群晖的密码&lt;br&gt;\nSYNO_Certificate ：空字符串（&amp;quot;&amp;quot;）为替换默认证书&lt;br&gt;\nSYNO_Create：填域名&lt;br&gt;\nSYNO_Port ： 填入群晖内网的端口号（我用的默认端口5000未修改）&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;命令处添加：daemon&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;点击下一步，运行容器。&lt;br&gt;\n此时容器搭建完毕，但证书还没有获取，也没有部署，必须要一个脚本文件来启动它。&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2 id=\&#34;三-创建脚本文件\&#34;&gt;三、创建脚本文件&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;在群晖用文本编辑器，创建一个新文本，粘贴如下代码，修改 &#39;你的域名&#39; ，然后保存，修改文件名为cert.sh&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;#!/bin/bash\n \n# 域名\n \nDOMAIN=&#39;你的域名&#39;\n \n# DNS类型，dns_ali dns_dp dns_gd dns_aws dns_linode根据域名服务商而定，CloudFlare就是dns_cf\n \nDNS=dns_dp\n \n# DNS API 生效等待时间 值(单位：秒)，一般120即可\n \n# 某些域名服务商的API生效时间较大，需要将这个值加大(比如900)\n \nDNS_SLEEP=120\n \n# 证书服务商，letsencrypt\n \nCERT_SERVER=letsencrypt\n \ngenerateCrtCommand=&amp;quot;acme.sh --force --log --issue --server ${CERT_SERVER} --dns ${DNS} --dnssleep ${DNS_SLEEP} -d &amp;quot;${DOMAIN}&amp;quot; -d &amp;quot;*.${DOMAIN}&amp;quot;&amp;quot;\n \ninstallCrtCommand=&amp;quot;acme.sh --deploy -d &amp;quot;${DOMAIN}&amp;quot; -d &amp;quot;*.${DOMAIN}&amp;quot; --deploy-hook synology_dsm&amp;quot;\n \ndocker exec acme-sh $generateCrtCommand\n \ndocker exec acme-sh $installCrtCommand\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;将此脚本文件放到 /volume1/docker/acme.sh 文件夹下，然后右键属性，复制好路径位置，一会要用&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2 id=\&#34;四-获取证书\&#34;&gt;四、获取证书&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;首先确认群晖的ssh端口是打开的，然后运行终端，连接群晖。并使用sudo -i 提升账号权限为root权限&lt;/li&gt;\n&lt;li&gt;然后执行脚本运行命令，路径就用刚才复制的脚本文件路径&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;bash /volume1/docker/acme.sh/cert.sh\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;看到最后的Success，就是成功了。&lt;br&gt;\n然后我们可以在 /volume1/docker/acme.sh/ 文件夹下看到有个以我们域名命名的文件夹，里面就是新保存的证书了&lt;/li&gt;\n&lt;li&gt;然后控制面板  &amp;gt; 安全性 &amp;gt; 证书 检查下证书是否已更新&lt;/li&gt;\n&lt;li&gt;以上步骤成功之后，我们就可以去部署自动更新的脚本了&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2 id=\&#34;五-自动获取更新证书脚本\&#34;&gt;五、自动获取更新证书脚本&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;打开群晖控制面板 &amp;gt; 任务计划 &amp;gt; 新增，用户账号选root&lt;/li&gt;\n&lt;li&gt;计划：可设置为每3个月运行一次&lt;/li&gt;\n&lt;li&gt;然后任务设置 &amp;gt; 运行命令(用户定义的脚本)，粘贴如下代码，目录名称以实际为准：&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;bash  /volume1/docker/acme.sh/cert.sh &amp;gt;&amp;gt; /volume1/docker/acme.sh/log.txt 2&amp;gt;&amp;amp;1\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;end\&#34;&gt;END&lt;/h2&gt;\n&#34;,&#34;fileName&#34;:&#34;cert&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;群晖docker部署acme.sh自动续签DNSPOD证书&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;acme&#34;,&#34;slug&#34;:&#34;chlA69MacH&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/chlA69MacH/&#34;}],&#34;date&#34;:&#34;2025-02-12 16:15:39&#34;,&#34;dateFormat&#34;:&#34;2025-02-12&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/cert/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:212000,&#34;words&#34;:905,&#34;minutes&#34;:4},&#34;description&#34;:&#34;前言\n目前腾讯云免费证书有效期只有短短90天，本记录以腾讯云DNSPOD为例，使用群晖docker部署 acme.sh 的方式免费申请泛域名证书以及配置自动续签，保证证书不会到期中断。\n一、腾讯云DNS Token申请\n\n\n打开DNSPod...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%80-%E8%85%BE%E8%AE%AF%E4%BA%91dns-token%E7%94%B3%E8%AF%B7\&#34;&gt;一、腾讯云DNS Token申请&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%8C-%E7%BE%A4%E6%99%96%E5%88%9B%E5%BB%BAacmesh%E5%AE%B9%E5%99%A8%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83\&#34;&gt;二、群晖创建acme.sh容器并配置环境&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%89-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6\&#34;&gt;三、创建脚本文件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%9B%9B-%E8%8E%B7%E5%8F%96%E8%AF%81%E4%B9%A6\&#34;&gt;四、获取证书&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%94-%E8%87%AA%E5%8A%A8%E8%8E%B7%E5%8F%96%E6%9B%B4%E6%96%B0%E8%AF%81%E4%B9%A6%E8%84%9A%E6%9C%AC\&#34;&gt;五、自动获取更新证书脚本&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;网卡直通\&#34;&gt;网卡直通&lt;/h1&gt;\n&lt;h2 id=\&#34;修改gurb\&#34;&gt;修改gurb&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;PVE shell里面输入命令&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;nano /etc/default/grub\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;找到以下选项&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;修改grub值&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Intel CPU修改为&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;AMD CPU修改为&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet amd_iommu=on&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;保存退出&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;按&lt;code&gt;Crtl + X&lt;/code&gt;退出，再按 &lt;code&gt;Y&lt;/code&gt; 保存并退出&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;更新grub配置&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;update-grub\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;增加模块\&#34;&gt;增加模块&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;PVE shell里输入命令&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;nano /etc/modules\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;加入以下内容&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;vfio\n vfio_iommu_type1\n vfio_pci\n vfio_virqfd\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;保存退出&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;按&lt;code&gt;Crtl + X&lt;/code&gt;退出，再按 &lt;code&gt;Y&lt;/code&gt; 保存并退出&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;查看网卡ID&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;lspci |grep net\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;openwrt添加直通网卡\&#34;&gt;OpenWrt添加直通网卡&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;找到对应OpenWrt虚拟机编号(如：100)&lt;/li&gt;\n&lt;li&gt;找到 硬件 &amp;gt; 添加 &amp;gt; PCI设备 &amp;gt; 原始设备 &amp;gt; 设备列表中找到对应的网口 &amp;gt; 勾选所有功能 &amp;gt; 添加即可&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;qm命令\&#34;&gt;qm命令&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;命令语法&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm &amp;lt;COMMAND&amp;gt; [ARGS] [OPTIONS]\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;查看虚拟机列表(数字为VMID编号)&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm list\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;启动虚拟机(数字为VMID编号)&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm start 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;停止虚拟机&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm stop 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;查看虚拟机状态&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm status 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;删除虚拟机(删除前需要停止虚拟机)&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm destroy 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;解锁虚拟机&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;如果虚拟机在备份、克隆、迁移、快照等国产中可能出现错误，导致虚拟机锁定，这个时候会出现界面上无法关机、重启等，需要先解锁虚拟机，通过如下命令进行解锁。如果执行此命令还无法解锁，需要先删除lock-100.conf配置文件。&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;pre&gt;&lt;code&gt;qm unlock 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;删除虚拟机100的配置文件&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;rm -rf /var/lock/qemu-server/lock-100.conf\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;暂停虚拟机&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm suspend 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;9\&#34;&gt;\n&lt;li&gt;恢复虚拟机&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm resume 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;10\&#34;&gt;\n&lt;li&gt;重置虚拟机&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm reset 100\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;11\&#34;&gt;\n&lt;li&gt;查看虚拟机配置信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;qm config 100\n&lt;/code&gt;&lt;/pre&gt;\n&#34;,&#34;fileName&#34;:&#34;PVE+iommu&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;PVE网卡直通及qm命令&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;pve&#34;,&#34;slug&#34;:&#34;FdTzqzaoV&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/FdTzqzaoV/&#34;},{&#34;name&#34;:&#34;网卡直通&#34;,&#34;slug&#34;:&#34;YkUM8rWaRw&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/YkUM8rWaRw/&#34;}],&#34;date&#34;:&#34;2024-05-27 11:16:31&#34;,&#34;dateFormat&#34;:&#34;2024-05-27&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/PVE+iommu/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:103000,&#34;words&#34;:420,&#34;minutes&#34;:2},&#34;description&#34;:&#34;网卡直通\n修改gurb\n\nPVE shell里面输入命令\n\nnano /etc/default/grub\n\n\n找到以下选项\n\nGRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;\n\n\n修改grub值\n\n\n...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A\&#34;&gt;网卡直通&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BF%AE%E6%94%B9gurb\&#34;&gt;修改gurb&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%A2%9E%E5%8A%A0%E6%A8%A1%E5%9D%97\&#34;&gt;增加模块&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#openwrt%E6%B7%BB%E5%8A%A0%E7%9B%B4%E9%80%9A%E7%BD%91%E5%8D%A1\&#34;&gt;OpenWrt添加直通网卡&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#qm%E5%91%BD%E4%BB%A4\&#34;&gt;qm命令&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;无法获取验证码\&#34;&gt;无法获取验证码&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;现在注册谷歌账号需要提供手机号码获取验证码，证明您不是自动程序，但使用+86手机号码时往往会收到提示：此电话号码无法用于进行验证&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;解决方法亲测有效\&#34;&gt;解决方法，亲测有效&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;下载最新版chrome浏览器，手机/电脑版本均可以&lt;/li&gt;\n&lt;li&gt;语言添加英语，删除其他多余语言&lt;/li&gt;\n&lt;li&gt;结束进程/关闭退出&lt;/li&gt;\n&lt;li&gt;重新打开chrome浏览器，按流程重新注册即可使用+86手机号码来获取验证码了&lt;/li&gt;\n&lt;li&gt;需要注意的是谷歌账号如果长期不登陆使用的话是会被锁定的&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;google&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;+86手机号接收注册谷歌账号验证码&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;google&#34;,&#34;slug&#34;:&#34;XTk4FNFzs&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/XTk4FNFzs/&#34;}],&#34;date&#34;:&#34;2024-05-13 15:47:07&#34;,&#34;dateFormat&#34;:&#34;2024-05-13&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/google/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:35000,&#34;words&#34;:172,&#34;minutes&#34;:1},&#34;description&#34;:&#34;无法获取验证码\n\n现在注册谷歌账号需要提供手机号码获取验证码，证明您不是自动程序，但使用+86手机号码时往往会收到提示：此电话号码无法用于进行验证\n\n解决方法，亲测有效\n\n下载最新版chrome浏览器，手机/电脑版本均可以\n语言添加英语，删...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E9%AA%8C%E8%AF%81%E7%A0%81\&#34;&gt;无法获取验证码&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88\&#34;&gt;解决方法，亲测有效&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;openvpn简述\&#34;&gt;OpenVPN简述&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;OpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备&lt;/li&gt;\n&lt;li&gt;最大的好处就是安全、高效、跨平台&lt;/li&gt;\n&lt;li&gt;可解决一些远程端口访问也无法实现的一些功能，如访问打印机等等&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;安装及配置\&#34;&gt;安装及配置&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;安装以下插件，详见&lt;a href=\&#34;https://blog.wmjan.top/post/openwrt/\&#34;&gt;旁路由简述及OpenWrt相关设置&lt;/a&gt;中的软件安装部分&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;luci-i18n-openvpn-zh-cn&lt;br&gt;\nluci-app-openvpn-server&lt;br&gt;\nluci-app-openvpn&lt;br&gt;\nopenvpn-openssl&lt;br&gt;\nopenvpn-easy-rsa&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;部署及配置&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 VPN &amp;gt; OpenVPN服务器&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;启用：勾选&lt;br&gt;\n协议：按实际需求选择，只有公网IPv6的建议选&lt;code&gt;UDP Server IPv6&lt;/code&gt;&lt;br&gt;\n端口：默认1194，也可自定义，切记需要在网络 &amp;gt; 防火墙 &amp;gt; 端口转发中打开&lt;br&gt;\nWAN口的 DDNS域名 或者 IP：自己已注册的域名，如wmjan.cn&lt;br&gt;\n客户端网段：默认&lt;br&gt;\n客户端推送配置：根据路由的实际LAN IP 修改 &lt;code&gt;route 192.168.0.0 255.255.255.0&lt;/code&gt; 和 &lt;code&gt;dhcp-option DNS 192.168.0.1&lt;/code&gt; 这两行，如你的内网IP段为192.168.10.x，那么可修改为 &lt;code&gt;route 192.168.10.0 255.255.255.0&lt;/code&gt; 和 &lt;code&gt;dhcp-option DNS 223.5.5.5&lt;/code&gt;&lt;br&gt;\n保存&amp;amp;应用&lt;br&gt;\n一键下载.ovpn文件 备用&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;添加多客户端共用同一证书\&#34;&gt;添加多客户端共用同一证书&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;SSH登陆OpenWrt输入&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;vi /etc/confing/openvpn\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;按 &lt;code&gt;i&lt;/code&gt; 进入编辑状态，在底部加入以下代码，修改完按ESC 然后输入 &lt;code&gt;:wq&lt;/code&gt; 即可保存退出&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;option duplicate_cn &amp;quot;1&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;重启OpenVPN&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;/etc/init.d/openvpn restart\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;添加自定义防火墙规则\&#34;&gt;添加自定义防火墙规则&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 网络 &amp;gt; 防火墙 &amp;gt; 自定义规则加入以下代码&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;iptables -t nat -A POSTROUTING -o br-lan -j MASQUERADE\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;使用以安卓客户端为例\&#34;&gt;使用，以安卓客户端为例&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;下载 &lt;a href=\&#34;https://www.123pan.com/s/TozYjv-phF5H.html\&#34;&gt;OpenVPN Connect&lt;/a&gt;，提取码：open&lt;/li&gt;\n&lt;li&gt;安装打开 &amp;gt; 右下角+ &amp;gt; Upload Files &amp;gt; 底部BROWSE &amp;gt; 找到下载备用的my.ovpn文件 &amp;gt; OK &amp;gt; CONNECT&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;注：只能使用本局域网以外的网络方可连接&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;连接成功后就相当于内网主机了，你的对外IP也是对应你宽带的IP，如果OpenWrt上配置了梯子软件也直接可以使用&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;OpenVPN&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;OpenWrt配置OpenVPN多用户连接&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;openwrt&#34;,&#34;slug&#34;:&#34;AfcYQjIJ8&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/AfcYQjIJ8/&#34;}],&#34;date&#34;:&#34;2024-05-04 14:00:50&#34;,&#34;dateFormat&#34;:&#34;2024-05-04&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/OpenVPN/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:132000,&#34;words&#34;:554,&#34;minutes&#34;:3},&#34;description&#34;:&#34;OpenVPN简述\n\nOpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备\n最大的好处就是安全、高效、跨平台\n可解决一些远程端口访问也无法实现的一些功能...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#openvpn%E7%AE%80%E8%BF%B0\&#34;&gt;OpenVPN简述&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE\&#34;&gt;安装及配置&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%B7%BB%E5%8A%A0%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%85%B1%E7%94%A8%E5%90%8C%E4%B8%80%E8%AF%81%E4%B9%A6\&#34;&gt;添加多客户端共用同一证书&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%98%B2%E7%81%AB%E5%A2%99%E8%A7%84%E5%88%99\&#34;&gt;添加自定义防火墙规则&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%BA%E4%BE%8B\&#34;&gt;使用，以安卓客户端为例&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;什么是旁路由\&#34;&gt;什么是旁路由&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;旁路由的几种工作方式\&#34;&gt;旁路由的几种工作方式&lt;/h1&gt;\n&lt;h3 id=\&#34;1-主路由开dhcp-网关未指向旁路由旁路由关dhcp\&#34;&gt;1. 主路由开DHCP、网关未指向旁路由，旁路由关DHCP&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;客户端需设置静态IP，网关为旁路由IP地址&lt;/li&gt;\n&lt;li&gt;好处是旁路由随时可撤，不影响主网络&lt;/li&gt;\n&lt;li&gt;旁路由撤离后，需要手动修改网关IP或改为自动获取&lt;/li&gt;\n&lt;li&gt;如果只需要部分设备使用旁路由功能，就选这方案&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;2-主路由开dhcp网关未指向旁路由旁路由强制开dhcp\&#34;&gt;2. 主路由开DHCP，网关未指向旁路由，旁路由(强制)开DHCP&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;客户端可通过强制DHCP自动获取旁路由网关&lt;/li&gt;\n&lt;li&gt;好处是旁路由随时可撤，不影响主网络&lt;/li&gt;\n&lt;li&gt;旁路由撤离后，需要重新自动获取IP&lt;/li&gt;\n&lt;li&gt;如果需要所有设备使用旁路由功能，就选这方案&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;3-主路由开dhcp网关指向旁路由旁路由关dhcp\&#34;&gt;3. 主路由开DHCP，网关指向旁路由，旁路由关DHCP&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;客户端可自动获取IP等信息即可&lt;/li&gt;\n&lt;li&gt;旁路由撤离/死机后，会直接影响整体网络&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;4-主路由关dhcp旁路由开dhcp\&#34;&gt;4. 主路由关DHCP，旁路由开DHCP&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;客户端可自动获取IP等信息即可&lt;/li&gt;\n&lt;li&gt;旁路由撤离/死机后，会直接影响整体网络&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;综上所述需根据自己的实际情况选择对应方案一般会采用1和2方案居多\&#34;&gt;综上所述，需根据自己的实际情况选择对应方案，一般会采用1和2方案居多&lt;/h3&gt;\n&lt;h1 id=\&#34;旁路由设置\&#34;&gt;旁路由设置&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;以单网口OpenWrt第1种工作方式以例&lt;/li&gt;\n&lt;li&gt;主路由IP：192.168.2.254&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;配置接口\&#34;&gt;配置接口&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 网络 &amp;gt; 接口 &amp;gt; LAN &amp;gt; 修改 &amp;gt; 基本设置&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;协议：静态址址&lt;br&gt;\nIPv4地址：192.168.2.253&lt;br&gt;\nIPv4网关：192.168.2.254&lt;br&gt;\n使用自定义的 DNS 服务器：192.168.2.254&lt;br&gt;\n其他均可保持默认&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;高级设置 &amp;gt; 保持默认&lt;/li&gt;\n&lt;li&gt;物理设置 &amp;gt; 桥接接口 &amp;gt; 不勾选 &amp;gt; 接口选“eth0”&lt;/li&gt;\n&lt;li&gt;防火墙设置 &amp;gt; 选lan&lt;/li&gt;\n&lt;li&gt;DHCP 服务器 &amp;gt; 忽略此接口(勾选即为关闭)&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;PS：如果使用旁路由DHCP，需开启接口并在高级设置中&lt;br&gt;\n动态DHCP：勾选&lt;br&gt;\n强制：勾选&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;最后不要忘了保存&amp;amp;应用&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;防火墙配置\&#34;&gt;防火墙配置&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 网络 &amp;gt; 防火墙 &amp;gt; 基本设置 &amp;gt; 区域 &amp;gt; lan对应那条 &amp;gt; 入站数据/出站数据/转发 均选&lt;strong&gt;接受&lt;/strong&gt; &amp;gt; IP动态伪装 勾选 &amp;gt; 保存&amp;amp;应用&lt;/li&gt;\n&lt;li&gt;单网口设备建议自定义规则加上以下代码，详情见&lt;a href=\&#34;https://www.right.com.cn/forum/thread-2983767-1-1.html\&#34;&gt;说明&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;验证路由器是否能正常上网\&#34;&gt;验证路由器是否能正常上网&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 网络 &amp;gt; 网络诊断 &amp;gt; IPv4 Ping &amp;gt; 有显示xxx ms表示网络正常了&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;软件安装相关\&#34;&gt;软件安装相关&lt;/h1&gt;\n&lt;h3 id=\&#34;了解openwrt软件\&#34;&gt;了解OpenWrt软件&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;OpenWrt软件分为前端与后端，前端即为可视化界面Luci开头的，后端即为只存在于系统内的软件，需要使用命令来配置运行。所以我们在安装时尽量选择带luci开头的软件包，安装时会自动把后端关联程序一并安装上。&lt;/li&gt;\n&lt;li&gt;OpenWrt应用过于广泛，不同CPU架构的软件版本是不通用的。&lt;/li&gt;\n&lt;li&gt;不知道设备适合什么版本，可SSH登陆路由器输入以下代码即可查看CPU架构&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;cat /etc/os-release |grep ARCH\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;添加软件源\&#34;&gt;添加软件源&lt;/h3&gt;\n&lt;blockquote&gt;\n&lt;p&gt;由于OpenWrt编译者爱好不同，加入的软件源也有所不同，可能存在自带软件源中无法搜到想要的软件，此时可添加第三方软件源来弥补&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;&lt;a href=\&#34;https://op.dllkids.xyz/packages/\&#34;&gt;kenzok8大佬OpenWrt常用软件源地址&lt;/a&gt;；&lt;a href=\&#34;https://github.com/kiddin9/openwrt-packages\&#34;&gt;kiddin9大佬OpenWrt常用软件源地址&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;添加软件源，以X86平台为例&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 顶部 设置 &amp;gt; 自定义软件源 &amp;gt; 添加行&lt;code&gt;src/gz wmjan https://op.dllkids.xyz/packages/x86_64&lt;/code&gt; &amp;gt; 提交 &amp;gt; 回到顶部 动作 &amp;gt; 刷新列表&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;passwall安装与使用\&#34;&gt;PassWall安装与使用&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;安装&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入passwall &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-passwall-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;使用&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 服务 &amp;gt; PassWall &amp;gt; 节点列表 &amp;gt; 修改现有列表或添加 &amp;gt; 导入分享URL &amp;gt; 粘贴VLESS/VMESS等节点信息 &amp;gt; 保存 &amp;gt; 回到 基本设置 &amp;gt; 主开关 勾选 &amp;gt; TCP节点选择刚才添加的名称 &amp;gt; 保存&amp;amp;应用&lt;/li&gt;\n&lt;li&gt;验证是否成功 &amp;gt; 点 谷歌连接&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;有数据即正常&lt;br&gt;\n没数据，解决方法：确认节点是否有效？修改DNS-远程DNS更换为谷歌 &amp;gt; 保存&amp;amp;应用&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;frpcfrp内网穿透安装与使用\&#34;&gt;Frpc(Frp内网穿透)安装与使用&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;安装&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入frpc &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-frpc-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;使用&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;详见&lt;a href=\&#34;https://blog.wmjan.top/post/frp/\&#34;&gt;frp内网穿透配置说明&lt;/a&gt;把对应的信息填入即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;动态dns\&#34;&gt;动态DNS&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;安装&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 系统 &amp;gt; 软件包 &amp;gt; 过滤器输入ddns &amp;gt; 查找软件包 &amp;gt; 可用软件包 &amp;gt; 找到luci-i18n-ddns-zh-cn安装即可，刷新页面可在侧边栏 &amp;gt; 服务 中找到&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;切记：不能输入完整域名等有./-@之类的特殊字符，否则无法添加且不会有任何错误提示&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;使用，以dnspod为例&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;侧边栏 服务 &amp;gt; 动态DNS &amp;gt; 输入框中输入有效名称如dnspod &amp;gt; 添加&lt;/li&gt;\n&lt;li&gt;基本设置&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;启用：勾选&lt;br&gt;\n查询主机名：不带任何前缀的主域名，如wmjan.cn&lt;br&gt;\nIP 地址版本：IPv4 地址&lt;br&gt;\nDDNS 服务提供商 [IPv4]：dnspod.cn &amp;gt; 更改提供者&lt;br&gt;\n域名：必须带www前缀或子域名，如www.wmjan.cn&lt;br&gt;\n用户名：腾讯云API密钥 &amp;gt; DNSPod Token &amp;gt; 创建密钥时的ID&lt;br&gt;\n密码：腾讯云API密钥 &amp;gt; DNSPod Token &amp;gt; 创建密钥时的Token&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;高级设置&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;IP 地址来源 [IPv4]：网络&lt;br&gt;\n网络 [IPv4]：wan，以实际拥有公网IP的接口&lt;br&gt;\n其他默认 &amp;gt; 保存&amp;amp;应用&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;openwrt&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;旁路由简述及OpenWrt相关设置&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;openwrt&#34;,&#34;slug&#34;:&#34;AfcYQjIJ8&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/AfcYQjIJ8/&#34;}],&#34;date&#34;:&#34;2024-05-02 11:00:17&#34;,&#34;dateFormat&#34;:&#34;2024-05-02&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/openwrt/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;6 min read&#34;,&#34;time&#34;:345000,&#34;words&#34;:1534,&#34;minutes&#34;:6},&#34;description&#34;:&#34;什么是旁路由\n\n旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能\n\n旁路由的几种工作方式\n1. 主路由开DHCP、网关未指向旁路由，旁路由关DHC...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%81%E8%B7%AF%E7%94%B1\&#34;&gt;什么是旁路由&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%97%81%E8%B7%AF%E7%94%B1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F\&#34;&gt;旁路由的几种工作方式&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#1-%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%BC%80dhcp-%E7%BD%91%E5%85%B3%E6%9C%AA%E6%8C%87%E5%90%91%E6%97%81%E8%B7%AF%E7%94%B1%E6%97%81%E8%B7%AF%E7%94%B1%E5%85%B3dhcp\&#34;&gt;1. 主路由开DHCP、网关未指向旁路由，旁路由关DHCP&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#2-%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%BC%80dhcp%E7%BD%91%E5%85%B3%E6%9C%AA%E6%8C%87%E5%90%91%E6%97%81%E8%B7%AF%E7%94%B1%E6%97%81%E8%B7%AF%E7%94%B1%E5%BC%BA%E5%88%B6%E5%BC%80dhcp\&#34;&gt;2. 主路由开DHCP，网关未指向旁路由，旁路由(强制)开DHCP&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#3-%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%BC%80dhcp%E7%BD%91%E5%85%B3%E6%8C%87%E5%90%91%E6%97%81%E8%B7%AF%E7%94%B1%E6%97%81%E8%B7%AF%E7%94%B1%E5%85%B3dhcp\&#34;&gt;3. 主路由开DHCP，网关指向旁路由，旁路由关DHCP&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#4-%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%85%B3dhcp%E6%97%81%E8%B7%AF%E7%94%B1%E5%BC%80dhcp\&#34;&gt;4. 主路由关DHCP，旁路由开DHCP&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BB%BC%E4%B8%8A%E6%89%80%E8%BF%B0%E9%9C%80%E6%A0%B9%E6%8D%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%E9%80%89%E6%8B%A9%E5%AF%B9%E5%BA%94%E6%96%B9%E6%A1%88%E4%B8%80%E8%88%AC%E4%BC%9A%E9%87%87%E7%94%A81%E5%92%8C2%E6%96%B9%E6%A1%88%E5%B1%85%E5%A4%9A\&#34;&gt;综上所述，需根据自己的实际情况选择对应方案，一般会采用1和2方案居多&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%97%81%E8%B7%AF%E7%94%B1%E8%AE%BE%E7%BD%AE\&#34;&gt;旁路由设置&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3\&#34;&gt;配置接口&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE\&#34;&gt;防火墙配置&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%AA%8C%E8%AF%81%E8%B7%AF%E7%94%B1%E5%99%A8%E6%98%AF%E5%90%A6%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91\&#34;&gt;验证路由器是否能正常上网&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3\&#34;&gt;软件安装相关&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%86%E8%A7%A3openwrt%E8%BD%AF%E4%BB%B6\&#34;&gt;了解OpenWrt软件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90\&#34;&gt;添加软件源&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#passwall%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8\&#34;&gt;PassWall安装与使用&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frpcfrp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8\&#34;&gt;Frpc(Frp内网穿透)安装与使用&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%8A%A8%E6%80%81dns\&#34;&gt;动态DNS&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;简易教程二次刷机\&#34;&gt;简易教程/二次刷机&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;下载&lt;a href=\&#34;https://www.123pan.com/s/TozYjv-wzg5H.html\&#34;&gt;OpenWrt安装包&lt;/a&gt;解压，提取码：open，安装运行USB_Burning_Tool（烧录软件），导入OpenWrt安装包，选择擦除所有，点击开始&lt;/li&gt;\n&lt;li&gt;USB对公线接玩客云离HDMI接口近的那个USB接口&lt;/li&gt;\n&lt;li&gt;取卡针长按复位键不放，插电源3-5秒，直到软件显示“连接成功”跑进度条即可放开取卡针了&lt;/li&gt;\n&lt;li&gt;烧录成功之后，点击停止，拔掉电源&lt;/li&gt;\n&lt;li&gt;默认IP：10.0.0.1，默认用户名/密码：root&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;首次刷机以上方法失败\&#34;&gt;首次刷机/以上方法失败&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;热风枪吹开面板，取出主板&lt;/li&gt;\n&lt;li&gt;准备 USB公对公数据线一根(可以自制一根)、短接线或金属尖头镊子&lt;/li&gt;\n&lt;li&gt;下载&lt;a href=\&#34;https://www.123pan.com/s/TozYjv-wzg5H.html\&#34;&gt;OpenWrt安装包&lt;/a&gt;解压，提取码：open&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;开始烧录\&#34;&gt;开始烧录&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;安装USB_Burning_Tool（烧录软件）&lt;/li&gt;\n&lt;li&gt;USB对公线接玩客云离HDMI接口近的那个USB接口&lt;/li&gt;\n&lt;li&gt;打开软件，短接主板上的触电，接通电源直到软件显示“连接成功”&lt;/li&gt;\n&lt;li&gt;导入OpenWrt安装包，选择擦除所有，点击开始&lt;/li&gt;\n&lt;li&gt;烧录成功之后，点击停止，拔掉电源、数据线&lt;/li&gt;\n&lt;li&gt;接上键盘和显示器，开机跑完代码之后，插入网线连接路由器的LAN接口&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/openwrt.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;修改配置\&#34;&gt;修改配置&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;修改IP命令&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;vi /etc/config/network\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;按 &lt;code&gt;i&lt;/code&gt; 进入编辑状态，修改完按ESC 然后输入 &lt;code&gt;:wq&lt;/code&gt; 即可保存退出&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;重置root账户密码&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;赋予root权限命令&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;mount_root\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;修改root密码命令&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;passwd root\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;根据提示输入新密码&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;New password #新密码&lt;br&gt;\nRetype password #再次输入密码&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;重启完成后，电脑打开浏览器输入OpenWrt的IP地址，进行登录即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;wky&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;玩客云刷OpenWrt简易教程&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;openwrt&#34;,&#34;slug&#34;:&#34;AfcYQjIJ8&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/AfcYQjIJ8/&#34;}],&#34;date&#34;:&#34;2024-04-22 10:59:33&#34;,&#34;dateFormat&#34;:&#34;2024-04-22&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/wky/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:89000,&#34;words&#34;:413,&#34;minutes&#34;:2},&#34;description&#34;:&#34;简易教程/二次刷机\n\n下载OpenWrt安装包解压，提取码：open，安装运行USB_Burning_Tool（烧录软件），导入OpenWrt安装包，选择擦除所有，点击开始\nUSB对公线接玩客云离HDMI接口近的那个USB接口\n取卡针长按复...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B%E4%BA%8C%E6%AC%A1%E5%88%B7%E6%9C%BA\&#34;&gt;简易教程/二次刷机&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%A6%96%E6%AC%A1%E5%88%B7%E6%9C%BA%E4%BB%A5%E4%B8%8A%E6%96%B9%E6%B3%95%E5%A4%B1%E8%B4%A5\&#34;&gt;首次刷机/以上方法失败&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%A7%8B%E7%83%A7%E5%BD%95\&#34;&gt;开始烧录&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE\&#34;&gt;修改配置&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;openwrt安装\&#34;&gt;OpenWrt安装&lt;/h1&gt;\n&lt;h3 id=\&#34;资源下载\&#34;&gt;资源下载&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;开源项目地址，感谢&lt;br&gt;\nxiaorouji大佬：&lt;a href=\&#34;https://github.com/xiaorouji/openwrt-passwall/releases\&#34;&gt;PassWall&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;查看CPU架构&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;cat /etc/os-release |grep ARCH\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;下载软件&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;luci-23.05_luci-app-passwall_4.76-4_all.ipk&lt;/li&gt;\n&lt;li&gt;luci-23.05_luci-i18n-passwall-zh-cn_git-24.091.50413-b585fb1_all.ipk&lt;/li&gt;\n&lt;li&gt;passwall_packages_ipk_aarch64_generic.zip(下载路由CPU架构对应版本)&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;上传文件到openwrt\&#34;&gt;上传文件到OpenWrt&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;左侧栏 系统 &amp;gt; 文件传输 &amp;gt; 选择文件(把3个文件逐一上传) &amp;gt; 上传&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;安装\&#34;&gt;安装&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;SSH登陆OpenWrt路由器&lt;/li&gt;\n&lt;li&gt;进入安装包所在目录&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;cd /tmp/upload\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;查看目录下所有文件&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;ls\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;确认3个文件都在，再运行解压安装包&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;unzip passwall_packages_ipk_aarch64_generic.zip\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;安装/tmp/upload目录下所有软件包&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;opkg install *.ipk --force-reinstal\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;istoreos安装\&#34;&gt;iStoreOS安装&lt;/h1&gt;\n&lt;h3 id=\&#34;资源下载x86为例\&#34;&gt;资源下载，X86为例&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;开源项目地址，感谢AUK9527大佬：&lt;a href=\&#34;https://github.com/AUK9527/Are-u-ok/tree/main/x86\&#34;&gt;PassWall&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;下载软件&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;下载后得到类似PassWall_4.76-1_x86_64_all_sdk_22.03.6.run的文件&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;上传文件到openwrt-2\&#34;&gt;上传文件到OpenWrt&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;左侧栏 系统 &amp;gt; 文件传输 &amp;gt; 选择文件(选择PassWall_4.76-1_x86_64_all_sdk_22.03.6.run文件) &amp;gt; 上传&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;安装-2\&#34;&gt;安装&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;SSH登陆OpenWrt路由器&lt;/li&gt;\n&lt;li&gt;进入安装包所在目录&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;cd /tmp/upload\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;赋予运行权限&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;chmod 755 PassWall_4.76-1_x86_64_all_sdk_22.03.6.run\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;安装&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;./PassWall_4.76-1_x86_64_all_sdk_22.03.6.run\n&lt;/code&gt;&lt;/pre&gt;\n&#34;,&#34;fileName&#34;:&#34;PassWall&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;OpenWrt/iStoreOS安装PassWall&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;openwrt&#34;,&#34;slug&#34;:&#34;AfcYQjIJ8&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/AfcYQjIJ8/&#34;}],&#34;date&#34;:&#34;2024-04-16 08:59:03&#34;,&#34;dateFormat&#34;:&#34;2024-04-16&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/PassWall/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:72000,&#34;words&#34;:284,&#34;minutes&#34;:2},&#34;description&#34;:&#34;OpenWrt安装\n资源下载\n\n开源项目地址，感谢\nxiaorouji大佬：PassWall\n查看CPU架构\n\ncat /etc/os-release |grep ARCH\n\n\n下载软件\n\n\nluci-23.05_luci-app-pass...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#openwrt%E5%AE%89%E8%A3%85\&#34;&gt;OpenWrt安装&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD\&#34;&gt;资源下载&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0openwrt\&#34;&gt;上传文件到OpenWrt&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85\&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#istoreos%E5%AE%89%E8%A3%85\&#34;&gt;iStoreOS安装&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BDx86%E4%B8%BA%E4%BE%8B\&#34;&gt;资源下载，X86为例&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0openwrt-2\&#34;&gt;上传文件到OpenWrt&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85-2\&#34;&gt;安装&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;准备工作\&#34;&gt;准备工作&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;前往&lt;a href=\&#34;https://www.cloudflare-cn.com/\&#34;&gt;Cloudflare站点&lt;/a&gt;自行注册账号&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;https://github.com/3Kmfi6HP/EDtunnel\&#34;&gt;3Kmfi6HP大佬的Workers项目链接&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;下载windows梯子软件v2rayN最新版，打开&lt;a href=\&#34;https://github.com/2dust/v2rayN\&#34;&gt;v2rayN官网&lt;/a&gt;，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行&lt;/li&gt;\n&lt;li&gt;UUID(userID)获取方法：运行v2rayN &amp;gt; 点左上角“服务器” &amp;gt; 添加VLESS服务器 &amp;gt; 用户ID(id)项点 生成即可得到，保存待用&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;搭建及使用\&#34;&gt;搭建及使用&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://www.cloudflare-cn.com/\&#34;&gt;Cloudflare站点&lt;/a&gt;左侧栏 &amp;gt; Workers 和 Pages &amp;gt; 概述里点 创建应用程序 &amp;gt; 创建 Worker &amp;gt; 名称随便取 &amp;gt; 点右下角部署 &amp;gt; 编辑代码 &amp;gt; &lt;a href=\&#34;https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js\&#34;&gt;复制3Kmfi6HP大佬的worker.js代码替换上去&lt;/a&gt; &amp;gt; 把准备工作中得到的userID替换代码中let userID的值 &amp;gt; 点右上角 保存并部署&lt;/li&gt;\n&lt;li&gt;回到Workers 和 Pages &amp;gt; 点刚创建的应用程序名 &amp;gt; 触发器 &amp;gt; 复制路由地址&lt;code&gt;*.*.workers.dev&lt;/code&gt;并加上&lt;code&gt;/UUID地址&lt;/code&gt;，如我的是：&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;复制&lt;code&gt;warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999&lt;/code&gt;在浏览器打开即可看到生成 VLESS 协议的配置信息&lt;/li&gt;\n&lt;li&gt;点开&lt;code&gt;VLESS 节点订阅连接&lt;/code&gt;，&lt;code&gt;Clash for Windows 节点订阅连接&lt;/code&gt;，&lt;code&gt;优选IP自动节点订阅&lt;/code&gt;，&lt;code&gt;v2rayNG优选IP自动&lt;/code&gt;等你需要的对应链接，会得到整个页面全是字符&lt;/li&gt;\n&lt;li&gt;全选复制后，打开梯子软件v2rayN &amp;gt; 点左上角服务器 &amp;gt; 从剪贴板导入批量URL(或直接Ctrl+V)，会发现此时添加了几十条节点&lt;/li&gt;\n&lt;li&gt;Ctrl+A后再Ctrl+R测试节点真连接，延时只要不是-1值，说明节点都正常&lt;/li&gt;\n&lt;li&gt;选择其中一条延时较低的节点回车即可启用节点&lt;/li&gt;\n&lt;li&gt;使用节点前记得把底部的系统代理选为：自动配置系统代理；路由选：绕过大陆。这样就可以实现分流上梯子了&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;分流测试地址&lt;a href=\&#34;https://ip.skk.moe/\&#34;&gt;ip.skk.moe&lt;/a&gt;&lt;br&gt;\n查看当前IP地址&lt;a href=\&#34;https://ip.gs/\&#34;&gt;ip.gs&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&#34;,&#34;fileName&#34;:&#34;Workers&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;利用Cloudflare的Workers搭建VLESS节点&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-03-08 14:45:49&#34;,&#34;dateFormat&#34;:&#34;2024-03-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Workers/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:111000,&#34;words&#34;:485,&#34;minutes&#34;:2},&#34;description&#34;:&#34;准备工作\n\n前往Cloudflare站点自行注册账号\n3Kmfi6HP大佬的Workers项目链接\n下载windows梯子软件v2rayN最新版，打开v2rayN官网，右侧找到Releases，点开Latest链接后下载zz_v2rayN-...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C\&#34;&gt;准备工作&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8\&#34;&gt;搭建及使用&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;文中提及的“用户名”需要改为你实际Windows登陆名&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;Windows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在&lt;br&gt;\n&lt;code&gt;C:\\Users\\用户名\\Documents\\WeChat Files&lt;/code&gt;目录里，一旦重新安装系统的话，聊天记录也会全部丢失。接下来我们就以微信聊天记录为例，如何利用mklink命令把微信聊天记录转移到其他盘去。&lt;/p&gt;\n&lt;h1 id=\&#34;利用mklink命令转移目录\&#34;&gt;利用mklink命令转移目录&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;退出微信登陆&lt;/li&gt;\n&lt;li&gt;找到&lt;code&gt;C:\\Users\\用户名\\Documents&lt;/code&gt;目录把WeChat Files整个目录移动到E盘下&lt;/li&gt;\n&lt;li&gt;再在E:\\WeChat Files目录下新建mklink.bat文件，内容为&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;mklink /D &amp;quot;C:\\Users\\用户名\\Documents\\WeChat Files&amp;quot; &amp;quot;E:\\WeChat Files&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;右键以管理员权限运行mklink.bat后，C:\\Users\\用户名\\Documents目录里会生成一个WeChat Files快捷方式目录，相当于把E:\\WeChat Files目录软链接到C:\\Users\\用户名\\Documents\\WeChat Files目录，此时即便删除那个快捷方式目录也不会影响E盘里实际目录的内容，以此来保全数据。&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;重装系统后恢复聊天记录\&#34;&gt;重装系统后，恢复聊天记录&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;确保重装系统后，用户名和以前一样，如果不一样请先修改bat文件对应路径&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;先右键以管理员权限运行E:\\WeChat Files\\mklink.bat文件&lt;/li&gt;\n&lt;li&gt;再重新安装微信，运行登陆&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;同步任意本地文件夹到onedrive\&#34;&gt;同步任意本地文件夹到OneDrive&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;解放C盘空间&lt;br&gt;\n灵活同步各磁盘文件&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;只需要在命令行模式输入以下代码即可完成，其中&lt;code&gt;E:\\test&lt;/code&gt;为需要同步的实际目录，前面的&lt;code&gt;test&lt;/code&gt;为OneDrive目录中生成的软链接名称&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;%UserProfile%\\OneDrive\\test&amp;quot; &amp;quot;E:\\test&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;当然你也可以同步整个E盘，如：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;%UserProfile%\\OneDrive\\E&amp;quot; &amp;quot;E:\\&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;如果你OneDrive目录在D盘，那么输入命令时也需要输入实际地址，如：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;mklink /j &amp;quot;D:\\OneDrive\\test&amp;quot; &amp;quot;E:\\test&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;解决同步问题&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;出于应用设计的原因，OneDrive不能即时同步mklink创建链接的变化&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;方法1：需要右键任务栏中Onedrive图标 &lt;code&gt;暂停同步&lt;/code&gt; &amp;gt; &lt;code&gt;继续同步&lt;/code&gt; 才能对其完成同步处理。&lt;/li&gt;\n&lt;li&gt;方法2：推荐使用&lt;a href=\&#34;https://github.com/ktheod/OneDriveBully/releases\&#34;&gt;OneDriveBully.msi&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;blockquote&gt;\n&lt;p&gt;下载OneDriveBully.msi后安装并运行&lt;br&gt;\n点Browse选择OneDrive所在根目录&lt;br&gt;\nBully Every X Minutes:1 (表示1分钟刷新一次)&lt;br&gt;\nLoad on Windows Startup勾选&lt;br&gt;\n再点Refresh刷新自动识别软链接目录&lt;br&gt;\n最后点下Save，看到Success弹窗即可&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;移动onedrive文件夹至d盘目录\&#34;&gt;移动OneDrive文件夹至D盘目录&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;首次登陆&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;登陆帐户后到选择&lt;code&gt;你的OneDrive文件夹&lt;/code&gt;时，左下角选择&lt;code&gt;更改位置&lt;/code&gt;选择你需要保存的位置(可提前在D盘新建一个OneDrive文件夹)即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;已经默认保存在C盘&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;任务栏中右键OneDrive图标 &amp;gt; 选择设置 &amp;gt; 在账户选项中，选择&lt;code&gt;取消链接此电脑&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;移动OneDrive文件夹，通常OneDrive存储目录位于C:\\Users[用户名]下，选中OneDrive目录，直接 &lt;code&gt;剪切&lt;/code&gt; 并 &lt;code&gt;粘贴&lt;/code&gt; 到D盘&lt;/li&gt;\n&lt;li&gt;重复首次登陆步骤即可&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;mklink&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Windows下mklink的巧用及OneDrive相关应用&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;onedrive&#34;,&#34;slug&#34;:&#34;IH3DSSdXF&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/IH3DSSdXF/&#34;}],&#34;date&#34;:&#34;2024-03-03 10:46:24&#34;,&#34;dateFormat&#34;:&#34;2024-03-03&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/mklink/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:183000,&#34;words&#34;:808,&#34;minutes&#34;:4},&#34;description&#34;:&#34;\n文中提及的“用户名”需要改为你实际Windows登陆名\n\n前言\nWindows下我们经常会遇到一些应用程序或配置文件只能保留在C盘中，这对于我们来说是非常不友好、不安全的。比如win版本微信聊天记录，默认保存在\nC:\\Users\\用户名\\...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%88%A9%E7%94%A8mklink%E5%91%BD%E4%BB%A4%E8%BD%AC%E7%A7%BB%E7%9B%AE%E5%BD%95\&#34;&gt;利用mklink命令转移目录&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E6%81%A2%E5%A4%8D%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95\&#34;&gt;重装系统后，恢复聊天记录&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%8C%E6%AD%A5%E4%BB%BB%E6%84%8F%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%B0onedrive\&#34;&gt;同步任意本地文件夹到OneDrive&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%A7%BB%E5%8A%A8onedrive%E6%96%87%E4%BB%B6%E5%A4%B9%E8%87%B3d%E7%9B%98%E7%9B%AE%E5%BD%95\&#34;&gt;移动OneDrive文件夹至D盘目录&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA&lt;/p&gt;\n&lt;h1 id=\&#34;网络环境描述\&#34;&gt;网络环境描述&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;专网情况&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;IP地址：15.76.7.59&lt;/li&gt;\n&lt;li&gt;网关地址：15.76.7.1&lt;/li&gt;\n&lt;li&gt;专网无线路由IP：192.168.3.1&lt;br&gt;\n以上信息已设定在专网无线路由WAN口，已可通过无线路由访问专网OA&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;Internet网情况&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;IP地址：192.168.20.80&lt;/li&gt;\n&lt;li&gt;网关地址：192.168.20.1&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;实现内外网同时访问\&#34;&gt;实现内外网同时访问&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;办公电脑&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;无线网卡接入专网无线并配置IP地址：192.168.3.3；网关地址：192.168.3.1&lt;/li&gt;\n&lt;li&gt;有线网卡接Internet路由并配置IP地址192.168.20.80；网关地址：192.168.20.1&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;查看路由表&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;管理员身份运行cmd(C:/windows/system32/cmd.exe右键)输入&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;route print\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;看到IPv4路由表前两行信息如下：&lt;/li&gt;\n&lt;/ul&gt;\n&lt;table&gt;\n&lt;thead&gt;\n&lt;tr&gt;\n&lt;th style=\&#34;text-align:left\&#34;&gt;IPv4路由表：&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/thead&gt;\n&lt;tbody&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;网络目标&lt;/td&gt;\n&lt;td&gt;网络掩码&lt;/td&gt;\n&lt;td&gt;网关&lt;/td&gt;\n&lt;td&gt;接口&lt;/td&gt;\n&lt;td&gt;跃点数&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.20.1&lt;/td&gt;\n&lt;td&gt;192.168.20.80&lt;/td&gt;\n&lt;td&gt;291&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;192.168.3.3&lt;/td&gt;\n&lt;td&gt;35&lt;/td&gt;\n&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;删除所有0.0.0.0的路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;route delete 0.0.0.0\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;添加新路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;route add -p 0.0.0.0 mask 0.0.0.0 192.168.20.1\nroute add -p 192.168.3.0 mask 255.255.255.0 192.168.3.1\nroute add -p 15.0.0.0 mask 255.0.0.0 192.168.3.1\n&lt;/code&gt;&lt;/pre&gt;\n&lt;blockquote&gt;\n&lt;p&gt;注：这3条路由的意思是15.x.x.x开头的IP和192.168.3.x开头的IP都走192.168.3.1网关(专网的路由器)，除此之外的所有地址都走192.168.20.1网关(Internet路由器)&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;到此为止电脑正常已经能同时访问内外网了，我们再route print查看下路由表，发现永久路由部分已经多了以下3条路由信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;table&gt;\n&lt;thead&gt;\n&lt;tr&gt;\n&lt;th style=\&#34;text-align:left\&#34;&gt;永久路由：&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;th&gt;&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/thead&gt;\n&lt;tbody&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;网络地址&lt;/td&gt;\n&lt;td&gt;网络掩码&lt;/td&gt;\n&lt;td&gt;网关地址&lt;/td&gt;\n&lt;td&gt;跃点数&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;0.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.20.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;192.168.3.0&lt;/td&gt;\n&lt;td&gt;255.255.255.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td style=\&#34;text-align:left\&#34;&gt;15.0.0.0&lt;/td&gt;\n&lt;td&gt;255.0.0.0&lt;/td&gt;\n&lt;td&gt;192.168.3.1&lt;/td&gt;\n&lt;td&gt;1&lt;/td&gt;\n&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;h1 id=\&#34;远程访问专网oa\&#34;&gt;远程访问专网OA&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;最为安全、便捷的方式就是使用frp内网穿透， 配置相关信息，办公电脑通过Internet网连接frp服务器，再代理访问专网OA&lt;br&gt;\n下载&lt;a href=\&#34;https://github.com/fatedier/frp\&#34;&gt;frp项目&lt;/a&gt;中的&lt;a href=\&#34;https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip\&#34;&gt;windows版本&lt;/a&gt;，解压后得到frp对应文件夹，在里面新建一个frpc.ini文件，并填入以下配置文件，详见&lt;a href=\&#34;https://blog.wmjan.top/post/frp/\&#34;&gt;frp内网穿透配置说明&lt;/a&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nserver_addr = abc.com #服务器端域名/IP\nserver_port = 7000 #对应服务器端监听端口\ntoken = password #对应客户端连接密码\n\n[OA] #自定义备注名称\ntype = http #访问方式http\nlocal_port = 80 #内网OA访问端口\nlocal_ip = 15.76.7.x #内网OA对应IP\nsubdomain = oa #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;启动服务&lt;br&gt;\n在frp对应文件夹中新建一个Run.bat文件，内容为&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;.\\frpc.exe\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;保存后，双击Run.bat即可启动服务，启动后确保&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;保持cmd窗口不关闭，这是连接frp服务器主程序&lt;/li&gt;\n&lt;li&gt;保持电脑不要休眠&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;接下来就可以使用任何设备访问专网OA了，包括移动终端，方法只需要在浏览器端输入以下网址&lt;br&gt;\nhttp://oa.abc.com:9090&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;oa&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;同时访问内外网｜实现远程访问专网OA&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-21 10:01:15&#34;,&#34;dateFormat&#34;:&#34;2024-01-21&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/oa/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:205000,&#34;words&#34;:805,&#34;minutes&#34;:4},&#34;description&#34;:&#34;前言\n办公室电脑需要同时访问专网和Internet网络，最好能实现远程访问专网OA\n网络环境描述\n\n专网情况\n\n\nIP地址：15.76.7.59\n网关地址：15.76.7.1\n专网无线路由IP：192.168.3.1\n以上信息已设定在专网无...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E6%8F%8F%E8%BF%B0\&#34;&gt;网络环境描述&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%9E%E7%8E%B0%E5%86%85%E5%A4%96%E7%BD%91%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE\&#34;&gt;实现内外网同时访问&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%B8%93%E7%BD%91oa\&#34;&gt;远程访问专网OA&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;上期我们已经讲过了，&lt;a href=\&#34;https://blog.wmjan.top/post/OneDrive\&#34;&gt;如何获取微软OneDrive 5TB免费网盘&lt;/a&gt;，这期就讲讲群晖如何利用备份软件把资料&lt;strong&gt;加密&lt;/strong&gt;备份到OneDrive&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。&lt;/p&gt;\n&lt;h1 id=\&#34;hyper-backup套件中心安装\&#34;&gt;Hyper Backup(套件中心安装)&lt;/h1&gt;\n&lt;p&gt;&lt;strong&gt;这个套件对我最有用的就是定期备份各种套件数据到本地盘，如Synology Contacts、Synology Calendar、Note Station等等&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;可批量选择备份共享文件夹&lt;/li&gt;\n&lt;li&gt;可批量选择备份应用程序&lt;br&gt;\n需要注意的是SynologyPhotos套件，如果选择了备份这个套件会把对应的相册数据一并备份了，和备份共享文件夹不要重复了&lt;/li&gt;\n&lt;li&gt;群晖设置信息也会一并备份&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;多版本循环备份&lt;/strong&gt;&lt;/li&gt;\n&lt;li&gt;无法直接备份到OneDrive&lt;/li&gt;\n&lt;li&gt;无法加密备份&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;cloud-sync套件中心安装\&#34;&gt;Cloud Sync(套件中心安装)&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;可同步数据到WebDAV、OneDrive等各种云服务中心&lt;/li&gt;\n&lt;li&gt;可双向同步，也可单向备份&lt;/li&gt;\n&lt;li&gt;可自定义选择目录&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;可数据加密&lt;/strong&gt;&lt;br&gt;\n加密后数据直接从网盘下载是无法正常查看的，必须通过Cloud Sync解密下载才可以查看&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;同步数据\&#34;&gt;同步数据&lt;/h1&gt;\n&lt;p&gt;&lt;strong&gt;Cloud Sync配合Hyper Backup备份套件数据再加密同步/备份到开发者OneDrive 5TB网盘&lt;/strong&gt;&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;运行Cloud Sync套件 &amp;gt; 点左上角+ &amp;gt; 选择Microsoft OneDrive for Business &amp;gt; 登陆开发者微软开发者账号 &amp;gt; Agree 同意授权&lt;/li&gt;\n&lt;li&gt;右侧任务列表 &amp;gt; 新增 跳转 任务设置&lt;/li&gt;\n&lt;li&gt;本地路径选择 共享文件夹 &amp;gt; 远程路径 新建一个对应的文件夹名称 &amp;gt; 同步方向按自己需求选择 &amp;gt; &lt;strong&gt;数据加密 安全起见建议勾选&lt;/strong&gt; &amp;gt; 输入加密密钥(&lt;strong&gt;务必牢记&lt;/strong&gt;) &amp;gt; 高级设置 &amp;gt; 勾选共享文件夹中实际需要同步的目录 &amp;gt; 确定完成&lt;/li&gt;\n&lt;li&gt;如果主要用来单向备份为主(非双向同步)的话，建议计划设置里固定开启某个时间段来备份即可&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;Backup&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;群晖数据备份：Hyper Backup 和 Cloud Sync&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-16 11:30:03&#34;,&#34;dateFormat&#34;:&#34;2024-01-16&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Backup/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:113000,&#34;words&#34;:531,&#34;minutes&#34;:2},&#34;description&#34;:&#34;\n上期我们已经讲过了，如何获取微软OneDrive 5TB免费网盘，这期就讲讲群晖如何利用备份软件把资料加密备份到OneDrive\n\n前言\n群晖的数据备份方式非常多，常见的有RAID本地备份和通过备份软件进行异地备份，这里讲的是后者。\nHy...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#hyper-backup%E5%A5%97%E4%BB%B6%E4%B8%AD%E5%BF%83%E5%AE%89%E8%A3%85\&#34;&gt;Hyper Backup(套件中心安装)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#cloud-sync%E5%A5%97%E4%BB%B6%E4%B8%AD%E5%BF%83%E5%AE%89%E8%A3%85\&#34;&gt;Cloud Sync(套件中心安装)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE\&#34;&gt;同步数据&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;blockquote&gt;\n&lt;p&gt;&lt;strong&gt;以下操作均以windows浏览器页面显示为准&lt;/strong&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;微软onedrive开发者账号的用处\&#34;&gt;微软OneDrive开发者账号的用处&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;免费提供5TB容量OneDrive&lt;/li&gt;\n&lt;li&gt;Microsoft Office 365免费用&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;开发者账号申请\&#34;&gt;开发者账号申请&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://developer.microsoft.com/en-us/microsoft-365/dev-program\&#34;&gt;Microsoft 365 开发人员中心&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;登陆微软账号后，点Join now(现在加入)进入下一步&lt;/li&gt;\n&lt;li&gt;Country/Region(国家/地区)、Company(公司) 可任何填写，语言选中文，并勾选底下两个复选框&lt;/li&gt;\n&lt;li&gt;What is your primary focus as a developer?作为开发人员，您主要关注的是什么？（只选一项）&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Applications for internal use at my company 我公司内部使用的应用程序&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;What areas of Microsoft 365 development are you interested in?您对 Microsoft 365 开发的哪些领域感兴趣？&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Office Add-ins(也可以多选)&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;选Configurable sandbox可配置的沙盒，再点右下角Next&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;此步非常重要，所有信息都需要保存记录好&lt;/strong&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Create username创建用户名，如 wmjan&lt;/li&gt;\n&lt;li&gt;Create domain创建域，如 zjtz&lt;br&gt;\n那么你得到的开发者账号为 wmjan@zjtz.onmicrosoft.com&lt;/li&gt;\n&lt;li&gt;密码必须在15-20个字符之间，并且必须包含大写字母和小写字母、数字以及以下符号中的一个或多个&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;添加中国手机号，获取验证码并验证&lt;/li&gt;\n&lt;li&gt;验证成功所即完成了开发者账号的申请&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;如何设置5tb网盘\&#34;&gt;如何设置5TB网盘&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://admin.microsoft.com/\&#34;&gt;Microsoft 365 admin center&lt;/a&gt; &amp;gt; 登陆开发者账号 &amp;gt; 点左侧users(用户) &amp;gt; Active users(活跃用户) &amp;gt; 点自己名称 &amp;gt; 点右侧栏中的OneDrive &amp;gt; 点下方 管理默认存储 &amp;gt; 点 OneDrive存储限制 &amp;gt; 默认存储限制设置为5120GB &amp;gt; 保存即可&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;若设置过程提示：未为此用户设置OneDrive，&lt;a href=\&#34;https://portal.office.com/onedrive\&#34;&gt;请跳转此页面激活OneDrive后继续&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;使用-github-的action功能实现账号自动续订\&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;为什么要续订？&lt;br&gt;\n开发者账号默认只有90天有效期，微软会根据 API 调用情况，符合调用情况的，会在距离到期30天时自动续订，不符合就不给续订了。续订的方法很多，目前较为有效、安全的方法就是通过github的Action来实现自动续订&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;生成密钥切记要记录好token\&#34;&gt;生成密钥，切记要记录好token&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;网站并登陆账号，没有账号的请自行注册&lt;/li&gt;\n&lt;li&gt;登陆后点击右上角头像 &amp;gt; 点击 Settings &amp;gt; 找到左侧最下面的Developer Settings进入 &amp;gt; 点开左侧 Personal access tokens &amp;gt; Tokens(classic) &amp;gt; 点开右上角Generate new token &amp;gt; Generate new token(classic) &amp;gt; 输入密码进入下一步&lt;/li&gt;\n&lt;li&gt;New personal access token (classic)信息填写&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Note：为token备注名，如：AliveE5&lt;/li&gt;\n&lt;li&gt;Expiration：选No expiration(无到期时间)&lt;/li&gt;\n&lt;li&gt;Select scopes：勾选workflow，repo项也会被默认选上&lt;/li&gt;\n&lt;li&gt;点Generate token生成令牌&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;&lt;strong&gt;保存记录好你的token，关闭后无法二次显示了&lt;/strong&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;导入-keepalivee5-代码到自己的储存库\&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;网站并登陆账号后 &amp;gt; 点右上角+号 &amp;gt; 点击Import repository&lt;/li&gt;\n&lt;li&gt;Import your project to GitHub信息填写&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;Your old repository&#39;s clone URL 填入以下仓库地址：https://github.com/sywdebug/KeepAliveE5-Public.git&lt;/li&gt;\n&lt;li&gt;Your new repository details &amp;gt; Repository name&lt;br&gt;\n：AliveE5&lt;/li&gt;\n&lt;li&gt;选 Private 私有库&lt;/li&gt;\n&lt;li&gt;点 Begin import 后等待完成导入&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;开启-action-功能\&#34;&gt;开启 Action 功能&lt;/h3&gt;\n&lt;ol&gt;\n&lt;li&gt;点&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Settings &amp;gt; 点左侧Actions &amp;gt; 点General &amp;gt; 选Allow all actions and reusable workflows &amp;gt; 保存&lt;/li&gt;\n&lt;li&gt;点左下角Secrets and variables &amp;gt; 点Actions &amp;gt; 点New repository secret，分别新建以下3项&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：PAT&lt;/li&gt;\n&lt;li&gt;Secret *填入：上面得到的token&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：USER&lt;/li&gt;\n&lt;li&gt;Secret *填入：开发者账号&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;blockquote&gt;\n&lt;ul&gt;\n&lt;li&gt;Name *填入：PASSWD&lt;/li&gt;\n&lt;li&gt;Secret *填入：开发者账号密码&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;禁用安全默认值\&#34;&gt;禁用安全默认值&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;进入&lt;a href=\&#34;https://portal.azure.com/#home\&#34;&gt;Microsoft Azure&lt;/a&gt;，登陆开发者账号 &amp;gt; 点中间 管理 Microsoft Entra ID 查看 &amp;gt; 点左侧 属性 &amp;gt; 点主页最底部 管理安全默认值 &amp;gt; 将安全默认值设为已禁用 &amp;gt; 保存&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;启动-action-的注册-app-工作流\&#34;&gt;启动 Action 的注册 APP 工作流&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;点&lt;a href=\&#34;https://github.com/\&#34;&gt;github&lt;/a&gt;主页左上角黑猫头 &amp;gt; 点 AliveE5 项 &amp;gt; 点顶部 Action &amp;gt; 点击左侧 Register APP &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待4-5分钟运行完成&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;启动-action-的调用-api-工作流\&#34;&gt;启动 Action 的调用 API 工作流&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;点击左侧 Invoke API &amp;gt; 点击右侧 Run workflow &amp;gt; 分支就是 master &amp;gt; 点击 Run workflow &amp;gt; 等待完成即可&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;写在最后\&#34;&gt;写在最后&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;至此，Action会每隔4小时自动调用API完成一份工作流，正常微软会在距离到期30天时自动续订开发者账号有效期&lt;/li&gt;\n&lt;li&gt;验证：两个月后进&lt;a href=\&#34;https://developer.microsoft.com/en-us/microsoft-365/profile\&#34;&gt;Microsoft 365 developer subscriptions&lt;/a&gt;页面查看账号有效期&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;end\&#34;&gt;END&lt;/h1&gt;\n&#34;,&#34;fileName&#34;:&#34;OneDrive&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;5TB容量OneDrive网盘申请与续订&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;onedrive&#34;,&#34;slug&#34;:&#34;IH3DSSdXF&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/IH3DSSdXF/&#34;}],&#34;date&#34;:&#34;2024-01-15 11:45:17&#34;,&#34;dateFormat&#34;:&#34;2024-01-15&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/OneDrive/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;5 min read&#34;,&#34;time&#34;:269000,&#34;words&#34;:1125,&#34;minutes&#34;:5},&#34;description&#34;:&#34;\n以下操作均以windows浏览器页面显示为准\n\n微软OneDrive开发者账号的用处\n\n免费提供5TB容量OneDrive\nMicrosoft Office 365免费用\n\n开发者账号申请\n\n进入Microsoft 365 开发人员中心\n...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BE%AE%E8%BD%AFonedrive%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E5%A4%84\&#34;&gt;微软OneDrive开发者账号的用处&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7\&#34;&gt;开发者账号申请&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE5tb%E7%BD%91%E7%9B%98\&#34;&gt;如何设置5TB网盘&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BD%BF%E7%94%A8-github-%E7%9A%84action%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E8%B4%A6%E5%8F%B7%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%AE%A2\&#34;&gt;使用 github 的Action功能实现账号自动续订&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%88%87%E8%AE%B0%E8%A6%81%E8%AE%B0%E5%BD%95%E5%A5%BDtoken\&#34;&gt;生成密钥，切记要记录好token&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AF%BC%E5%85%A5-keepalivee5-%E4%BB%A3%E7%A0%81%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%82%A8%E5%AD%98%E5%BA%93\&#34;&gt;导入 KeepAliveE5 代码到自己的储存库&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%90%AF-action-%E5%8A%9F%E8%83%BD\&#34;&gt;开启 Action 功能&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%A6%81%E7%94%A8%E5%AE%89%E5%85%A8%E9%BB%98%E8%AE%A4%E5%80%BC\&#34;&gt;禁用安全默认值&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%AF%E5%8A%A8-action-%E7%9A%84%E6%B3%A8%E5%86%8C-app-%E5%B7%A5%E4%BD%9C%E6%B5%81\&#34;&gt;启动 Action 的注册 APP 工作流&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%AF%E5%8A%A8-action-%E7%9A%84%E8%B0%83%E7%94%A8-api-%E5%B7%A5%E4%BD%9C%E6%B5%81\&#34;&gt;启动 Action 的调用 API 工作流&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E\&#34;&gt;写在最后&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#end\&#34;&gt;END&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;应用场景\&#34;&gt;应用场景&lt;/h1&gt;\n&lt;p&gt;没有公网IP设备需要远程访问，如何路由器、光猫等&lt;/p&gt;\n&lt;h1 id=\&#34;frps服务器配置条件\&#34;&gt;frps服务器配置条件&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可&lt;/li&gt;\n&lt;li&gt;github项目地址：&lt;a href=\&#34;https://github.com/fatedier/frp\&#34;&gt;frp程序及官方说明&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;以下涉及的abc.com域名为示例说明，请替换自己的实际域名/IP；各端口及用户名密码也一样，可以根据自己的实际需求进行更换；以下frpc客户端配置采用自定义子域名方式，需要提前在域名管理中心开启泛域名&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;frps服务器端配置文件\&#34;&gt;frps服务器端配置文件&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;从v0.52.0版本开始，frp已经不支持.ini配置文件了，请使用toml、yaml及josn格式文件&lt;/li&gt;\n&lt;li&gt;电脑上新建frps.toml文本文档，再使用记事本打开并填入以下内容&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nsubdomain_host = abc.com #服务器端域名/IP\nbind_port = 7000 #监听端口\nvhost_http_port = 9090 #http访问端口\nvhost_https_port = 9091 #https访问端口\ndashboard_addr = 0.0.0.0\ndashboard_port = 7500 #控制面板访问端口\ndashboard_user = admin #控制面板用户名\ndashboard_pwd = password #控制面板密码\ntoken = password #客户端连接密码\nmax_pool_count = 10\nlog_max_days = 3\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;群晖docker安装frps服务器\&#34;&gt;群晖Docker安装frps服务器&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;Docker注册表搜frps，双击安装snowdreamtech-frps。如果无法访问注册表，可SSH登陆群晖后使用&lt;a href=\&#34;https://blog.wmjan.top/post/dockercmd/\&#34;&gt;Docker常用命令&lt;/a&gt;来安装&lt;/li&gt;\n&lt;li&gt;群晖docker目录里添加一个frp文件夹，复制电脑上配置好的frps.toml文件到群晖frp文件夹里&lt;/li&gt;\n&lt;li&gt;启动映像时存储空间 &amp;gt; &lt;strong&gt;添加文件&lt;/strong&gt; &amp;gt; 选择docker/frp/frps.toml &amp;gt; 挂载目录到/etc/frp/frps.toml&lt;/li&gt;\n&lt;li&gt;网络选择host&lt;/li&gt;\n&lt;li&gt;其他均默认后启动即可&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;frpc客户端配置\&#34;&gt;frpc客户端配置&lt;/h1&gt;\n&lt;pre&gt;&lt;code&gt;[common]\nserver_addr = abc.com #服务器端域名/IP\nserver_port = 7000 #对应服务器端监听端口\ntoken = password #对应客户端连接密码\n\n[router] #自定义备注名称\ntype = http #访问方式http或https\nlocal_port = 80 #本地访问端口\nlocal_ip = 192.168.2.1 #本地设备IP地址\nsubdomain = router #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h1 id=\&#34;访问方式\&#34;&gt;访问方式&lt;/h1&gt;\n&lt;ul&gt;\n&lt;li&gt;服务器端还需要把对应的端口打开&lt;/li&gt;\n&lt;li&gt;成功连接后访问客户端方法如下&lt;br&gt;\nhttp://router.abc.com:9090&lt;/li&gt;\n&lt;li&gt;访问控制面板方法如下，用户名密码为服务器端dashboard项&lt;br&gt;\nhttp://abc.com:7500&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;同一网络下多个设备需要访问\&#34;&gt;同一网络下多个设备需要访问&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;只需要在frpc客户端配置中增加配置即可，如增加一台光猫和群晖NAS&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[modem] #自定义备注名称\ntype = http #访问方式http或https\nlocal_port = 80 #本地访问端口\nlocal_ip = 192.168.2.254 #本地设备IP地址\nsubdomain = modem #自定义访问子域名\n\n[nas] #自定义备注名称\ntype = https #访问方式http或https\nlocal_port = 5001 #本地访问端口\nlocal_ip = 192.168.2.253 #本地设备IP地址\nsubdomain = nas #自定义访问子域名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;访问方法分别为&lt;br&gt;\n光猫：http://modem.abc.com:9090&lt;br&gt;\nNAS：https://nas.abc.com:9091&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;远程登陆ssh\&#34;&gt;远程登陆SSH&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;只需要在frpc客户端增加以下配置&lt;/li&gt;\n&lt;/ul&gt;\n&lt;pre&gt;&lt;code&gt;[SSH]\ntype = &amp;quot;tcp&amp;quot; #访问方式要选tcp\nlocal_ip = &amp;quot;192.168.2.1&amp;quot; #本地设备IP地址\nlocal_port = 22 #本地访问端口\nremote_port = 6000 #远程访问端口\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;访问方法为&lt;br&gt;\nssh -oPort=6000 root@abc.com&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;frp&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;frp内网穿透配置说明&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-13 10:05:16&#34;,&#34;dateFormat&#34;:&#34;2024-01-13&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/frp/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:190000,&#34;words&#34;:803,&#34;minutes&#34;:4},&#34;description&#34;:&#34;应用场景\n没有公网IP设备需要远程访问，如何路由器、光猫等\nfrps服务器配置条件\n\n服务器端必须要有公网IP，可以为路由器、NAS、VPS等，只要能安装frps服务器端即可\ngithub项目地址：frp程序及官方说明\n以下涉及的abc.c...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF\&#34;&gt;应用场景&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frps%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6\&#34;&gt;frps服务器配置条件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frps%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6\&#34;&gt;frps服务器端配置文件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%BE%A4%E6%99%96docker%E5%AE%89%E8%A3%85frps%E6%9C%8D%E5%8A%A1%E5%99%A8\&#34;&gt;群晖Docker安装frps服务器&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#frpc%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE\&#34;&gt;frpc客户端配置&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F\&#34;&gt;访问方式&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%90%8C%E4%B8%80%E7%BD%91%E7%BB%9C%E4%B8%8B%E5%A4%9A%E4%B8%AA%E8%AE%BE%E5%A4%87%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE\&#34;&gt;同一网络下多个设备需要访问&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86ssh\&#34;&gt;远程登陆SSH&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;docker常用命令\&#34;&gt;Docker常用命令&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;搜索镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker search 镜像名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;拉取镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker pull 镜像名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;启动docker服务&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo service docker start\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;停止docker服务&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo service docker stop\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;检查docker 守护进程是否在运行&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker stats\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;查看docker相关信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker info\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;列出所有容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker ps -a\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;最后一次运行的容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker ps -l\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;9\&#34;&gt;\n&lt;li&gt;重新启动已停止的容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker start 容器名(也可以使用容器ID)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;10\&#34;&gt;\n&lt;li&gt;获取容器的日志&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker logs 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;11\&#34;&gt;\n&lt;li&gt;获取最后几条日志&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker -f 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;12\&#34;&gt;\n&lt;li&gt;列出镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker images\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;13\&#34;&gt;\n&lt;li&gt;删除所有容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rm $(docker ps -a -q)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;14\&#34;&gt;\n&lt;li&gt;删除单个容器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rm 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;15\&#34;&gt;\n&lt;li&gt;删除所有镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker rmi $(docker images | grep none | awk &#39;{print $3}&#39; | sort -r)\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;16\&#34;&gt;\n&lt;li&gt;保存镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker save 镜像名 &amp;gt; /home/新镜像名.tar\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;17\&#34;&gt;\n&lt;li&gt;加载自定义镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker load &amp;lt; /home/自定义镜像\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;18\&#34;&gt;\n&lt;li&gt;获取容器更多信息&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;sudo docker inspect 容器名\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;19\&#34;&gt;\n&lt;li&gt;删除为none的镜像&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;docker images --no-trunc| grep none | awk &#39;{print $3}&#39; | xargs -r docker rmi\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;常用参数\&#34;&gt;常用参数：&lt;/h3&gt;\n&lt;blockquote&gt;\n&lt;p&gt;-i：以交互模式运行容器，通常与 -t 同时使用&lt;br&gt;\n-t：为容器重新分配一个伪输入终端，通常与 -i 同时使用&lt;br&gt;\n-p : 端口映射 格式为[主机端口：容器端口]&lt;br&gt;\n-d : 后台模式运行&lt;br&gt;\n-name : 给容器一个新的名称&lt;br&gt;\n-v：挂载主机的目录&lt;br&gt;\n-e： username=&amp;quot;ritchie&amp;quot;: 设置环境变量&lt;br&gt;\n-m：设置容器使用内存最大值&lt;br&gt;\n--env-file=[]：从指定文件读入环境变量&lt;/p&gt;\n&lt;/blockquote&gt;\n&#34;,&#34;fileName&#34;:&#34;dockercmd&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Docker常用命令&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-12 13:25:48&#34;,&#34;dateFormat&#34;:&#34;2024-01-12&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/dockercmd/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:96000,&#34;words&#34;:382,&#34;minutes&#34;:2},&#34;description&#34;:&#34;Docker常用命令\n\n搜索镜像\n\nsudo docker search 镜像名\n\n\n拉取镜像\n\nsudo docker pull 镜像名\n\n\n启动docker服务\n\nsudo service docker start\n\n\n停止docker...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\&#34;&gt;Docker常用命令&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0\&#34;&gt;常用参数：&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;痛点分析\&#34;&gt;痛点分析&lt;/h1&gt;\n&lt;h3 id=\&#34;个人业务\&#34;&gt;个人业务&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;多平台联系人同步&lt;br&gt;\n比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事&lt;/li&gt;\n&lt;li&gt;想要分开管理联系人&lt;br&gt;\n办公手机和私人手机联系人不想合拼一起，但又希望两台手机都能访问两者联系人&lt;/li&gt;\n&lt;li&gt;怕隐私泄露、不想用手机自带的云服务&lt;br&gt;\n曾经，一知名手机厂商一年内让我多次丢失联系人，有时候丢失部分联系人可能自己都没发觉&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;公司业务\&#34;&gt;公司业务&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;公司多部门联系人管理&lt;br&gt;\n业务部、财务部各部门联系人管理备份，以免员工离职联系人丢失&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h1 id=\&#34;安装及避坑\&#34;&gt;安装及避坑&lt;/h1&gt;\n&lt;h3 id=\&#34;安装环境要求\&#34;&gt;安装环境要求&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;DSM6.2.4以上版本才支持&lt;br&gt;\n曾经在DSM6.2.3上试了几天没成功&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;安装及导入\&#34;&gt;安装及导入&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;安装非常简单，打开群晖套件中心搜索&lt;strong&gt;Synology Contacts&lt;/strong&gt;安装即可&lt;/li&gt;\n&lt;li&gt;首次使用必须先把联系人分组导入到服务器里&lt;/li&gt;\n&lt;li&gt;导入手机联系人时，必须去对应品牌云服务网页端导出联系人文件，再进行导入。很多手机端导出的文件会进行UTF-8编码（quoted-printable），导入到服务器后无法正常显示联系人名称&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;如何同步\&#34;&gt;如何同步&lt;/h3&gt;\n&lt;p&gt;打开Synology Contacts，我的联系人&amp;gt;点后面3点&amp;gt;CardDAV&amp;gt;选择对应平台的配置信息&lt;/p&gt;\n&lt;h3 id=\&#34;手机端同步设置\&#34;&gt;手机端同步设置&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;iPhone和小米手机，因为系统本身就支持CardDav服务\n&lt;blockquote&gt;\n&lt;p&gt;iPhone手机打开设置&amp;gt;通讯录&amp;gt;帐户&amp;gt;添加帐户&amp;gt;其他&amp;gt;添加CardDAV帐户&lt;br&gt;\n小米手机打开设置&amp;gt;账户与同步&amp;gt;账户与同步&amp;gt;添加账户&amp;gt;CardDAV同步账户&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/li&gt;\n&lt;li&gt;其他安卓手机&lt;br&gt;\n需要下载CardDAV同步客户端 &lt;a href=\&#34;https://f-droid.org/packages/at.bitfire.davdroid/\&#34;&gt;DAVx⁵&lt;/a&gt;，打开DAVx⁵按向导提示设置电池优化等项目，以便它能正常后台运行同步信息&lt;/li&gt;\n&lt;li&gt;添加CardDAV时服务器(根地址)为上述提到的CardDAV对应平台配置信息，用户名及密码为群晖对应账户登录的用户名密码\n&lt;blockquote&gt;\n&lt;p&gt;普通安卓用户使用DAVx⁵添加时一定要选‘&lt;strong&gt;使用URL和用户名登录&lt;/strong&gt;’，如下图&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/contacts.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;Contacts&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;跨平台联系人同步群晖Synology Contacts&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-11 15:08:34&#34;,&#34;dateFormat&#34;:&#34;2024-01-11&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/Contacts/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:125000,&#34;words&#34;:586,&#34;minutes&#34;:3},&#34;description&#34;:&#34;痛点分析\n个人业务\n\n多平台联系人同步\n比如个人有iPhone、安卓手机、Microsoft Surface/Windows电脑，想要能无缝同步这三个平台A联系人也不是件容易的事\n想要分开管理联系人\n办公手机和私人手机联系人不想合拼一起，但...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%97%9B%E7%82%B9%E5%88%86%E6%9E%90\&#34;&gt;痛点分析&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%AA%E4%BA%BA%E4%B8%9A%E5%8A%A1\&#34;&gt;个人业务&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%85%AC%E5%8F%B8%E4%B8%9A%E5%8A%A1\&#34;&gt;公司业务&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8F%8A%E9%81%BF%E5%9D%91\&#34;&gt;安装及避坑&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82\&#34;&gt;安装环境要求&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%AF%BC%E5%85%A5\&#34;&gt;安装及导入&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5\&#34;&gt;如何同步&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%90%8C%E6%AD%A5%E8%AE%BE%E7%BD%AE\&#34;&gt;手机端同步设置&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;VPS即虚拟专用服务器，这里需要是海外VPS，常用的有&lt;a href=\&#34;https://aws.amazon.com/cn/campaigns/aws-cloudserver/\&#34;&gt;AWS亚马逊云&lt;/a&gt;、&lt;a href=\&#34;https://linuxone.cloud.marist.edu/\&#34;&gt;LinuxOne&lt;/a&gt;、&lt;a href=\&#34;https://hax.co.id/\&#34;&gt;Hax VPS&lt;/a&gt;、&lt;a href=\&#34;https://www.oracle.com/jp/cloud/free/\&#34;&gt;Oracle Cloud 甲骨文云&lt;/a&gt;、&lt;a href=\&#34;https://cloud.google.com/\&#34;&gt;Google Cloud谷歌云&lt;/a&gt;，下面以AWS亚马逊云为例&lt;/p&gt;\n&lt;h1 id=\&#34;aws亚马逊云服务器申请\&#34;&gt;AWS亚马逊云服务器申请&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;所需材料：VISA信用卡，我使用的是招商VISA卡&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;选&lt;a href=\&#34;https://portal.aws.amazon.com/billing/signup#/start/email\&#34;&gt;AWS 海外区域&lt;/a&gt;按提示注册，详细图文教程请参考&lt;a href=\&#34;https://juejin.cn/post/7251914510436466725\&#34;&gt;三. 申请流程&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;账单信息按实际填写自己VISA卡信息，放心不会实际 扣费，最多会有1美元的预扣款验证身份&lt;/li&gt;\n&lt;li&gt;手机号码也填国内的常用号码即可&lt;/li&gt;\n&lt;li&gt;创建EC2服务实例之前请务必先在右上角选择适合自己的&lt;strong&gt;区域&lt;/strong&gt;，比如“香港”延时会相对比较低。没有“香港”的话可以在列表底部管理区域中添加&lt;/li&gt;\n&lt;li&gt;连接实例时可以把用户名直接改成root来登陆&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;安装x-ui\&#34;&gt;安装X-UI&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;项目地址：&lt;a href=\&#34;https://github.com/FranzKafkaYu/x-ui\&#34;&gt;功能介绍及说明&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;一键安装方法&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;按提示设定&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;用户名[username]: admin&lt;br&gt;\n密码[userpasswd]: password&lt;br&gt;\n监听端口[port]: 54321&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;在EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把54321端口添加到规则中&lt;/li&gt;\n&lt;li&gt;此时使用EC2实例的公有 IPv4 地址加端口号即可访问X-UI管理面板，如&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;http://43.198.1xx.2xx:54321&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;配置x-ui\&#34;&gt;配置X-UI&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;开启vmess+ws节点：入站列表&amp;gt;添加入站，如下图设置&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;备注名vmess+ws&lt;/li&gt;\n&lt;li&gt;协议选vmess&lt;/li&gt;\n&lt;li&gt;端口可默认也可自定义&lt;/li&gt;\n&lt;li&gt;添加用户选+&lt;/li&gt;\n&lt;li&gt;网络选ws&lt;/li&gt;\n&lt;li&gt;把用户ID前半段复制到路径 / 后面，再加上?ed=2048&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/x-uirz.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;再回到EC2实例&lt;strong&gt;安全组&amp;gt;launch-wizard-1&amp;gt;编辑入站规则&lt;/strong&gt;把19687口添加到规则中&lt;/li&gt;\n&lt;li&gt;最后X-UI控制页面中&lt;strong&gt;操作&amp;gt;二维码&lt;/strong&gt;，手机使用v2rayNG程序扫描即可实现固定IP高速科学上网了&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;注意注意注意\&#34;&gt;注意！注意！注意！&lt;/h1&gt;\n&lt;p&gt;EC2实例中除了默认免费功能外，千万不要开启其他功能，都是额外收费的，包括&lt;strong&gt;弹性IP&lt;/strong&gt;&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;xui&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;海外VPS申请及X-UI部署&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;vps&#34;,&#34;slug&#34;:&#34;cV2E1OCKN&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/cV2E1OCKN/&#34;}],&#34;date&#34;:&#34;2024-01-09 09:07:55&#34;,&#34;dateFormat&#34;:&#34;2024-01-09&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/xui/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:120000,&#34;words&#34;:529,&#34;minutes&#34;:3},&#34;description&#34;:&#34;前言\nVPS即虚拟专用服务器，这里需要是海外VPS，常用的有AWS亚马逊云、LinuxOne、Hax VPS、Oracle Cloud 甲骨文云、Google Cloud谷歌云，下面以AWS亚马逊云为例\nAWS亚马逊云服务器申请\n\n所需材料...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#aws%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%B3%E8%AF%B7\&#34;&gt;AWS亚马逊云服务器申请&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85x-ui\&#34;&gt;安装X-UI&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E9%85%8D%E7%BD%AEx-ui\&#34;&gt;配置X-UI&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%B3%A8%E6%84%8F%E6%B3%A8%E6%84%8F%E6%B3%A8%E6%84%8F\&#34;&gt;注意！注意！注意！&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问&lt;/p&gt;\n&lt;h1 id=\&#34;android手机端分流设置方法\&#34;&gt;Android手机端分流设置方法&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;下载最新版NekoBox安卓客户端&lt;a href=\&#34;https://github.com/MatsuriDayo/NekoBoxForAndroid/releases\&#34;&gt;【NekoBoxForAndroid】&lt;/a&gt;，感谢MatsuriDayo开源大佬&lt;/li&gt;\n&lt;li&gt;运行NekoBox后点&lt;strong&gt;左上角&amp;gt;工具&amp;gt;Cloudflare Warp&amp;gt;生成配置&lt;/strong&gt;，等待10秒即可获得📋配置文件，如果测试超时无法上网的话，请按&lt;a href=\&#34;https://blog.wmjan.top/post/warp+key/\&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;把服务器和端口号替换成🚀优选IP和端口号即可&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;暂不方便获取优选IP的可试用以下几组&lt;br&gt;\n162.159.195.47:942&lt;br&gt;\n162.159.192.131:942&lt;br&gt;\n162.159.192.5:3138&lt;br&gt;\n162.159.192.136:942&lt;br&gt;\n162.159.195.126:942&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;分流设置，打开NekoBox&lt;strong&gt;左上角&amp;gt;路由&lt;/strong&gt;，把&lt;strong&gt;中国域名规则&lt;/strong&gt;和&lt;strong&gt;中国IP规则&lt;/strong&gt;打开；NekoBox&lt;strong&gt;左上角&amp;gt;设置&amp;gt;路由设置&lt;/strong&gt;里把&lt;strong&gt;绕开局域网地址&lt;/strong&gt;和&lt;strong&gt;在核心中绕过LAN&lt;/strong&gt; 即可实现分流&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;windows端分流设置方法\&#34;&gt;Windows端分流设置方法&lt;/h1&gt;\n&lt;blockquote&gt;\n&lt;p&gt;本教程基于&lt;a href=\&#34;https://blog.wmjan.top/post/warp+key\&#34;&gt;【WARP+免费节点获取方法及进阶玩法】&lt;/a&gt;延伸方案&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;ol&gt;\n&lt;li&gt;假设WireGuard安装在目录&amp;quot;C:\\Program Files\\WireGuard&amp;quot;&lt;/li&gt;\n&lt;li&gt;开启Wireguard的Pre/Post命令支持，只能通过修改注册表的方式开启，具体操作：\n&lt;ul&gt;\n&lt;li&gt;以管理员身份运行cmd&lt;/li&gt;\n&lt;li&gt;输入以下命令按回车&lt;pre&gt;&lt;code&gt;reg add HKLM\\Software\\WireGuard /v DangerousScriptExecution /t REG_DWORD /d 1 /f\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;下载&lt;a href=\&#34;https://codeload.github.com/lmc999/auto-add-routes/zip/refs/heads/master\&#34;&gt;【auto-add-routes-master.zip】&lt;/a&gt;并解压将auto-add-routes-master目录里的所有文件复制到&amp;quot;C:\\Program Files\\WireGuard\\bat&amp;quot;文件夹，没有bat文件夹自行新建&lt;/li&gt;\n&lt;li&gt;修改Wireguard客户端配置文件，加入以下Script Hook调用&amp;quot;C:\\Program Files\\WireGuard\\bat&amp;quot;的批处理文件&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;PreUp = &amp;quot;C:\\Program Files\\WireGuard\\bat\\routes-up.bat&amp;quot;\nPostUp = &amp;quot;C:\\Program Files\\WireGuard\\bat\\dns-up.bat&amp;quot;\nPreDown = &amp;quot;C:\\Program Files\\WireGuard\\bat\\routes-down.bat&amp;quot;\nPostDown = &amp;quot;C:\\Program Files\\WireGuard\\bat\\dns-down.bat&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;将DNS指向本机以使用Overture作为DNS服务器&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code&gt;DNS = 127.0.0.1\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;关闭WireGuard的(kill-switch)并保存修改&lt;/li&gt;\n&lt;/ol&gt;\n&lt;ul&gt;\n&lt;li&gt;以上设置如下图所示：&lt;br&gt;\n&lt;img src=\&#34;https://blog.wmjan.top/post-images/fl.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;如配置正确，此时点击连接Wireguard会自动调用routes-up.bat将国内IP写进系统路由表实现分流&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h3 id=\&#34;连接成功后可上ipskkmoe测试一下看是否正确分流\&#34;&gt;连接成功后可上&lt;a href=\&#34;https://ip.skk.moe/\&#34;&gt;ip.skk.moe&lt;/a&gt;测试一下看是否正确分流&lt;/h3&gt;\n&#34;,&#34;fileName&#34;:&#34;warpfenliu&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;WARP+分流设置&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;warp&#34;,&#34;slug&#34;:&#34;6fjDOg8PX&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/6fjDOg8PX/&#34;}],&#34;date&#34;:&#34;2024-01-08 16:06:26&#34;,&#34;dateFormat&#34;:&#34;2024-01-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/warpfenliu/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;3 min read&#34;,&#34;time&#34;:140000,&#34;words&#34;:566,&#34;minutes&#34;:3},&#34;description&#34;:&#34;前言\n分流的用处就是为了本地局域网和大陆地址走国内IP访问，国外网站走代理IP访问\nAndroid手机端分流设置方法\n\n下载最新版NekoBox安卓客户端【NekoBoxForAndroid】，感谢MatsuriDayo开源大佬\n运行Nek...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;Android手机端分流设置方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#windows%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;Windows端分流设置方法&lt;/a&gt;&lt;br&gt;\n*\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F%E5%90%8E%E5%8F%AF%E4%B8%8Aipskkmoe%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E7%9C%8B%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%E5%88%86%E6%B5%81\&#34;&gt;连接成功后可上ip.skk.moe测试一下看是否正确分流&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h1 id=\&#34;前言\&#34;&gt;前言&lt;/h1&gt;\n&lt;p&gt;Cloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;p&gt;跳过一切过程与方法：&lt;a href=\&#34;https://blog.wmjan.top/post/warpfenliu/#android%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\&#34;&gt;安卓手机请坐直升机&lt;/a&gt;&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h1 id=\&#34;节点获取方法\&#34;&gt;节点获取方法&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;打开&lt;a href=\&#34;https://1.1.1.1\&#34;&gt;【Cloudflare Warp官网】&lt;/a&gt;，下载对应的Cloudflare WARP程序，默认只有1GB流量&lt;/li&gt;\n&lt;li&gt;获取🔑无限流量密钥（Key）\n&lt;ul&gt;\n&lt;li&gt;方法一：Telegram 搜索添加 Warp+Bot，输入/generater按提示获取Key；&lt;/li&gt;\n&lt;li&gt;方法二：&lt;a href=\&#34;https://replit.com/@wmjan1980/WarpKey\&#34;&gt;【进Replit项目】&lt;/a&gt; 点Run等待几秒即可自动获取Warp+的Key。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;打开 Cloudflare WARP 程序，设置里替换🔑无限流量密钥（Key），即可实现Cloudflare官方无限流量科学上网。&lt;/li&gt;\n&lt;li&gt;到此为止，你已经获得了安全可靠的无限流量科学上网方法，如果依旧还是无法上外网请继续看以下扩展内容，正常了没特殊需要可忽略&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h1 id=\&#34;进阶ip优选加速方案\&#34;&gt;进阶IP优选加速方案&lt;/h1&gt;\n&lt;ol&gt;\n&lt;li&gt;IP优选工具下载：&lt;a href=\&#34;https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/warp-yxip/warp-yxip-win.7z?inline=false\&#34;&gt;【下载链接】&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;下载解压后启动warp-yxip.bat，选择对应优选模式（默认为IPv4）&lt;/li&gt;\n&lt;li&gt;优选完成后，找到result.csv文件打开。可以看到🚀优选IP和端口号&lt;/li&gt;\n&lt;li&gt;生成配置文件：打开&lt;a href=\&#34;https://replit.com/@wmjan1980/wgcf-profile-generator\&#34;&gt;【Replit项目】&lt;/a&gt; 点Run，再选择2（Warp+）回车，输入对应的🔑无限流量密钥（Key），即可获得📋配置文件。&lt;/li&gt;\n&lt;li&gt;WireGuard工具下载：打开&lt;a href=\&#34;https://www.wireguard.com/install\&#34;&gt;【官网下载链接】&lt;/a&gt;，以Windows为例，安装运行后点左下角新建隧道-新建空隧道，清空默认配置文件，粘贴📋配置文件，并且将Endpoint项里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;\n&lt;li&gt;手机端WireGuard设置\n&lt;ul&gt;\n&lt;li&gt;方法一：直接在电脑端WireGuard导出已经配置好的隧道zip文件，发送到手机导入即可。&lt;/li&gt;\n&lt;li&gt;方法二：可以直接扫描第4步中生成的📋配置文件 二维码导入，再点编辑将“对端”里的域名和端口号替换成🚀优选IP和端口号，保存即可。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&#34;,&#34;fileName&#34;:&#34;warp+key&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;WARP+免费节点获取方法及进阶玩法&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;warp&#34;,&#34;slug&#34;:&#34;6fjDOg8PX&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://blog.wmjan.top/tag/6fjDOg8PX/&#34;}],&#34;date&#34;:&#34;2024-01-08 15:14:02&#34;,&#34;dateFormat&#34;:&#34;2024-01-08&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/warp+key/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:106000,&#34;words&#34;:495,&#34;minutes&#34;:2},&#34;description&#34;:&#34;前言\nCloudflare是一个全球云平台、DNS服务商，其推出的免费节点，无限流量、高速、安全、无广告，推荐使用\n\n跳过一切过程与方法：安卓手机请坐直升机\n\n节点获取方法\n\n打开【Cloudflare Warp官网】，下载对应的Cloud...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%89%8D%E8%A8%80\&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%8A%82%E7%82%B9%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95\&#34;&gt;节点获取方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%9B%E9%98%B6ip%E4%BC%98%E9%80%89%E5%8A%A0%E9%80%9F%E6%96%B9%E6%A1%88\&#34;&gt;进阶IP优选加速方案&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;ul&gt;\n&lt;li&gt;本站为个人爱好学习记录，以自我理解、避坑为主&lt;/li&gt;\n&lt;li&gt;大部分内容来自网络，如果有涉及版权等相关问题请联系删除&lt;/li&gt;\n&lt;li&gt;联系方式：wmjan1980@gmail.com&lt;/li&gt;\n&lt;/ul&gt;\n&#34;,&#34;fileName&#34;:&#34;about&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;关于&#34;,&#34;tags&#34;:[],&#34;date&#34;:&#34;2024-01-06 14:31:58&#34;,&#34;dateFormat&#34;:&#34;2024-01-06&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://blog.wmjan.top/post/about/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:11000,&#34;words&#34;:53,&#34;minutes&#34;:1},&#34;description&#34;:&#34;\n本站为个人爱好学习记录，以自我理解、避坑为主\n大部分内容来自网络，如果有涉及版权等相关问题请联系删除\n联系方式：wmjan1980@gmail.com\n\n&#34;,&#34;toc&#34;:&#34;&#34;}]";
+  // var json = escape.substr(1, escape.length - 2);
+  // var datas = json.split(',');
+  // for (let i=0; i < datas.length; i++) {
+  //   let item = datas[i];
+  //   let attrs = item.split('34;:&#34')
+  //   debugger
+  //   console.log(datas[i])
+  // }
+  let escapeMap = new Map();
+  escapeMap.set('&#34;', '"');
+  escapeMap.set('&gt;', '>');
+  escapeMap.set('&#39;', "'");
+  escapeMap.set('&lt;', '<');
+  escapeMap.set('&quot;', '"');
+  escapeMap.set('&amp;', '&');
+</script> -->
+
+
+
+</html>
