@@ -287,6 +287,30 @@ WAN口的 DDNS域名 或者 IP：自己已注册的域名，如wmjan.cn<br />
   
 
 
+  
+    <section class="comment-section">
+  <h2 class="comment-section__title">评论</h2>
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'dec3100520f4bb2b7861',
+      clientSecret: '42cb3004ea4f3fb1128afebc7fecab536fead101',
+      repo: '',
+      owner: '',
+      admin: [''],
+      id: location.pathname,
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  </script>
+</section>
+
+  
+
+
+
 </article>
 
   </main>
@@ -329,10 +353,6 @@ WAN口的 DDNS域名 或者 IP：自己已注册的域名，如wmjan.cn<br />
     </div>
 
     
-    
-    <div class="footer-custom">
-      Powered by Gridea Pro
-    </div>
     
 
     
