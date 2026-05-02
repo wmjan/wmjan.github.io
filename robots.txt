@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wmjan.github.io/sitemap.xml
