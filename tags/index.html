@@ -19,7 +19,7 @@
   (function () {
     try {
       var saved = localStorage.getItem('flavor-theme');
-      var theme = saved || 'dark';
+      var theme = saved || 'light';
       if (theme === 'light') {
         document.documentElement.classList.add('theme-light');
       }
@@ -187,21 +187,6 @@
       <span class="tag-pill__count">1</span>
     </a>
     
-    <a href="/tag/acme/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">acme</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/pve/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">pve</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/google/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">google</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
     <a href="/tag/onedrive/" class="tag-pill tag-pill--lg">
       <span class="tag-pill__name">onedrive</span>
       <span class="tag-pill__count">2</span>
@@ -212,8 +197,23 @@
       <span class="tag-pill__count">1</span>
     </a>
     
+    <a href="/tag/pve/" class="tag-pill tag-pill--lg">
+      <span class="tag-pill__name">pve</span>
+      <span class="tag-pill__count">1</span>
+    </a>
+    
+    <a href="/tag/acme/" class="tag-pill tag-pill--lg">
+      <span class="tag-pill__name">acme</span>
+      <span class="tag-pill__count">1</span>
+    </a>
+    
     <a href="/tag/网卡直通/" class="tag-pill tag-pill--lg">
       <span class="tag-pill__name">网卡直通</span>
+      <span class="tag-pill__count">1</span>
+    </a>
+    
+    <a href="/tag/google/" class="tag-pill tag-pill--lg">
+      <span class="tag-pill__name">google</span>
       <span class="tag-pill__count">1</span>
     </a>
     
