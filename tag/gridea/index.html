@@ -27,26 +27,21 @@
   })();
 </script>
   <meta name="generator" content="Gridea Pro 1.1.1">
-  <title>OpenWrt/iStoreOS安装PassWall | Wmjan学习站</title>
+  <title>#openwrt | Wmjan学习站</title>
   
-<meta property="og:title" content="OpenWrt/iStoreOS安装PassWall" />
-<meta property="og:type" content="article" />
-
-
-<meta name="description" content="OpenWrt安装 资源下载 开源项目地址，感谢 xiaorouji大佬：PassWall 查看CPU架构 cat /etc/os-release |grep ARCH 下载软件 luci-23.05_luci-app-passwal&amp;hellip;">
-<link rel="canonical" href="https://blog.wmjan.top/post/PassWall/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"OpenWrt/iStoreOS安装PassWall","url":"https://blog.wmjan.top/post/PassWall/","description":"OpenWrt安装 资源下载 开源项目地址，感谢 xiaorouji大佬：PassWall 查看CPU架构 cat /etc/os-release |grep ARCH 下载软件 luci-23.05_luci-app-passwal\u0026hellip;","datePublished":"2024-04-16T08:59:03+08:00","dateModified":"2026-05-02T17:19:18+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/PassWall/","name":"OpenWrt/iStoreOS安装PassWall","position":2}]}</script>
-<meta property="og:title" content="OpenWrt/iStoreOS安装PassWall">
-<meta property="og:description" content="OpenWrt安装 资源下载 开源项目地址，感谢 xiaorouji大佬：PassWall 查看CPU架构 cat /etc/os-release |grep ARCH 下载软件 luci-23.05_luci-app-passwal&amp;hellip;">
-<meta property="og:url" content="https://blog.wmjan.top/post/PassWall/">
-<meta property="og:type" content="article">
+<meta name="description" content="欢迎一起探讨学习">
+<link rel="canonical" href="https://blog.wmjan.top/tag/gridea/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Wmjan学习站","url":"https://blog.wmjan.top","description":"欢迎一起探讨学习","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://blog.wmjan.top/search?q={search_term_string}"}}</script>
+<meta property="og:title" content="Wmjan学习站">
+<meta property="og:description" content="欢迎一起探讨学习">
+<meta property="og:url" content="https://blog.wmjan.top/tag/gridea/">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="Wmjan学习站">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.wmjan.top/post/PassWall/">
-<meta name="twitter:title" content="OpenWrt/iStoreOS安装PassWall">
-<meta name="twitter:description" content="OpenWrt安装 资源下载 开源项目地址，感谢 xiaorouji大佬：PassWall 查看CPU架构 cat /etc/os-release |grep ARCH 下载软件 luci-23.05_luci-app-passwal&amp;hellip;">
+<meta name="twitter:url" content="https://blog.wmjan.top/tag/gridea/">
+<meta name="twitter:title" content="Wmjan学习站">
+<meta name="twitter:description" content="欢迎一起探讨学习">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 <body class="flavor-theme">
@@ -166,134 +161,115 @@
 
   <main class="site-main" role="main">
     
-<article class="article-container">
-  <header class="article-header">
-    <h1 class="article-title">OpenWrt/iStoreOS安装PassWall</h1>
-    <div class="article-meta">
-      
-      <span class="article-meta__item">2024-04-16</span>
-      
-      <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">1 分钟阅读</span>
-      
-    </div>
+<div class="container">
+  <div class="page-header">
+    <a href="/tags" class="page-back meta-text">&larr; 所有标签</a>
+    <h1 class="page-title"><span class="page-title__hash">#</span>openwrt</h1>
     
-    <div class="article-header__tags">
-      
-      <a href="/tag/gridea/" class="tag-pill tag-pill--sm">openwrt</a>
-      
-    </div>
+    <p class="page-subtitle meta-text">共 4 篇文章</p>
     
-  </header>
-
-  
-
-  <div class="article-content">
-    <h1 id="openwrt">OpenWrt安装</h1>
-<h3 id="heading">资源下载</h3>
-<ol>
-<li>开源项目地址，感谢<br />
-xiaorouji大佬：<a href="https://github.com/xiaorouji/openwrt-passwall/releases">PassWall</a></li>
-<li>查看CPU架构</li>
-</ol>
-<pre><code>cat /etc/os-release |grep ARCH
-</code></pre>
-<ol start="3">
-<li>下载软件</li>
-</ol>
-<ul>
-<li>luci-23.05_luci-app-passwall_4.76-4_all.ipk</li>
-<li>luci-23.05_luci-i18n-passwall-zh-cn_git-24.091.50413-b585fb1_all.ipk</li>
-<li>passwall_packages_ipk_aarch64_generic.zip(下载路由CPU架构对应版本)</li>
-</ul>
-<h3 id="openwrt-1">上传文件到OpenWrt</h3>
-<ol>
-<li>左侧栏 系统 &gt; 文件传输 &gt; 选择文件(把3个文件逐一上传) &gt; 上传</li>
-</ol>
-<h3 id="heading-1">安装</h3>
-<ol>
-<li>SSH登陆OpenWrt路由器</li>
-<li>进入安装包所在目录</li>
-</ol>
-<pre><code>cd /tmp/upload
-</code></pre>
-<ol start="3">
-<li>查看目录下所有文件</li>
-</ol>
-<pre><code>ls
-</code></pre>
-<ol start="4">
-<li>确认3个文件都在，再运行解压安装包</li>
-</ol>
-<pre><code>unzip passwall_packages_ipk_aarch64_generic.zip
-</code></pre>
-<ol start="5">
-<li>安装/tmp/upload目录下所有软件包</li>
-</ol>
-<pre><code>opkg install *.ipk --force-reinstal
-</code></pre>
-<h1 id="istoreos">iStoreOS安装</h1>
-<h3 id="x86">资源下载，X86为例</h3>
-<ol>
-<li>开源项目地址，感谢AUK9527大佬：<a href="https://github.com/AUK9527/Are-u-ok/tree/main/x86">PassWall</a></li>
-<li>下载软件</li>
-</ol>
-<ul>
-<li>下载后得到类似PassWall_4.76-1_x86_64_all_sdk_22.03.6.run的文件</li>
-</ul>
-<h3 id="openwrt-2">上传文件到OpenWrt</h3>
-<ol>
-<li>左侧栏 系统 &gt; 文件传输 &gt; 选择文件(选择PassWall_4.76-1_x86_64_all_sdk_22.03.6.run文件) &gt; 上传</li>
-</ol>
-<h3 id="heading-2">安装</h3>
-<ol>
-<li>SSH登陆OpenWrt路由器</li>
-<li>进入安装包所在目录</li>
-</ol>
-<pre><code>cd /tmp/upload
-</code></pre>
-<ol start="3">
-<li>赋予运行权限</li>
-</ol>
-<pre><code>chmod 755 PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
-</code></pre>
-<ol start="4">
-<li>安装</li>
-</ol>
-<pre><code>./PassWall_4.76-1_x86_64_all_sdk_22.03.6.run
-</code></pre>
-
   </div>
 
   
-  <nav class="post-nav">
+  <div class="post-list">
     
-    <a href="/post/wky/" class="post-nav-card post-nav-card--prev">
-      
-      <div class="post-nav-card__body">
-        <span class="post-nav-card__label meta-text">上一篇</span>
-        <span class="post-nav-card__title">玩客云刷OpenWrt简易教程</span>
-      </div>
-      <span class="post-nav-card__arrow">&larr;</span>
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/OpenVPN/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">OpenWrt配置OpenVPN多用户连接</h3>
     </a>
-    
-    
-    <a href="/post/Workers/" class="post-nav-card post-nav-card--next">
-      <div class="post-nav-card__body">
-        <span class="post-nav-card__label meta-text">下一篇</span>
-        <span class="post-nav-card__title">利用Cloudflare的Workers搭建VLESS节点</span>
-      </div>
-      
-      <span class="post-nav-card__arrow">&rarr;</span>
+    <a href="/post/OpenVPN/" class="post-card__excerpt clamp-2">
+      OpenVPN简述
+
+OpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备
+最大的好处就是安全、高效、跨平台
+可解决一些远程端口访问也无法实现的一...
     </a>
-    
-  </nav>
-
+    <div class="post-card__meta meta-text">
+      2024-05-04
+      
+    </div>
+  </div>
   
-  
-
-
 </article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/openwrt/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">旁路由简述及OpenWrt相关设置</h3>
+    </a>
+    <a href="/post/openwrt/" class="post-card__excerpt clamp-2">
+      什么是旁路由
+
+旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能
+
+旁路由的几种工作方式
+1. 主路由开DHCP、网关未指向旁路由，旁路由关...
+    </a>
+    <div class="post-card__meta meta-text">
+      2024-05-02
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/wky/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">玩客云刷OpenWrt简易教程</h3>
+    </a>
+    <a href="/post/wky/" class="post-card__excerpt clamp-2">
+      简易教程/二次刷机
+
+下载OpenWrt安装包解压，提取码：open，安装运行USB_Burning_Tool（烧录软件），导入OpenWrt安装包，选择擦除所有，点击开始
+USB对公线接玩客云离HDMI接口近的那个USB接口
+取卡针...
+    </a>
+    <div class="post-card__meta meta-text">
+      2024-04-22
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/PassWall/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">OpenWrt/iStoreOS安装PassWall</h3>
+    </a>
+    <a href="/post/PassWall/" class="post-card__excerpt clamp-2">
+      OpenWrt安装
+资源下载
+
+开源项目地址，感谢
+xiaorouji大佬：PassWall
+查看CPU架构
+
+cat /etc/os-release |grep ARCH
+
+
+下载软件
+
+
+luci-23.05_luci-app-p...
+    </a>
+    <div class="post-card__meta meta-text">
+      2024-04-16
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+  </div>
+  
+</div>
 
   </main>
 
