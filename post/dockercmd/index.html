@@ -33,12 +33,12 @@
 <meta property="og:type" content="article" />
 
 
-<meta name="description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 sudo docker pull 镜像名 启动docker服务 sudo service docker start 停止docker服务 sudo service docker stop 检查do&amp;hellip;">
+<meta name="description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
 <link rel="canonical" href="https://blog.wmjan.top/post/dockercmd/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker常用命令","url":"https://blog.wmjan.top/post/dockercmd/","description":"Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 sudo docker pull 镜像名 启动docker服务 sudo service docker start 停止docker服务 sudo service docker stop 检查do\u0026hellip;","datePublished":"2024-01-12T13:25:48+08:00","dateModified":"2026-05-02T18:04:43+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker常用命令","url":"https://blog.wmjan.top/post/dockercmd/","description":"Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...","datePublished":"2024-01-12T13:25:48+08:00","dateModified":"2026-05-04T14:00:17+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/dockercmd/","name":"Docker常用命令","position":2}]}</script>
 <meta property="og:title" content="Docker常用命令">
-<meta property="og:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 sudo docker pull 镜像名 启动docker服务 sudo service docker start 停止docker服务 sudo service docker stop 检查do&amp;hellip;">
+<meta property="og:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
 <meta property="og:url" content="https://blog.wmjan.top/post/dockercmd/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Wmjan学习站">
@@ -46,7 +46,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://blog.wmjan.top/post/dockercmd/">
 <meta name="twitter:title" content="Docker常用命令">
-<meta name="twitter:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 sudo docker pull 镜像名 启动docker服务 sudo service docker start 停止docker服务 sudo service docker stop 检查do&amp;hellip;">
+<meta name="twitter:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 <body class="flavor-theme">
@@ -189,7 +189,7 @@
   
 
   <div class="article-content">
-    <h1 id="docker">Docker常用命令</h1>
+    <h2 id="docker">Docker常用命令</h2>
 <ol>
 <li>搜索镜像</li>
 </ol>
@@ -198,7 +198,15 @@
 <ol start="2">
 <li>拉取镜像</li>
 </ol>
-<pre><code>sudo docker pull 镜像名
+<ul>
+<li>常规拉取</li>
+</ul>
+<pre><code>sudo docker pull 镜像名:latest
+</code></pre>
+<ul>
+<li>镜像源拉取</li>
+</ul>
+<pre><code>sudo docker pull 镜像名:latest
 </code></pre>
 <ol start="3">
 <li>启动docker服务</li>
@@ -264,7 +272,6 @@
 <li>删除所有镜像</li>
 </ol>
 <pre><code>sudo docker rmi $(docker images | grep none | awk '{print $3}' | sort -r)
-
 </code></pre>
 <ol start="16">
 <li>保存镜像</li>
@@ -286,7 +293,7 @@
 </ol>
 <pre><code>docker images --no-trunc| grep none | awk '{print $3}' | xargs -r docker rmi
 </code></pre>
-<h3 id="heading">常用参数：</h3>
+<h2 id="heading">常用参数：</h2>
 <blockquote>
 <p>-i：以交互模式运行容器，通常与 -t 同时使用<br />
 -t：为容器重新分配一个伪输入终端，通常与 -i 同时使用<br />
@@ -304,20 +311,18 @@
   
   <nav class="post-nav">
     
-    <a href="/post/frp/" class="post-nav-card post-nav-card--prev">
-      
+    <div class="post-nav-card post-nav-card--empty">
       <div class="post-nav-card__body">
         <span class="post-nav-card__label meta-text">上一篇</span>
-        <span class="post-nav-card__title">frp内网穿透配置说明</span>
+        <span class="post-nav-card__empty-text">没有上一篇了~</span>
       </div>
-      <span class="post-nav-card__arrow">&larr;</span>
-    </a>
+    </div>
     
     
-    <a href="/post/Contacts/" class="post-nav-card post-nav-card--next">
+    <a href="/post/fnos-startup-app/" class="post-nav-card post-nav-card--next">
       <div class="post-nav-card__body">
         <span class="post-nav-card__label meta-text">下一篇</span>
-        <span class="post-nav-card__title">跨平台联系人同步群晖Synology Contacts</span>
+        <span class="post-nav-card__title">飞牛OS应用软件无法开机自启的解决方法</span>
       </div>
       
       <span class="post-nav-card__arrow">&rarr;</span>
