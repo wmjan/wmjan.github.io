@@ -35,7 +35,7 @@
 
 <meta name="description" content="前言 适用场景：使用USB外接硬盘作为存储空间，开机后 Docker 正常，但应用中心的所有应用（如相册、飞牛同步、frpc等）均未启动，需要手动启动 问题分析 飞牛OS 开机速度很快，系统服务迅速拉起 USB 硬盘通电、自检、挂载的速度相对较慢 结果：trim_app_center 服务启动时，尝试读取存储卷（Volume），但硬盘还没准备好。服务因读取超时&amp;hellip;">
 <link rel="canonical" href="https://blog.wmjan.top/post/fnos-startup-app/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"飞牛OS应用软件无法开机自启的解决方法","url":"https://blog.wmjan.top/post/fnos-startup-app/","description":"前言 适用场景：使用USB外接硬盘作为存储空间，开机后 Docker 正常，但应用中心的所有应用（如相册、飞牛同步、frpc等）均未启动，需要手动启动 问题分析 飞牛OS 开机速度很快，系统服务迅速拉起 USB 硬盘通电、自检、挂载的速度相对较慢 结果：trim_app_center 服务启动时，尝试读取存储卷（Volume），但硬盘还没准备好。服务因读取超时\u0026hellip;","datePublished":"2026-05-04T09:22:18+08:00","dateModified":"2026-05-04T09:29:04+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"飞牛OS应用软件无法开机自启的解决方法","url":"https://blog.wmjan.top/post/fnos-startup-app/","description":"前言 适用场景：使用USB外接硬盘作为存储空间，开机后 Docker 正常，但应用中心的所有应用（如相册、飞牛同步、frpc等）均未启动，需要手动启动 问题分析 飞牛OS 开机速度很快，系统服务迅速拉起 USB 硬盘通电、自检、挂载的速度相对较慢 结果：trim_app_center 服务启动时，尝试读取存储卷（Volume），但硬盘还没准备好。服务因读取超时\u0026hellip;","datePublished":"2026-05-04T13:10:18+08:00","dateModified":"2026-05-04T13:10:52+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/fnos-startup-app/","name":"飞牛OS应用软件无法开机自启的解决方法","position":2}]}</script>
 <meta property="og:title" content="飞牛OS应用软件无法开机自启的解决方法">
 <meta property="og:description" content="前言 适用场景：使用USB外接硬盘作为存储空间，开机后 Docker 正常，但应用中心的所有应用（如相册、飞牛同步、frpc等）均未启动，需要手动启动 问题分析 飞牛OS 开机速度很快，系统服务迅速拉起 USB 硬盘通电、自检、挂载的速度相对较慢 结果：trim_app_center 服务启动时，尝试读取存储卷（Volume），但硬盘还没准备好。服务因读取超时&amp;hellip;">
@@ -274,20 +274,18 @@ ExecStart=/usr/bin/trim_app_center ...
   
   <nav class="post-nav">
     
-    <a href="/post/synology-photos-face-patch/" class="post-nav-card post-nav-card--prev">
-      
+    <div class="post-nav-card post-nav-card--empty">
       <div class="post-nav-card__body">
         <span class="post-nav-card__label meta-text">上一篇</span>
-        <span class="post-nav-card__title">黑群晖Synology Photos支持人脸识别补丁</span>
+        <span class="post-nav-card__empty-text">没有上一篇了~</span>
       </div>
-      <span class="post-nav-card__arrow">&larr;</span>
-    </a>
+    </div>
     
     
-    <a href="/post/N1/" class="post-nav-card post-nav-card--next">
+    <a href="/post/synology-photos-face-patch/" class="post-nav-card post-nav-card--next">
       <div class="post-nav-card__body">
         <span class="post-nav-card__label meta-text">下一篇</span>
-        <span class="post-nav-card__title">N1盒子终极救砖简易说明</span>
+        <span class="post-nav-card__title">黑群晖Synology Photos支持人脸识别补丁</span>
       </div>
       
       <span class="post-nav-card__arrow">&rarr;</span>
