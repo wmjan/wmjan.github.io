@@ -33,12 +33,12 @@
 <meta property="og:type" content="article" />
 
 
-<meta name="description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
+<meta name="description" content="常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull docker.1ms.run/镜像名:latest 启动docker服务 sudo serv...">
 <link rel="canonical" href="https://blog.wmjan.top/post/dockercmd/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker常用命令","url":"https://blog.wmjan.top/post/dockercmd/","description":"Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...","datePublished":"2024-01-12T13:25:48+08:00","dateModified":"2026-05-04T14:02:22+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker常用命令","url":"https://blog.wmjan.top/post/dockercmd/","description":"常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull docker.1ms.run/镜像名:latest 启动docker服务 sudo serv...","datePublished":"2024-01-12T13:25:48+08:00","dateModified":"2026-05-04T14:07:01+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/dockercmd/","name":"Docker常用命令","position":2}]}</script>
 <meta property="og:title" content="Docker常用命令">
-<meta property="og:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
+<meta property="og:description" content="常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull docker.1ms.run/镜像名:latest 启动docker服务 sudo serv...">
 <meta property="og:url" content="https://blog.wmjan.top/post/dockercmd/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Wmjan学习站">
@@ -46,7 +46,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://blog.wmjan.top/post/dockercmd/">
 <meta name="twitter:title" content="Docker常用命令">
-<meta name="twitter:description" content="Docker常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull 镜像名:latest 启动docker服务 sudo service docke...">
+<meta name="twitter:description" content="常用命令 搜索镜像 sudo docker search 镜像名 拉取镜像 常规拉取 sudo docker pull 镜像名:latest 镜像源拉取 sudo docker pull docker.1ms.run/镜像名:latest 启动docker服务 sudo serv...">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 <body class="flavor-theme">
@@ -189,7 +189,7 @@
   
 
   <div class="article-content">
-    <h2 id="docker">Docker常用命令</h2>
+    <h2 id="heading">常用命令</h2>
 <ol>
 <li>搜索镜像</li>
 </ol>
@@ -206,7 +206,7 @@
 <ul>
 <li>镜像源拉取</li>
 </ul>
-<pre><code>sudo docker pull 镜像名:latest
+<pre><code>sudo docker pull docker.1ms.run/镜像名:latest
 </code></pre>
 <ol start="3">
 <li>启动docker服务</li>
@@ -293,7 +293,7 @@
 </ol>
 <pre><code>docker images --no-trunc| grep none | awk '{print $3}' | xargs -r docker rmi
 </code></pre>
-<h2 id="heading">常用参数：</h2>
+<h2 id="heading-1">常用参数：</h2>
 <blockquote>
 <p>-i：以交互模式运行容器，通常与 -t 同时使用<br />
 -t：为容器重新分配一个伪输入终端，通常与 -i 同时使用<br />
