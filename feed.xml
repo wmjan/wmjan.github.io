@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wmjan学习站</title>
+    <link>https://blog.wmjan.top/</link>
+    <description>-记录探讨学习-</description>
+    <language>zh-cn</language>
+    <generator>Gridea Pro</generator>
+    <lastBuildDate>Mon, 04 May 2026 14:07:01 +0800</lastBuildDate>
+    <atom:link href="https://blog.wmjan.top/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <item>
+      <title>Docker常用命令</title>
+      <link>https://blog.wmjan.top/post/dockercmd/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/dockercmd/</guid>
+      <pubDate>Fri, 12 Jan 2024 13:25:48 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">常用命令</h2>
+<ol>
+<li>搜索镜像</li>
+</ol>
+<pre><code>sudo docker search 镜像名
+</code></pre>
+<ol start="2">
+<li>拉取镜像</li>
+</ol>
+<ul>
+<li>常规拉取</li>
+</ul>
+<pre><code>sudo docker pull 镜像名:latest
+</code></pre>
+<ul>
+<li>镜像源拉取</li>
+</ul>
+<pre><code>sudo docker pull docker.1ms.run/镜像名:latest
+</code></pre>
+<ol start="3">
+<li>启动docker服务</li>
+</ol>
+<pre><code>sudo serv...
+</code></pre>
+]]></description>
+      <category>群晖</category>
+    </item>
+    <item>
+      <title>飞牛OS应用软件无法开机自启的解决方法</title>
+      <link>https://blog.wmjan.top/post/fnos-startup-app/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/fnos-startup-app/</guid>
+      <pubDate>Mon, 04 May 2026 13:10:18 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">前言</h2>
+<ul>
+<li>适用场景：使用USB外接硬盘作为存储空间，开机后 Docker 正常，但应用中心的所有应用（如相册、飞牛同步、frpc等）均未启动，需要手动启动</li>
+</ul>
+<h2 id="heading-1">问题分析</h2>
+<ul>
+<li>飞牛OS 开机速度很快，系统服务迅速拉起</li>
+<li>USB 硬盘通电、自检、挂载的速度相对较慢</li>
+<li>结果：trim_app_center 服务启动时，尝试读取存储卷（Volume），但硬盘还没准备好。服务因读取超时&hellip;</li>
+</ul>
+]]></description>
+      <category>飞牛OS</category>
+    </item>
+    <item>
+      <title>黑群晖Synology Photos支持人脸识别补丁</title>
+      <link>https://blog.wmjan.top/post/synology-photos-face-patch/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/synology-photos-face-patch/</guid>
+      <pubDate>Mon, 04 May 2026 09:22:18 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">前言</h2>
+<ul>
+<li>此补丁让黑群晖Synology Photos中具有面部识别功能。新版本同时支持人脸和物体识别，仅当图片中有人物时，才会进行人脸识别；物体识别仅针对无人像图片生效。</li>
+<li>人脸识别补丁来源于jinlife大佬：https://github.com/jinlife/Synology_Photos_Face_Patch</li>
+<li>从V1.6.0-0629起，补丁文件已从libsynophoto-&hellip;</li>
+</ul>
+]]></description>
+      <category>群晖</category>
+    </item>
+    <item>
+      <title>N1盒子终极救砖简易说明</title>
+      <link>https://blog.wmjan.top/post/N1/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/N1/</guid>
+      <pubDate>Sat, 02 May 2026 17:19:18 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">前言</h2>
+<p>N1盒子刷飞牛OS、armbian、openwrt等第三方系统后，出开机现卡Logo、闪灯、USB、HDMI口不供电等现象，以下方案为刷回官方系统和救砖教程。</p>
+<h2 id="heading-1">工具及救砖包下载</h2>
+<p><a href="https://1823894114.share.123865.com/123pan/TozYjv-xdJyH?pwd=vIGp#">N1终极救砖.rar</a></p>
+<h2 id="heading-2">简易步骤</h2>
+<h3 id="usb">安装USB&hellip;</h3>
+]]></description>
+      <category>N1</category>
+    </item>
+    <item>
+      <title>解决Win11 24H2/25H2无法访问局域网共享</title>
+      <link>https://blog.wmjan.top/post/Win11NetworkSharing/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/Win11NetworkSharing/</guid>
+      <pubDate>Tue, 20 Jan 2026 13:02:40 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">前言</h2>
+<p>在 Windows 11 24H2 中，我们进行了两项重大安全更改，这些更改可能会影响将驱动器映射到第三方消费类 NAS 或带有 USB 存储的路由器：</p>
+<ul>
+<li>默认情况下，所有连接都需要 SMB 签名。这通过防止网络篡改来提高安全性，并阻止将您的凭证发送到恶意服务器的中继攻击。</li>
+<li>来宾回退在 Windows 11 专业版上处于禁用状态。这可以提高您在连接到不可信设备时的安全性。Gues&hellip;</li>
+</ul>
+]]></description>
+    </item>
+    <item>
+      <title>群晖docker部署acme.sh自动续签DNSPOD证书</title>
+      <link>https://blog.wmjan.top/post/cert/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/cert/</guid>
+      <pubDate>Wed, 12 Feb 2025 16:15:39 +0800</pubDate>
+      <description><![CDATA[<h2 id="heading">前言</h2>
+<p>目前腾讯云免费证书有效期只有短短90天，本记录以腾讯云DNSPOD为例，使用群晖docker部署 acme.sh 的方式免费申请泛域名证书以及配置自动续签，保证证书不会到期中断。</p>
+<h2 id="dns-token">一、腾讯云DNS Token申请</h2>
+<ol>
+<li>
+<p>打开DNSPod 控制台<br />
+腾讯云DNSPod： <a href="https://console.dnspod.cn/">DNSPod</a></p>
+</li>
+<li>
+<p>获取 DNSPod Token<br />
+&hellip;</p>
+</li>
+</ol>
+]]></description>
+      <category>acme</category>
+      <category>群晖</category>
+    </item>
+    <item>
+      <title>PVE网卡直通及qm命令</title>
+      <link>https://blog.wmjan.top/post/PVE+iommu/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/PVE+iommu/</guid>
+      <pubDate>Mon, 27 May 2024 11:16:31 +0800</pubDate>
+      <description><![CDATA[<h1 id="heading">网卡直通</h1>
+<h2 id="gurb">修改gurb</h2>
+<ol>
+<li>PVE shell里面输入命令</li>
+</ol>
+<pre><code>nano /etc/default/grub
+</code></pre>
+<ol start="2">
+<li>找到以下选项</li>
+</ol>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet&quot;
+</code></pre>
+<ol start="3">
+<li>修改grub值</li>
+</ol>
+<ul>
+<li>Intel CPU修改为</li>
+</ul>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet intel_iommu=on&quot;
+...
+</code></pre>
+]]></description>
+      <category>pve</category>
+      <category>网卡直通</category>
+    </item>
+    <item>
+      <title>+86手机号接收注册谷歌账号验证码</title>
+      <link>https://blog.wmjan.top/post/google/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/google/</guid>
+      <pubDate>Mon, 13 May 2024 15:47:07 +0800</pubDate>
+      <description><![CDATA[<h1 id="heading">无法获取验证码</h1>
+<ul>
+<li>现在注册谷歌账号需要提供手机号码获取验证码，证明您不是自动程序，但使用+86手机号码时往往会收到提示：此电话号码无法用于进行验证</li>
+</ul>
+<h1 id="heading-1">解决方法，亲测有效</h1>
+<ol>
+<li>下载最新版chrome浏览器，手机/电脑版本均可以</li>
+<li>语言添加英语，删除其他多余语言</li>
+<li>结束进程/关闭退出</li>
+<li>重新打开chrome浏览器，按流程重新注册即可使用+86手机号码来获取验证码了</li>
+<li>需要注意&hellip;</li>
+</ol>
+]]></description>
+      <category>google</category>
+    </item>
+    <item>
+      <title>OpenWrt配置OpenVPN多用户连接</title>
+      <link>https://blog.wmjan.top/post/OpenVPN/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/OpenVPN/</guid>
+      <pubDate>Sat, 04 May 2024 14:00:50 +0800</pubDate>
+      <description><![CDATA[<h1 id="openvpn">OpenVPN简述</h1>
+<ul>
+<li>OpenVPN是一个开源的虚拟专用网络（VPN）软件，它使用加密技术来保护网络通信的安全。只需要开放一个对外端口即可远程访问局域网内所有设备</li>
+<li>最大的好处就是安全、高效、跨平台</li>
+<li>可解决一些远程端口访问也无法实现的一些功能，如访问打印机等等</li>
+</ul>
+<h1 id="heading">安装及配置</h1>
+<ol>
+<li>安装以下插件，详见[旁路由简述及OpenWrt相关设置](<a href="https://blog.wmjan.top/">https://blog.wmjan.top/</a>&hellip;</li>
+</ol>
+]]></description>
+      <category>openwrt</category>
+    </item>
+    <item>
+      <title>旁路由简述及OpenWrt相关设置</title>
+      <link>https://blog.wmjan.top/post/openwrt/</link>
+      <guid isPermaLink="true">https://blog.wmjan.top/post/openwrt/</guid>
+      <pubDate>Thu, 02 May 2024 11:00:17 +0800</pubDate>
+      <description><![CDATA[<h1 id="heading">什么是旁路由</h1>
+<ul>
+<li>旁路由，准确应该叫旁路网关。属主路由器LAN口下一个客户端设备，实现一些主路由无法实现的功能，如梯子软件、过滤广告、轻NAS、离线下载等等功能</li>
+</ul>
+<h1 id="heading-1">旁路由的几种工作方式</h1>
+<h3 id="1-dhcpdhcp">1. 主路由开DHCP、网关未指向旁路由，旁路由关DHCP</h3>
+<ul>
+<li>客户端需设置静态IP，网关为旁路由IP地址</li>
+<li>好处是旁路由随时可撤，不影响主网络</li>
+<li>旁路由撤离后，需要手动修改网关IP或改为自动获&hellip;</li>
+</ul>
+]]></description>
+      <category>openwrt</category>
+    </item>
+  </channel>
+</rss>
