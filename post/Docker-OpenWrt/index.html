@@ -35,7 +35,7 @@
 
 <meta name="description" content="安装net-tools(可选) 飞牛OS基于Debian内核开发，Debian新版本默认不再预装ifconfig命令，ifconfig属于net-tools工具包，使用 SSH 工具（如 FinalShell, Putty, Windows终端等）登录你的飞牛OS，输入以下命令： sudo apt update sudo apt install net-tools 安装完成后&amp;hellip;">
 <link rel="canonical" href="https://blog.wmjan.top/post/Docker-OpenWrt/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"N1飞牛OS在Docker部署OpenWrt系统","url":"https://blog.wmjan.top/post/Docker-OpenWrt/","description":"安装net-tools(可选) 飞牛OS基于Debian内核开发，Debian新版本默认不再预装ifconfig命令，ifconfig属于net-tools工具包，使用 SSH 工具（如 FinalShell, Putty, Windows终端等）登录你的飞牛OS，输入以下命令： sudo apt update sudo apt install net-tools 安装完成后\u0026hellip;","datePublished":"2026-05-12T15:49:53+08:00","dateModified":"2026-05-12T15:49:53+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"N1飞牛OS在Docker部署OpenWrt系统","url":"https://blog.wmjan.top/post/Docker-OpenWrt/","description":"安装net-tools(可选) 飞牛OS基于Debian内核开发，Debian新版本默认不再预装ifconfig命令，ifconfig属于net-tools工具包，使用 SSH 工具（如 FinalShell, Putty, Windows终端等）登录你的飞牛OS，输入以下命令： sudo apt update sudo apt install net-tools 安装完成后\u0026hellip;","datePublished":"2026-05-12T13:46:03+08:00","dateModified":"2026-05-14T13:47:05+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/Docker-OpenWrt/","name":"N1飞牛OS在Docker部署OpenWrt系统","position":2}]}</script>
 <meta property="og:title" content="N1飞牛OS在Docker部署OpenWrt系统">
 <meta property="og:description" content="安装net-tools(可选) 飞牛OS基于Debian内核开发，Debian新版本默认不再预装ifconfig命令，ifconfig属于net-tools工具包，使用 SSH 工具（如 FinalShell, Putty, Windows终端等）登录你的飞牛OS，输入以下命令： sudo apt update sudo apt install net-tools 安装完成后&amp;hellip;">
@@ -198,11 +198,21 @@ sudo apt install net-tools
 </code></pre>
 <p>安装完成后即可使用ifconfig查看网络接口信息，当然也可以不装net-tools直接使用 ip addr 命令</p>
 <h2 id="openwrt">获取OpenWrt镜像</h2>
-<ul>
+<ol>
 <li>进入Docker镜像仓库</li>
+</ol>
+<ul>
 <li>搜索框中输入openwrt</li>
 <li>推荐sulinggg/openwrt版本</li>
 <li>点击下载，选择latest标签即可</li>
+</ul>
+<ol start="2">
+<li>手动上传镜像openwrt镜像</li>
+</ol>
+<ul>
+<li>如通过<a href="https://openwrt.ai/">openwrt.ai</a>网站构建下载.tar.gz格式镜像</li>
+<li>通过WinSCP等工具上传kwrt-04.23.2026-armsr-armv8-box-rootfs.tar.gz镜像到飞牛OS是/tmp目录</li>
+<li>使用命令 <code>docker import /tmp/kwrt-04.23.2026-armsr-armv8-box-rootfs.tar.gz kiddin9_openwrt</code>加载镜像</li>
 </ul>
 <h2 id="openwrt-1">配置并运行OpenWrt</h2>
 <ol>
@@ -244,10 +254,13 @@ sudo apt install net-tools
 <li>注意：&ndash;network openwrt这里的openwrt是创建macvlan网络命令最后的名称</li>
 </ul>
 <ol start="6">
-<li>进入OpenWrt容器内部</li>
+<li>进入OpenWrt容器内部，</li>
 </ol>
 <pre><code>docker exec -it OpenWrt /bin/sh
 </code></pre>
+<ul>
+<li>想退出但保持容器运行，依次按下 Ctrl + P + Q</li>
+</ul>
 <ol start="7">
 <li>修改OpenWrt网络配置</li>
 </ol>
