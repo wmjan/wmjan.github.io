@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-  <meta name="generator" content="Gridea Pro 1.1.1">
+  <meta name="generator" content="Gridea Pro 1.2.0">
   <title>黑群晖Synology Photos支持人脸识别补丁 | Wmjan学习站</title>
   
 <meta property="og:title" content="黑群晖Synology Photos支持人脸识别补丁" />
@@ -35,7 +35,7 @@
 
 <meta name="description" content="前言 此补丁让黑群晖Synology Photos中具有面部识别功能。新版本同时支持人脸和物体识别，仅当图片中有人物时，才会进行人脸识别；物体识别仅针对无人像图片生效。 人脸识别补丁来源于jinlife大佬：https://github.com/jinlife/Synology_Photos_Face_Patch 从V1.6.0-0629起，补丁文件已从libsynopho&amp;hellip;">
 <link rel="canonical" href="https://blog.wmjan.top/post/synology-photos-face-patch/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"黑群晖Synology Photos支持人脸识别补丁","url":"https://blog.wmjan.top/post/synology-photos-face-patch/","description":"前言 此补丁让黑群晖Synology Photos中具有面部识别功能。新版本同时支持人脸和物体识别，仅当图片中有人物时，才会进行人脸识别；物体识别仅针对无人像图片生效。 人脸识别补丁来源于jinlife大佬：https://github.com/jinlife/Synology_Photos_Face_Patch 从V1.6.0-0629起，补丁文件已从libsynopho\u0026hellip;","datePublished":"2026-05-04T09:22:18+08:00","dateModified":"2026-05-11T17:04:15+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"黑群晖Synology Photos支持人脸识别补丁","url":"https://blog.wmjan.top/post/synology-photos-face-patch/","description":"前言 此补丁让黑群晖Synology Photos中具有面部识别功能。新版本同时支持人脸和物体识别，仅当图片中有人物时，才会进行人脸识别；物体识别仅针对无人像图片生效。 人脸识别补丁来源于jinlife大佬：https://github.com/jinlife/Synology_Photos_Face_Patch 从V1.6.0-0629起，补丁文件已从libsynopho\u0026hellip;","datePublished":"2026-05-04T09:22:18+08:00","dateModified":"2026-05-18T11:28:29+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/synology-photos-face-patch/","name":"黑群晖Synology Photos支持人脸识别补丁","position":2}]}</script>
 <meta property="og:title" content="黑群晖Synology Photos支持人脸识别补丁">
 <meta property="og:description" content="前言 此补丁让黑群晖Synology Photos中具有面部识别功能。新版本同时支持人脸和物体识别，仅当图片中有人物时，才会进行人脸识别；物体识别仅针对无人像图片生效。 人脸识别补丁来源于jinlife大佬：https://github.com/jinlife/Synology_Photos_Face_Patch 从V1.6.0-0629起，补丁文件已从libsynopho&amp;hellip;">
@@ -199,13 +199,13 @@
 </ul>
 <h2 id="photos">根据Photos套件版本号安装对应补丁</h2>
 <p>用root用户登录到群晖SSH，逐行运行以下命令</p>
-<h3 id="1-synology-photos-182-10090">1. 安装Synology Photos 1.8.2-10090版本补丁</h3>
+<h3 id="1-synology-photos-190-10924">1. 安装Synology Photos 1.9.0-10924版本补丁</h3>
 <pre><code>synopkgctl stop SynologyPhotos
 mv -f /var/packages/SynologyPhotos/target/usr/lib/libsynophoto-plugin-platform.so /var/packages/SynologyPhotos/target/usr/lib/libsynophoto-plugin-platform.so-bak
 mv -f /var/packages/SynologyPhotos/target/usr/lib/libsynophoto-plugin-platform.so.1.0 /var/packages/SynologyPhotos/target/usr/lib/libsynophoto-plugin-platform.so.1.0-bak
 cd /tmp
-wget --no-check-certificate https://github.com/jinlife/Synology_Photos_Face_Patch/releases/download/1.8.2-10090/libsynophoto-plugin-platform.so
-wget --no-check-certificate https://github.com/jinlife/Synology_Photos_Face_Patch/releases/download/1.8.2-10090/libsynophoto-plugin-platform.so.1.0
+wget --no-check-certificate https://github.com/jinlife/Synology_Photos_Face_Patch/releases/download/1.9.0-10924/libsynophoto-plugin-platform.so
+wget --no-check-certificate https://github.com/jinlife/Synology_Photos_Face_Patch/releases/download/1.9.0-10924/libsynophoto-plugin-platform.so.1.0
 cp -f libsynophoto-plugin-platform.so /var/packages/SynologyPhotos/target/usr/lib/
 cp -f libsynophoto-plugin-platform.so.1.0 /var/packages/SynologyPhotos/target/usr/lib/
 chmod 777 /var/packages/SynologyPhotos/target/usr/lib/libsynophoto-plugin-platform.so
@@ -371,6 +371,6 @@ synopkgctl start SynologyPhotos
 
   
 
-<script>console.log("\n%c ✦ Gridea Pro v1.1.1 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.0 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
