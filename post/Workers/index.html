@@ -26,19 +26,19 @@
     } catch (e) { }
   })();
 </script>
-  <meta name="generator" content="Gridea Pro 1.2.0">
+  <meta name="generator" content="Gridea Pro 1.2.2">
   <title>利用Cloudflare的Workers搭建VLESS节点 | Wmjan学习站</title>
   
 <meta property="og:title" content="利用Cloudflare的Workers搭建VLESS节点" />
 <meta property="og:type" content="article" />
 
 
-<meta name="description" content="准备工作 前往Cloudflare站点自行注册账号 3Kmfi6HP大佬的Workers项目链接 下载windows梯子软件v2rayN最新版，打开[v2rayN官网](https://github.com/2dust/v2ray&amp;hellip;">
+<meta name="description" content="Edgetunnel 全新版本 一、最新项目地址：edgetunnel 二、建议使用Pages + GitHub 部署方法 部署 CF Pages： 在 Github 上先 Fork 本项目，并点上 Star !!! 在 CF Pages 控制台中选择 `连接&amp;hellip;">
 <link rel="canonical" href="https://blog.wmjan.top/post/Workers/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"利用Cloudflare的Workers搭建VLESS节点","url":"https://blog.wmjan.top/post/Workers/","description":"准备工作 前往Cloudflare站点自行注册账号 3Kmfi6HP大佬的Workers项目链接 下载windows梯子软件v2rayN最新版，打开[v2rayN官网](https://github.com/2dust/v2ray\u0026hellip;","datePublished":"2024-03-08T14:45:49+08:00","dateModified":"2026-05-02T16:28:12+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"利用Cloudflare的Workers搭建VLESS节点","url":"https://blog.wmjan.top/post/Workers/","description":"Edgetunnel 全新版本 一、最新项目地址：edgetunnel 二、建议使用Pages + GitHub 部署方法 部署 CF Pages： 在 Github 上先 Fork 本项目，并点上 Star !!! 在 CF Pages 控制台中选择 `连接\u0026hellip;","datePublished":"2024-03-08T14:45:49+08:00","dateModified":"2026-07-04T13:23:05+08:00","author":{"@type":"Person","name":"Wmjan学习站"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Wmjan学习站"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.wmjan.top","name":"Wmjan学习站","position":1},{"@type":"ListItem","item":"https://blog.wmjan.top/post/Workers/","name":"利用Cloudflare的Workers搭建VLESS节点","position":2}]}</script>
 <meta property="og:title" content="利用Cloudflare的Workers搭建VLESS节点">
-<meta property="og:description" content="准备工作 前往Cloudflare站点自行注册账号 3Kmfi6HP大佬的Workers项目链接 下载windows梯子软件v2rayN最新版，打开[v2rayN官网](https://github.com/2dust/v2ray&amp;hellip;">
+<meta property="og:description" content="Edgetunnel 全新版本 一、最新项目地址：edgetunnel 二、建议使用Pages + GitHub 部署方法 部署 CF Pages： 在 Github 上先 Fork 本项目，并点上 Star !!! 在 CF Pages 控制台中选择 `连接&amp;hellip;">
 <meta property="og:url" content="https://blog.wmjan.top/post/Workers/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Wmjan学习站">
@@ -46,7 +46,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://blog.wmjan.top/post/Workers/">
 <meta name="twitter:title" content="利用Cloudflare的Workers搭建VLESS节点">
-<meta name="twitter:description" content="准备工作 前往Cloudflare站点自行注册账号 3Kmfi6HP大佬的Workers项目链接 下载windows梯子软件v2rayN最新版，打开[v2rayN官网](https://github.com/2dust/v2ray&amp;hellip;">
+<meta name="twitter:description" content="Edgetunnel 全新版本 一、最新项目地址：edgetunnel 二、建议使用Pages + GitHub 部署方法 部署 CF Pages： 在 Github 上先 Fork 本项目，并点上 Star !!! 在 CF Pages 控制台中选择 `连接&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 <body class="flavor-theme">
@@ -174,7 +174,7 @@
       <span class="article-meta__item">2024-03-08</span>
       
       <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">2 分钟阅读</span>
+      <span class="article-meta__item">3 分钟阅读</span>
       
     </div>
     
@@ -183,16 +183,53 @@
   
 
   <div class="article-content">
-    <h1 id="heading">准备工作</h1>
+    <h1 id="edgetunnel-">Edgetunnel 全新版本</h1>
+<h3 id="edgetunnelhttpsgithubcomcmliuedgetunnel">一、最新项目地址：<a href="https://github.com/cmliu/edgetunnel">edgetunnel</a></h3>
+<h3 id="pages--github-">二、建议使用Pages + GitHub 部署方法</h3>
+<ol>
+<li>部署 CF Pages：
+<ul>
+<li>在 Github 上先 Fork 本项目，并点上 Star !!!</li>
+<li>在 CF Pages 控制台中选择 <code>连接到 Git</code>后，选中 <code>edgetunnel</code>项目后点击 <code>开始设置</code>。</li>
+<li>在 <code>设置构建和部署</code>页面下方，选择 <code>环境变量（高级）</code>后并 <code>添加变量</code> 变量名称填写<strong>ADMIN</strong>，值则为你的管理员密码，后点击 <code>保存并部署</code>即可。</li>
+</ul>
+</li>
+<li>绑定 KV 命名空间：
+<ul>
+<li>在 <code>设置</code>选项卡中选择 <code>绑定</code> &gt; <code>+ 添加</code> &gt; <code>KV 命名空间</code>，然后选择一个已有的命名空间或创建一个新的命名空间进行绑定。</li>
+<li><code>变量名称</code>填写<strong>KV</strong>，然后点击 <code>保存</code>后重试部署即可。</li>
+</ul>
+</li>
+<li>给 Pages绑定 CNAME自定义域：<a href="https://www.youtube.com/watch?v=LeT4jQUh8ok&amp;t=851s">视频教程</a>
+<ul>
+<li>在 Pages控制台的 <code>自定义域</code>选项卡，下方点击 <code>设置自定义域</code>。</li>
+<li>填入你的自定义次级域名，注意不要使用你的根域名，例如： 您分配到的域名是 <code>fuck.cloudns.biz</code>，则添加自定义域填入 <code>lizi.fuck.cloudns.biz</code>即可；</li>
+<li>按照 CF 的要求将返回你的域名DNS服务商，添加 该自定义域 <code>lizi</code>的 CNAME记录 <code>edgetunnel.pages.dev</code> 后，点击 <code>激活域</code>即可。</li>
+</ul>
+</li>
+<li>访问后台：
+<ul>
+<li>访问 <code>https://lizi.fuck.cloudns.biz/admin</code> 输入管理员密码即可登录后台。</li>
+</ul>
+</li>
+<li>同步更新
+<ul>
+<li>找到对应repositories进行Sync fork即可自动更新了</li>
+</ul>
+</li>
+</ol>
+<h3 id="edgetunnel-httpsvercelblogcmliusssscompedt2">三、详尽图文教程：<a href="https://vercel.blog.cmliussss.com/p/edt2/">edgetunnel 部署指南</a></h3>
+<h1 id="heading">以下是旧项目</h1>
+<h1 id="heading-1">准备工作</h1>
 <ol>
 <li>前往<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>自行注册账号</li>
-<li><a href="https://github.com/3Kmfi6HP/EDtunnel">3Kmfi6HP大佬的Workers项目链接</a></li>
+<li><a href="https://github.com/cmliu/edgetunnel">cmliu大佬的Workers项目链接</a></li>
 <li>下载windows梯子软件v2rayN最新版，打开<a href="https://github.com/2dust/v2rayN">v2rayN官网</a>，右侧找到Releases，点开Latest链接后下载zz_v2rayN-With-Core-SelfContained.7z解压后即可运行</li>
 <li>UUID(userID)获取方法：运行v2rayN &gt; 点左上角“服务器” &gt; 添加VLESS服务器 &gt; 用户ID(id)项点 生成即可得到，保存待用</li>
 </ol>
-<h1 id="heading-1">搭建及使用</h1>
+<h1 id="heading-2">搭建及使用</h1>
 <ol>
-<li>打开<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>左侧栏 &gt; Workers 和 Pages &gt; 概述里点 创建应用程序 &gt; 创建 Worker &gt; 名称随便取 &gt; 点右下角部署 &gt; 编辑代码 &gt; <a href="https://github.com/3Kmfi6HP/EDtunnel/blob/main/_worker.js">复制3Kmfi6HP大佬的worker.js代码替换上去</a> &gt; 把准备工作中得到的userID替换代码中let userID的值 &gt; 点右上角 保存并部署</li>
+<li>打开<a href="https://www.cloudflare-cn.com/">Cloudflare站点</a>左侧栏 &gt; Workers 和 Pages &gt; 概述里点 创建应用程序 &gt; 创建 Worker &gt; 名称随便取 &gt; 点右下角部署 &gt; 编辑代码 &gt; <a href="https://github.com/cmliu/edgetunnel/blob/main/_worker.js">复制worker.js代码替换上去</a> &gt; 把准备工作中得到的userID替换代码中let userID的值 &gt; 点右上角 保存并部署</li>
 <li>回到Workers 和 Pages &gt; 点刚创建的应用程序名 &gt; 触发器 &gt; 复制路由地址<code>*.*.workers.dev</code>并加上<code>/UUID地址</code>，如我的是：<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code></li>
 <li>复制<code>warpvless0308.wmjan.workers.dev/9c53d549-6feb-4dc7-98c8-6135951ac999</code>在浏览器打开即可看到生成 VLESS 协议的配置信息</li>
 <li>点开<code>VLESS 节点订阅连接</code>，<code>Clash for Windows 节点订阅连接</code>，<code>优选IP自动节点订阅</code>，<code>v2rayNG优选IP自动</code>等你需要的对应链接，会得到整个页面全是字符</li>
@@ -344,6 +381,6 @@
 
   
 
-<script>console.log("\n%c ✦ Gridea Pro v1.2.0 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
